@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>67638711796-7oljv26f6it0cc5oro1q191bj4vrrff3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.67638711796-7oljv26f6it0cc5oro1q191bj4vrrff3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCKfFgmMfloD1XnXbxHAoBUJWPPNrzszjg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>67638711796</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>New-Wave-Computers.UNIhub</string>
+	<key>PROJECT_ID</key>
+	<string>unihub-e4151</string>
+	<key>STORAGE_BUCKET</key>
+	<string>unihub-e4151.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:67638711796:ios:f713f0a4abae1b9c</string>
+	<key>DATABASE_URL</key>
+	<string>https://unihub-e4151.firebaseio.com</string>
+</dict>
+</plist>

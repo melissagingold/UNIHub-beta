@@ -15,6 +15,10 @@
 		0C588E0022049B79007433EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C588DFE22049B79007433EC /* LaunchScreen.storyboard */; };
 		0C588E0B22049B79007433EC /* UNIHub_betaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C588E0A22049B79007433EC /* UNIHub_betaTests.swift */; };
 		0C588E1622049B79007433EC /* UNIHub_betaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C588E1522049B79007433EC /* UNIHub_betaUITests.swift */; };
+		0CDA3B1C22049D99000F329A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */; };
+		0CDA3B1D22049D99000F329A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */; };
+		0CDA3B1E22049D99000F329A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */; };
+		47C039167D896978AB160F55 /* Pods_UNIHub_beta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC81BD023E04769601F5144 /* Pods_UNIHub_beta.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		0C588E1122049B79007433EC /* UNIHub betaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UNIHub betaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C588E1522049B79007433EC /* UNIHub_betaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNIHub_betaUITests.swift; sourceTree = "<group>"; };
 		0C588E1722049B79007433EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A7603F081FC770805788AC5 /* Pods-UNIHub beta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNIHub beta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UNIHub beta/Pods-UNIHub beta.debug.xcconfig"; sourceTree = "<group>"; };
+		4DC81BD023E04769601F5144 /* Pods_UNIHub_beta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UNIHub_beta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		821DF62333C23EEF12B5F9B1 /* Pods-UNIHub beta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNIHub beta.release.xcconfig"; path = "Pods/Target Support Files/Pods-UNIHub beta/Pods-UNIHub beta.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47C039167D896978AB160F55 /* Pods_UNIHub_beta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +92,8 @@
 				0C588E0922049B79007433EC /* UNIHub betaTests */,
 				0C588E1422049B79007433EC /* UNIHub betaUITests */,
 				0C588DF022049B75007433EC /* Products */,
+				B9AC7124F4A8D1F30E0CBC02 /* Pods */,
+				BAE3313E2CFD6FCFEFA708FE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +116,7 @@
 				0C588DFC22049B79007433EC /* Assets.xcassets */,
 				0C588DFE22049B79007433EC /* LaunchScreen.storyboard */,
 				0C588E0122049B79007433EC /* Info.plist */,
+				0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */,
 				0C588DF922049B76007433EC /* UNIHub_beta.xcdatamodeld */,
 			);
 			path = "UNIHub beta";
@@ -128,6 +140,23 @@
 			path = "UNIHub betaUITests";
 			sourceTree = "<group>";
 		};
+		B9AC7124F4A8D1F30E0CBC02 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A7603F081FC770805788AC5 /* Pods-UNIHub beta.debug.xcconfig */,
+				821DF62333C23EEF12B5F9B1 /* Pods-UNIHub beta.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BAE3313E2CFD6FCFEFA708FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DC81BD023E04769601F5144 /* Pods_UNIHub_beta.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +164,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C588E1A22049B79007433EC /* Build configuration list for PBXNativeTarget "UNIHub beta" */;
 			buildPhases = (
+				FCA26D50E4C442D15EAE7F88 /* [CP] Check Pods Manifest.lock */,
 				0C588DEB22049B75007433EC /* Sources */,
 				0C588DEC22049B75007433EC /* Frameworks */,
 				0C588DED22049B75007433EC /* Resources */,
+				D37B060D31C2E1B040C49067 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,6 +266,7 @@
 				0C588E0022049B79007433EC /* LaunchScreen.storyboard in Resources */,
 				0C588DFD22049B79007433EC /* Assets.xcassets in Resources */,
 				0C588DF822049B76007433EC /* Main.storyboard in Resources */,
+				0CDA3B1C22049D99000F329A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CDA3B1D22049D99000F329A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,10 +282,64 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CDA3B1E22049D99000F329A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D37B060D31C2E1B040C49067 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-UNIHub beta/Pods-UNIHub beta-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UNIHub beta/Pods-UNIHub beta-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCA26D50E4C442D15EAE7F88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UNIHub beta-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0C588DEB22049B75007433EC /* Sources */ = {
@@ -434,6 +521,7 @@
 		};
 		0C588E1B22049B79007433EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A7603F081FC770805788AC5 /* Pods-UNIHub beta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -451,6 +539,7 @@
 		};
 		0C588E1C22049B79007433EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 821DF62333C23EEF12B5F9B1 /* Pods-UNIHub beta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
