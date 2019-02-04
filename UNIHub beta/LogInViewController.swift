@@ -7,24 +7,47 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class LogInViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class LogInViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var logInButton: UIButton!
+    
+    @IBAction func logInButtonTouchedUp(_ sender: UIButton) {
+        guard let emailAddress = userNameTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        Auth.auth().signIn(withEmail: emailAddress, password: password) { (user, error) in
+            
+            if error == nil && user != nil {
+                self.dismiss(animated: true, completion: nil)
+            }
+            else {
+                print(error!.localizedDescription)
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userNameTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        userNameTextField.becomeFirstResponder()
     }
-    */
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if userNameTextField.isFirstResponder {
+            userNameTextField.becomeFirstResponder()
+        }
+        else {
+            self.view.endEditing(true)
+            passwordTextField.resignFirstResponder()
+            logInButton.isEnabled = true
+        }
+        
+        return true
+    }
 
 }
