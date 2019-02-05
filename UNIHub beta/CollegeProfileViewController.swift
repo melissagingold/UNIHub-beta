@@ -7,24 +7,36 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
 
-class CollegeProfileViewController: UIViewController {
+struct CellData {
+    let message: String?
+}
+
+class CollegeProfileViewController: UITableViewController {
+    
+    var data = [CellData]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        data = [CellData.init(message: "hello world"),CellData.init(message: "hello world"),CellData.init(message: "hello world"),CellData.init(message: "hello world"),CellData.init(message: "hello world"),CellData.init(message: "hello world")]
+        
+        self.tableView.register(CollegeCell.self, forCellReuseIdentifier: "college")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "college") as! CollegeCell
+        cell.message = data[indexPath.row].message
+        return cell
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    
 }
