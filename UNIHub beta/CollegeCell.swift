@@ -10,28 +10,52 @@ import Foundation
 import UIKit
 
 class CollegeCell: UITableViewCell {
-    var message: String?
+    var name: String?
+    var information: String?
     
-    var messageView : UITextView = {
+    var nameView : UITextView = {
         var textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isScrollEnabled = false
+        textView.isEditable = false
+        textView.font = UIFont(name: "Helvetica Neue", size: 30)
+        return textView
+    }()
+    
+    var informationView : UITextView = {
+        var textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isScrollEnabled = false
+        textView.isEditable = false
+        textView.font = UIFont(name: "Helvetica Neue", size: 15)
         return textView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.addSubview(messageView)
+        self.addSubview(nameView)
+        self.addSubview(informationView)
         
-        messageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        messageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        messageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        messageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        nameView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
+        nameView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 15).isActive = true
+        nameView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        nameView.bottomAnchor.constraint(equalTo: informationView.topAnchor).isActive = true
+        
+        informationView.topAnchor.constraint(equalTo: nameView.bottomAnchor).isActive = true
+        informationView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
+        informationView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 15).isActive = true
+        informationView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let message = message {
-            messageView.text = message
+        if let name = name {
+            nameView.text = name
+        }
+        if let information = information {
+            informationView.text = information
         }
     }
     
