@@ -2,29 +2,51 @@
 //  MainMenuViewController.swift
 //  UNIHub beta
 //
-//  Created by Chloe Cowan (student LM) on 2/1/19.
+//  Created by Chloe Cowan (student LM) on 2/5/19.
 //  Copyright © 2019 Melissa Gingold (student LM). All rights reserved.
 //
 
 import UIKit
 
 class MainMenuViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showApplicantProfile), name: NSNotification.Name("showApplicantProfile"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showCollegeProfile), name: NSNotification.Name("showCollegeProfile"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showChecklist), name: NSNotification.Name("showChecklist"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showCalendar), name: NSNotification.Name("showCalendar"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showLogOut), name: NSNotification.Name("showLogOut"), object: nil)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func showApplicantProfile() {
+        performSegue(withIdentifier: "showApplicantProfile", sender: nil)
     }
-    */
-
+    
+    @objc func showCollegeProfile() {
+        performSegue(withIdentifier: "showCollegeProfile", sender: nil)
+    }
+    
+    @objc func showChecklist() {
+        performSegue(withIdentifier: "showChecklist", sender: nil)
+    }
+    
+    @objc func showCalendar() {
+        performSegue(withIdentifier: "showCalendar", sender: nil)
+    }
+    
+    @objc func showLogOut() {
+        performSegue(withIdentifier: "showLogOut", sender: nil)
+    }
+    
+    @IBAction func onMoreTapped(_ sender: UIBarButtonItem) {
+        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
+    }
 }
+
