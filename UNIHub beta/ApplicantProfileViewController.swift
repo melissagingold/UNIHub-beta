@@ -11,11 +11,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import FirebaseStorage
 
-class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-
-    
-
-    
+class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +57,56 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
     
     
     
+    @IBOutlet weak var activitiesTableView: UITableView!
+    let sections = ["Years Involved:", "Position/s:", "Awards:"]
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.sections[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! UITableViewCell
+        
+        cell.textLabel?.numberOfLines = 4
+        let row = indexPath.row
+        
+        // set cell's title
+        return cell
+    }
+    
+    func getActivities(_ completion: @escaping((_ activity:String?)->())){
+        guard let uid = Auth.auth().currentUser?.uid else{return}
+        
+        let databaseRef = Database.database().reference().child("users/\(uid)")
+        databaseRef.observeSingleEvent(of: .value, with: {snapshot in
+            let postDict = snapshot.value as? [String: AnyObject] ?? [:]
+            
+            if let activityTitle = postDict["Activity Title"]{
+                completion(activityTitle as? String)
+            }
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    
+        
+    }
+    
+    @IBAction func saveButton(_ sender: UIButton) {
+        getActivities(){ url in
+            let storage = Storage.storage()
+            guard let activity = url else {return}
+            let ref = storage.reference(forURL:activity)
+            
+            ref.getData(maxSize: 1*1024*1024){ data, error in
+                if error == nil && data != nil{
+                    self.reloadInputViews()
+                }
+                else{
+                    print(error?.localizedDescription)
+                }
+            }
+        }
+    }
     
     
     /*
@@ -74,3 +120,4 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
     */
 
 }
+
