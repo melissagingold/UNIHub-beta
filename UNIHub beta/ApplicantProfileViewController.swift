@@ -19,8 +19,11 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
         testPicker.selectRow(testPicker.numberOfRows(inComponent: 0)/2, inComponent: 0, animated: true)
     
         // Do any additional setup after loading the view.
+        GPAText.delegate = self
+        scoreText.delegate = self
+        
+        GPAText.becomeFirstResponder()
     }
-    
     
     
     //pciker view to select ACT or SAT
@@ -53,10 +56,19 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
     @IBOutlet weak var GPAText: UITextField!
     @IBOutlet weak var scoreText: UITextField!
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if GPAText.isFirstResponder{
+            scoreText.becomeFirstResponder()
+        }
+        else{
+            self.view.endEditing(true)
+            scoreText.resignFirstResponder()
+        }
+        return true
+    }
     
     
-    
-    
+    //activities
     @IBOutlet weak var activitiesTableView: UITableView!
     let sections = ["Years Involved:", "Position/s:", "Awards:"]
     
@@ -73,6 +85,7 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
         // set cell's title
         return cell
     }
+    
     
     func getActivities(_ completion: @escaping((_ activity:String?)->())){
         guard let uid = Auth.auth().currentUser?.uid else{return}
