@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MainMenuViewController: UIViewController {
     
@@ -42,6 +43,9 @@ class MainMenuViewController: UIViewController {
     }
     
     @objc func showLogOut() {
+        try! Auth.auth().signOut()
+        self.dismiss(animated: true, completion: nil)
+        
         performSegue(withIdentifier: "showLogOut", sender: nil)
     }
     
