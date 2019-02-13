@@ -192,7 +192,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xj5-cY-fEi">
-                                <rect key="frame" x="22" y="70" width="72" height="29"/>
+                                <rect key="frame" x="22" y="114" width="72" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="JSa-4E-eq0"/>
                                 </constraints>
@@ -201,7 +201,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bMH-dV-lX2">
-                                <rect key="frame" x="128" y="70" width="105" height="30"/>
+                                <rect key="frame" x="128" y="114" width="105" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="105" id="3sE-py-ZN9"/>
                                 </constraints>
@@ -210,7 +210,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G49-xz-ZLH">
-                                <rect key="frame" x="16" y="119" width="72" height="40"/>
+                                <rect key="frame" x="16" y="163" width="72" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="b1n-uV-OlN"/>
                                     <constraint firstAttribute="width" constant="72" id="hqf-ea-wyt"/>
@@ -221,7 +221,7 @@
                                 </connections>
                             </pickerView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AL8-Sk-nwd">
-                                <rect key="frame" x="122" y="120" width="105" height="30"/>
+                                <rect key="frame" x="122" y="164" width="105" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="105" id="0DU-e7-Q2Y"/>
                                 </constraints>
@@ -230,15 +230,18 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wq6-dr-1BW">
-                                <rect key="frame" x="303" y="36" width="34" height="30"/>
+                                <rect key="frame" x="303" y="80" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveButton:" destination="6Dc-RM-ix6" eventType="touchUpInside" id="bFd-KG-XZw"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1aU-SE-8S9">
-                                <rect key="frame" x="38" y="173" width="299" height="473"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1aU-SE-8S9">
+                                <rect key="frame" x="38" y="211" width="299" height="435"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="435" id="lgR-TR-S3e"/>
+                                </constraints>
                                 <viewLayoutGuide key="safeArea" id="gmu-jw-77u"/>
                                 <inset key="scrollIndicatorInsets" minX="1" minY="2" maxX="1" maxY="1"/>
                                 <prototypes>
@@ -534,12 +537,12 @@
                         <constraints>
                             <constraint firstItem="G49-xz-ZLH" firstAttribute="top" secondItem="xj5-cY-fEi" secondAttribute="bottom" constant="20" id="0en-Cx-kJ1"/>
                             <constraint firstItem="bMH-dV-lX2" firstAttribute="top" secondItem="Thw-mW-KBg" secondAttribute="top" constant="50" id="A9u-l7-Pee"/>
-                            <constraint firstItem="Thw-mW-KBg" firstAttribute="bottom" secondItem="1aU-SE-8S9" secondAttribute="bottom" constant="21" id="CR7-z1-h9H"/>
                             <constraint firstItem="xj5-cY-fEi" firstAttribute="leading" secondItem="Thw-mW-KBg" secondAttribute="leading" constant="22" id="HCM-fY-p0m"/>
                             <constraint firstItem="wq6-dr-1BW" firstAttribute="top" secondItem="Thw-mW-KBg" secondAttribute="top" constant="16" id="JTZ-hD-x7v"/>
                             <constraint firstItem="AL8-Sk-nwd" firstAttribute="leading" secondItem="G49-xz-ZLH" secondAttribute="trailing" constant="34" id="MRu-AJ-vgz"/>
                             <constraint firstItem="AL8-Sk-nwd" firstAttribute="top" secondItem="bMH-dV-lX2" secondAttribute="bottom" constant="20" id="VPY-BS-oNp"/>
                             <constraint firstItem="bMH-dV-lX2" firstAttribute="leading" secondItem="xj5-cY-fEi" secondAttribute="trailing" constant="34" id="d15-wT-LCW"/>
+                            <constraint firstItem="1aU-SE-8S9" firstAttribute="top" secondItem="G49-xz-ZLH" secondAttribute="bottom" constant="8" id="fTX-7i-YWE"/>
                             <constraint firstItem="1aU-SE-8S9" firstAttribute="centerX" secondItem="Ecs-Cq-7tR" secondAttribute="centerX" id="gLp-ht-zM2"/>
                             <constraint firstItem="xj5-cY-fEi" firstAttribute="top" secondItem="Thw-mW-KBg" secondAttribute="top" constant="50" id="m73-sX-86T"/>
                             <constraint firstItem="Thw-mW-KBg" firstAttribute="trailing" secondItem="wq6-dr-1BW" secondAttribute="trailing" constant="38" id="qE9-82-sAz"/>
@@ -984,7 +987,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9l-cl-rLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5290" y="-392"/>
+            <point key="canvasLocation" x="5473" y="-1154"/>
         </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="ner-lK-PFi">
@@ -1053,6 +1056,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iX7-qV-OeN"/>
-        <segue reference="YrB-kJ-Fys"/>
+        <segue reference="6fq-D9-M1q"/>
     </inferredMetricsTieBreakers>
 </document>
