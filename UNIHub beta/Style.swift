@@ -56,4 +56,34 @@ class Style {
     func backgroundColor(for style: TextStyle) -> UIColor? {
         return attributesForStyle(style).backgroundColor
     }
+    
+    func apply(textStyle: TextStyle, to label: UILabel) {
+        let attributes = attributesForStyle(textStyle)
+        label.font = attributes.font
+        label.textColor = attributes.color
+        label.backgroundColor = attributes.backgroundColor
+    }
+    
+    func apply(textStyle: TextStyle = .button, to button: UIButton) {
+        let attributes = attributesForStyle(textStyle)
+        button.setTitleColor(attributes.color, for: .normal)
+        button.titleLabel?.font = attributes.font
+        button.backgroundColor = attributes.backgroundColor
+    }
+    
+    func apply(textStyle: TextStyle = .navigationBar, to navigationBar: UINavigationBar) {
+        let attributes = attributesForStyle(textStyle)
+        navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: attributes.font,
+            NSAttributedString.Key.foregroundColor: attributes.color
+        ]
+        
+        if let color = attributes.backgroundColor {
+            navigationBar.barTintColor = color
+        }
+        
+        navigationBar.tintColor = attributes.color
+        navigationBar.barStyle = preferredStatusBarStyle == .default ? .default : .black
+    }
+
 }
