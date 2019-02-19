@@ -10,11 +10,27 @@ import UIKit
 import FirebaseAuth
 
 class ViewController: UIViewController {
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBAction func logInButtonTapped(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toLogIn", sender: self)
+        
+        
+    }
 
+    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toSignUp", sender: self)
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         print("hello world")
+    
+        imageView.layer.cornerRadius = 30.0
+        imageView.clipsToBounds = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
