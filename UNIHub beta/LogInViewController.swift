@@ -35,6 +35,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         userNameTextField.becomeFirstResponder()
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -49,5 +50,4 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-
 }
