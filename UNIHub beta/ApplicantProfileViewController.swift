@@ -23,15 +23,15 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
         
         GPAText.becomeFirstResponder()
         
-        activitiesTableView.delegate = self
-        activitiesTableView.dataSource = self as? UITableViewDataSource
+//        activitiesTableView.delegate = self
+//        activitiesTableView.dataSource = self as? UITableViewDataSource
             }
     
     
     //pciker view to select ACT or SAT
     @IBOutlet weak var testPicker: UIPickerView!
     let test = ["SAT:", "ACT:"]
-    
+
     func pickerView(testPicker : UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let defaults = UserDefaults.standard
         defaults.set(row, forKey: "row")
@@ -50,20 +50,6 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
         return "\(test[row])"
     }
     
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! ActivityTableViewCell
-        
-        cell.textLabel?.numberOfLines = 4
-        let row = indexPath.row
-    
-        return cell
-        
-    }
-    
-    
-    
-    
     //textFields
     @IBOutlet weak var GPAText: UITextField!
     @IBOutlet weak var scoreText: UITextField!
@@ -79,10 +65,40 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
         return true
     }
     
+    @IBOutlet weak var addAPTestText: UITextField!
     
-    //activities
-    @IBOutlet weak var activitiesTableView: UITableView!
-    let sections = ["Years Involved:", "Position/s:", "Awards:"]
+    @IBOutlet weak var APTestList: UITextField!
+    
+    @IBAction func addAPTest(_ sender: UIButton) {
+        if let text = addAPTestText.text{
+            if text == ""{
+                return
+            }
+            APTestList.text?.append("\(text)\n")
+            addAPTestText.text = ""
+            addAPTestText.resignFirstResponder()
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! ActivityTableViewCell
+//
+//        cell.textLabel?.numberOfLines = 4
+//        let row = indexPath.row
+//
+//        return cell
+//
+//    }
+//    //activities
+//    @IBOutlet weak var activitiesTableView: UITableView!
+//    let sections = ["Years Involved:", "Position/s:", "Awards:"]
     
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return self.sections[section].count
@@ -96,47 +112,47 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
 //        return cell
 //    }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : ActivityTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCell") as! ActivityTableViewCell
-        
-        
-        return cell
-    }
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell : ActivityTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCell") as! ActivityTableViewCell
+//
+//
+//        return cell
+//    }
+//
+//
+//    func getActivities(_ completion: @escaping((_ activity:String?)->())){
+//        guard let uid = Auth.auth().currentUser?.uid else{return}
+//
+//        let databaseRef = Database.database().reference().child("users/\(uid)")
+//        databaseRef.observeSingleEvent(of: .value, with: {snapshot in
+//            let postDict = snapshot.value as? [String: AnyObject] ?? [:]
+//
+//            if let activityTitle = postDict["Activity Title"]{
+//                completion(activityTitle as? String)
+//            }
+//        }){ (error) in
+//            print(error.localizedDescription)
+//        }
+//
+//
+//    }
     
-    
-    func getActivities(_ completion: @escaping((_ activity:String?)->())){
-        guard let uid = Auth.auth().currentUser?.uid else{return}
-        
-        let databaseRef = Database.database().reference().child("users/\(uid)")
-        databaseRef.observeSingleEvent(of: .value, with: {snapshot in
-            let postDict = snapshot.value as? [String: AnyObject] ?? [:]
-            
-            if let activityTitle = postDict["Activity Title"]{
-                completion(activityTitle as? String)
-            }
-        }){ (error) in
-            print(error.localizedDescription)
-        }
-    
-        
-    }
-    
-    @IBAction func saveButton(_ sender: UIButton) {
-        getActivities(){ url in
-            let storage = Storage.storage()
-            guard let activity = url else {return}
-            let ref = storage.reference(forURL:activity)
-            
-            ref.getData(maxSize: 1*1024*1024){ data, error in
-                if error == nil && data != nil{
-                    self.reloadInputViews()
-                }
-                else{
-                    print(error?.localizedDescription)
-                }
-            }
-        }
-    }
+//    @IBAction func saveButton(_ sender: UIButton) {
+//        getActivities(){ url in
+//            let storage = Storage.storage()
+//            guard let activity = url else {return}
+//            let ref = storage.reference(forURL:activity)
+//
+//            ref.getData(maxSize: 1*1024*1024){ data, error in
+//                if error == nil && data != nil{
+//                    self.reloadInputViews()
+//                }
+//                else{
+//                    print(error?.localizedDescription)
+//                }
+//            }
+//        }
+//    }
     
     
     /*
