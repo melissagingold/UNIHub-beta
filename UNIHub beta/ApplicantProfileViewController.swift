@@ -15,15 +15,17 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        testPicker.selectRow(testPicker.numberOfRows(inComponent: 0)/2, inComponent: 0, animated: true)
+    testPicker.selectRow(testPicker.numberOfRows(inComponent: 0)/2, inComponent: 0, animated: true)
     
         // Do any additional setup after loading the view.
         GPAText.delegate = self
         scoreText.delegate = self
         
         GPAText.becomeFirstResponder()
-    }
+        
+        activitiesTableView.delegate = self
+        activitiesTableView.dataSource = self as? UITableViewDataSource
+            }
     
     
     //pciker view to select ACT or SAT
@@ -49,6 +51,16 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
     }
     
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! ActivityTableViewCell
+        
+        cell.textLabel?.numberOfLines = 4
+        let row = indexPath.row
+    
+        return cell
+        
+    }
+    
     
     
     
@@ -72,17 +84,22 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
     @IBOutlet weak var activitiesTableView: UITableView!
     let sections = ["Years Involved:", "Position/s:", "Awards:"]
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sections[section].count
-    }
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return self.sections[section].count
+//    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! UITableViewCell
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! UITableViewCell
+//        cell.textLabel?.numberOfLines = 4
+//        let row = indexPath.row
+//
+//        return cell
+//    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell : ActivityTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCell") as! ActivityTableViewCell
         
-        cell.textLabel?.numberOfLines = 4
-        let row = indexPath.row
         
-        // set cell's title
         return cell
     }
     
