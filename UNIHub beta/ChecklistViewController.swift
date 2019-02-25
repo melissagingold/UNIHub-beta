@@ -26,9 +26,9 @@ class ChecklistViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.taskNameLabel.text = tasks[indexPath.row].name
         
         if tasks[indexPath.row].checked {
-            cell.checkBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBoxFILLED.png"), for: UIControl.State.normal)
+            cell.checkBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBoxFILLED"), for: UIControl.State.normal)
         } else {
-            cell.checkBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBoxOUTLINE.png"), for: UIControl.State.normal)
+            cell.checkBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBoxOUTLINE"), for: UIControl.State.normal)
         }
         
         cell.delegate = self

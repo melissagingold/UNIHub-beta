@@ -20,7 +20,7 @@ class AddTaskViewController: UIViewController {
     private var datePicker : UIDatePicker?
     
     @IBAction func addAction(_ sender: UIButton) {
-        if taskNameOutlet.text != "" && dueDateOutlet.text != nil {
+        if taskNameOutlet.text != ""  {
             let fullTaskName = taskNameOutlet.text! + " " + dueDateText!
             delegate?.addTask(name: fullTaskName)
             navigationController?.popViewController(animated: true)
