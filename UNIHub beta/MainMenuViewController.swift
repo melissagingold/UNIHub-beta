@@ -11,10 +11,21 @@ import FirebaseAuth
 
 class MainMenuViewController: UIViewController {
     
+    @IBAction func toGrades(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func toEssay(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func toActivities(_ sender: UIButton) {
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(showApplicantProfile), name: NSNotification.Name("showApplicantProfile"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showCollegeProfile), name: NSNotification.Name("showCollegeProfile"), object: nil)
         
@@ -24,10 +35,6 @@ class MainMenuViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(showLogOut), name: NSNotification.Name("showLogOut"), object: nil)
         
-    }
-    
-    @objc func showApplicantProfile() {
-        performSegue(withIdentifier: "showApplicantProfile", sender: nil)
     }
     
     @objc func showCollegeProfile() {
