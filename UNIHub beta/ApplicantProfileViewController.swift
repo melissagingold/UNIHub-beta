@@ -1,36 +1,17 @@
 //
-//  ApplicantProfileViewController.swift
+//  ActivityViewController.swift
 //  UNIHub beta
 //
-//  Created by Chloe Cowan (student LM) on 2/1/19.
+//  Created by Chloe Cowan (student LM) on 2/25/19.
 //  Copyright © 2019 Melissa Gingold (student LM). All rights reserved.
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseAuth
-import FirebaseStorage
 
-class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate{
+class ApplicantProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    testPicker.selectRow(testPicker.numberOfRows(inComponent: 0)/2, inComponent: 0, animated: true)
-    
-        // Do any additional setup after loading the view.
-        GPAText.delegate = self
-        scoreText.delegate = self
-        
-        GPAText.becomeFirstResponder()
-        
-//        activitiesTableView.delegate = self
-//        activitiesTableView.dataSource = self as? UITableViewDataSource
-            }
-    
-    
-    //pciker view to select ACT or SAT
-    @IBOutlet weak var testPicker: UIPickerView!
-    let test = ["SAT:", "ACT:"]
 
     func pickerView(testPicker : UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let defaults = UserDefaults.standard
@@ -183,7 +164,6 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
 //        }
 //    }
     
-    
     /*
     // MARK: - Navigation
 
@@ -195,4 +175,3 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
     */
 
 }
-

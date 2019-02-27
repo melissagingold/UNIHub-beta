@@ -74,9 +74,11 @@ class ChecklistViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-}
+        
+        tableView.backgroundColor = nil
+        tableView.backgroundColor = UIColor(red:1.00, green:0.90, blue:0.50, alpha:1.0)
+        
+    }
 
 func prepareNotification() {
     let content = UNMutableNotificationContent()
