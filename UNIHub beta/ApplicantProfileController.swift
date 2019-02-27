@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActivityViewController: UIViewController {
+class ApplicantProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

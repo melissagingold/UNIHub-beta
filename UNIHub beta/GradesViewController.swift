@@ -1,5 +1,5 @@
 //
-//  ApplicantProfileViewController.swift
+//  GradesViewController.swift
 //  UNIHub beta
 //
 //  Created by Chloe Cowan (student LM) on 2/1/19.
