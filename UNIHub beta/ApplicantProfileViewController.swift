@@ -68,6 +68,7 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
     
     //adding AP Tests
     @IBOutlet weak var addAPTestText: UITextField!
+    @IBOutlet weak var addAPTestScore: UITextField!
     @IBOutlet weak var APTestList2: UITextView!
     
     @IBAction func addAPTest(_ sender: UIButton) {
@@ -75,10 +76,20 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
             if text == ""{
                 return
             }
-            APTestList2.text?.append("\(text)\n")
+        APTestList2.text?.append("\(text)")
             addAPTestText.text = ""
-        addAPTestText.resignFirstResponder()
+        addAPTestScore.resignFirstResponder()
         }
+        
+        if let text2 = addAPTestScore.text{
+            if text2 == ""{
+                return
+            }
+            APTestList2.text?.append(":\(text2)\n")
+            addAPTestScore.text = ""
+            addAPTestText.resignFirstResponder()
+        }
+        
     }
     
     //adding SAT2 Tests
