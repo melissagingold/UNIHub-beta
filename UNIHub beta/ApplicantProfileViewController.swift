@@ -65,21 +65,50 @@ class ApplicantProfileViewController: UIViewController, UITextFieldDelegate, UIP
         return true
     }
     
-    @IBOutlet weak var addAPTestText: UITextField!
     
-    @IBOutlet weak var APTestList: UITextField!
+    //adding AP Tests
+    @IBOutlet weak var addAPTestText: UITextField!
+    @IBOutlet weak var addAPTestScore: UITextField!
+    @IBOutlet weak var APTestList2: UITextView!
     
     @IBAction func addAPTest(_ sender: UIButton) {
         if let text = addAPTestText.text{
             if text == ""{
                 return
             }
-            APTestList.text?.append("\(text)\n")
+        APTestList2.text?.append("\(text)")
             addAPTestText.text = ""
+        addAPTestScore.resignFirstResponder()
+        }
+        
+        if let text2 = addAPTestScore.text{
+            if text2 == ""{
+                return
+            }
+            APTestList2.text?.append(":\(text2)\n")
+            addAPTestScore.text = ""
             addAPTestText.resignFirstResponder()
         }
         
     }
+    
+    //adding SAT2 Tests
+    @IBOutlet weak var addSAT2Text: UITextField!
+    @IBOutlet weak var SAT2List: UITextView!
+    
+    @IBAction func addSAT2Test(_ sender: UIButton) {
+        if let text = addSAT2Text.text{
+            if text == ""{
+                return
+            }
+            SAT2List.text?.append("\(text)\n")
+            addSAT2Text.text = ""
+        addSAT2Text.resignFirstResponder()
+        }
+    }
+    
+    
+    
     
     
     
