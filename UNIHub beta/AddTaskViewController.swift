@@ -19,6 +19,8 @@ class AddTaskViewController: UIViewController {
     
     private var datePicker : UIDatePicker?
     
+    
+    // adding text field text to task
     @IBAction func addAction(_ sender: UIButton) {
         if taskNameOutlet.text != ""  {
             let fullTaskName = taskNameOutlet.text! + " " + dueDateText!

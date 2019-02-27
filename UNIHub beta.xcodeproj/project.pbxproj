@@ -31,6 +31,7 @@
 		2D57FCD22207C06400F2AB7D /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57FCD12207C06400F2AB7D /* AddTaskViewController.swift */; };
 		2D57FCD62207C38D00F2AB7D /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57FCD52207C38D00F2AB7D /* TaskCell.swift */; };
 		2D8C920322241F0B00F91F8B /* EssayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C920222241F0B00F91F8B /* EssayViewController.swift */; };
+		2D8C92072224512500F91F8B /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C92062224512500F91F8B /* ActivityViewController.swift */; };
 		2DA807FA2209C00B005480BD /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA807F92209C00B005480BD /* SideMenuTableViewController.swift */; };
 		2DA807FC2209C519005480BD /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA807FB2209C519005480BD /* MainMenuViewController.swift */; };
 		47C039167D896978AB160F55 /* Pods_UNIHub_beta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC81BD023E04769601F5144 /* Pods_UNIHub_beta.framework */; };
@@ -84,6 +85,7 @@
 		2D57FCD12207C06400F2AB7D /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		2D57FCD52207C38D00F2AB7D /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		2D8C920222241F0B00F91F8B /* EssayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayViewController.swift; sourceTree = "<group>"; };
+		2D8C92062224512500F91F8B /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		2DA807F92209C00B005480BD /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		2DA807FB2209C519005480BD /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		3A7603F081FC770805788AC5 /* Pods-UNIHub beta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNIHub beta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UNIHub beta/Pods-UNIHub beta.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				2D57FCBF22049F6D00F2AB7D /* LogInViewController.swift */,
 				2D57FCC122049FD400F2AB7D /* SignUpViewController.swift */,
 				0C192E2E2214A56D00DF1A58 /* ActivityTableViewCell.swift */,
+				2D8C92062224512500F91F8B /* ActivityViewController.swift */,
 				2D57FCC32204A00F00F2AB7D /* GradesViewController.swift */,
 				2D8C920222241F0B00F91F8B /* EssayViewController.swift */,
 				2D57FCC92204A16A00F2AB7D /* ChecklistViewController.swift */,
@@ -409,6 +412,7 @@
 				2D57FCC82204A12400F2AB7D /* CalendarViewController.swift in Sources */,
 				2D8C920322241F0B00F91F8B /* EssayViewController.swift in Sources */,
 				2D57FCCA2204A16A00F2AB7D /* ChecklistViewController.swift in Sources */,
+				2D8C92072224512500F91F8B /* ActivityViewController.swift in Sources */,
 				2D57FCCC2204A19200F2AB7D /* CollegeProfileViewController.swift in Sources */,
 				2D57FCC022049F6D00F2AB7D /* LogInViewController.swift in Sources */,
 				2DA807FA2209C00B005480BD /* SideMenuTableViewController.swift in Sources */,
