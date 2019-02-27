@@ -114,39 +114,39 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jG-SH-PT0">
-                                <rect key="frame" x="50" y="114" width="85.5" height="20"/>
+                                <rect key="frame" x="50" y="70" width="85.5" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ci0-lt-Fuc">
-                                <rect key="frame" x="50" y="154" width="275" height="30"/>
+                                <rect key="frame" x="50" y="110" width="275" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPZ-BO-ufj">
-                                <rect key="frame" x="50" y="204" width="109" height="20"/>
+                                <rect key="frame" x="50" y="160" width="109" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ilM-nG-YXB">
-                                <rect key="frame" x="50" y="244" width="275" height="30"/>
+                                <rect key="frame" x="50" y="200" width="275" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoP-7l-JVE">
-                                <rect key="frame" x="50" y="294" width="76" height="20"/>
+                                <rect key="frame" x="50" y="250" width="76" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dof-ZK-gEP">
-                                <rect key="frame" x="50" y="334" width="275" height="30"/>
+                                <rect key="frame" x="50" y="290" width="275" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -734,7 +734,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gx8-8Q-EsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="vPl-7L-4GE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1437.5999999999999" y="1655.6221889055473"/>
+            <point key="canvasLocation" x="1439" y="1656"/>
         </scene>
         <!--Essay View Controller-->
         <scene sceneID="M4y-hE-YEY">
@@ -983,6 +983,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="IgS-KT-ETd" id="H3D-OB-zYe"/>
+                                    <outlet property="delegate" destination="IgS-KT-ETd" id="Aed-ud-OBz"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -994,13 +998,72 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rDK-ax-omO"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Ian-gj-Q9l"/>
                     <connections>
                         <outlet property="tableView" destination="geY-Zx-HAW" id="Eys-jy-7eD"/>
+                        <segue destination="ZTw-BM-Jox" kind="show" identifier="showCollegeInfo" id="lmV-y2-ytW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rMb-w7-vIA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4345" y="1184"/>
+            <point key="canvasLocation" x="4812" y="1182"/>
+        </scene>
+        <!--College Info View Controller-->
+        <scene sceneID="wDN-GY-LwN">
+            <objects>
+                <viewController id="ZTw-BM-Jox" customClass="CollegeInfoViewController" customModule="UNIHub_beta" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="39r-jp-oFF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="College Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV0-TK-maG">
+                                <rect key="frame" x="20" y="84" width="335" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="College Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gQ-WX-x4L">
+                                <rect key="frame" x="20" y="140" width="335" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fV0-TK-maG" firstAttribute="leading" secondItem="cWZ-ha-2jq" secondAttribute="leading" constant="20" id="3Tx-Is-ObS"/>
+                            <constraint firstItem="6gQ-WX-x4L" firstAttribute="leading" secondItem="cWZ-ha-2jq" secondAttribute="leading" constant="20" id="CaG-WP-dqH"/>
+                            <constraint firstItem="fV0-TK-maG" firstAttribute="top" secondItem="cWZ-ha-2jq" secondAttribute="top" constant="20" id="KNl-LP-bQd"/>
+                            <constraint firstItem="cWZ-ha-2jq" firstAttribute="trailing" secondItem="fV0-TK-maG" secondAttribute="trailing" constant="20" id="X72-9o-UJP"/>
+                            <constraint firstItem="6gQ-WX-x4L" firstAttribute="top" secondItem="fV0-TK-maG" secondAttribute="bottom" constant="20" id="nZv-fU-anl"/>
+                            <constraint firstItem="cWZ-ha-2jq" firstAttribute="trailing" secondItem="6gQ-WX-x4L" secondAttribute="trailing" constant="20" id="yBx-qx-vx8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cWZ-ha-2jq"/>
+                    </view>
+                    <connections>
+                        <outlet property="collegeDescription" destination="6gQ-WX-x4L" id="Ge1-nY-sAu"/>
+                        <outlet property="collegeName" destination="fV0-TK-maG" id="fbI-8W-AeG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rP7-gC-ra0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5561" y="1990"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zX8-Rh-dee">
+            <objects>
+                <navigationController id="NzE-1m-Eph" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wuS-bk-lKu">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="IgS-KT-ETd" kind="relationship" relationship="rootViewController" id="O5L-Sx-djc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nSx-pV-Wwf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6028" y="919"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="sUw-up-wGu">
@@ -1084,7 +1147,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Zxm-8T-HTR" customClass="TaskCell" customModule="UNIHub_beta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" id="Zxm-8T-HTR" customClass="TaskCell" customModule="UNIHub_beta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zxm-8T-HTR" id="dJe-9K-uuL">
@@ -1350,5 +1413,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="bJy-Jd-Rkh"/>
         <segue reference="YrB-kJ-Fys"/>
+        <segue reference="xt4-CD-QpA"/>
     </inferredMetricsTieBreakers>
 </document>

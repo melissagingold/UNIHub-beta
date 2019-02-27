@@ -12,9 +12,10 @@ import FirebaseStorage
 import FirebaseDatabase
 
 
-class CollegeProfileViewController: UIViewController {
+class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var colleges: [College] = []
+    var colleges: [College] = [College(name: "1", description: "hi")]
+    var selectedCollege: College?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -44,9 +45,8 @@ class CollegeProfileViewController: UIViewController {
   
     }
     
-}
-
-extension CollegeProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollegeCell") as! CollegeCell
         cell.collegeName.text = colleges[indexPath.row].name
@@ -59,6 +59,19 @@ extension CollegeProfileViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return colleges.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCollege = colleges[indexPath.row]
+        print(colleges[indexPath.row].name)
+        performSegue(withIdentifier: "showCollegeInfo", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCollegeInfo" {
+            let collegeInfoViewController = segue.destination as! CollegeInfoViewController
+            collegeInfoViewController.college = selectedCollege
+        }
     }
 
 }
