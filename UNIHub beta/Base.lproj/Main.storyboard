@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Dc-RM-ix6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -186,10 +186,10 @@
             </objects>
             <point key="canvasLocation" x="406" y="919"/>
         </scene>
-        <!--Activity View Controller-->
+        <!--Applicant Profile View Controller-->
         <scene sceneID="D5H-ag-0fS">
             <objects>
-                <viewController id="6PB-5L-TSF" customClass="ActivityViewController" customModule="UNIHub_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6PB-5L-TSF" customClass="ApplicantProfileViewController" customModule="UNIHub_beta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zbY-cc-M9Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -728,13 +728,13 @@
                     </view>
                     <connections>
                         <outlet property="APTestList2" destination="pp5-cH-bcy" id="U2b-1Q-jQY"/>
-                        <outlet property="GPAText" destination="bMH-dV-lX2" id="nSV-VS-Fk1"/>
+                        <outlet property="GPAText" destination="bMH-dV-lX2" id="0dt-ib-6Ik"/>
                         <outlet property="SAT2List" destination="jI8-WT-MJV" id="Mgi-iT-ZPL"/>
-                        <outlet property="addAPTestScore" destination="nYx-3x-Nxp" id="XeT-lb-cBn"/>
-                        <outlet property="addAPTestText" destination="7zj-DH-oaO" id="Ldk-mK-iXS"/>
+                        <outlet property="addAPTestScore" destination="nYx-3x-Nxp" id="C1K-da-WIf"/>
+                        <outlet property="addAPTestText" destination="7zj-DH-oaO" id="0Fw-qv-duf"/>
                         <outlet property="addSAT2Text" destination="TdV-yz-8rt" id="I4e-DQ-gUd"/>
-                        <outlet property="scoreText" destination="AL8-Sk-nwd" id="dvn-5L-pL7"/>
-                        <outlet property="testPicker" destination="G49-xz-ZLH" id="waW-dy-hji"/>
+                        <outlet property="scoreText" destination="AL8-Sk-nwd" id="F5r-NB-daI"/>
+                        <outlet property="testPicker" destination="G49-xz-ZLH" id="tDU-yQ-pgP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gx8-8Q-EsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1441,7 +1441,6 @@
         <image name="logo" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bJy-Jd-Rkh"/>
         <segue reference="YrB-kJ-Fys"/>
         <segue reference="xt4-CD-QpA"/>
     </inferredMetricsTieBreakers>
