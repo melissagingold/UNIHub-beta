@@ -28,6 +28,12 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = navigationController?.viewControllers[0] as! CollegeProfileViewController
+        vc.colleges.append(College(name: Array(searchResults.values)[indexPath.row], description: "is a college"))
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
