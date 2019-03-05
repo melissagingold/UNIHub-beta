@@ -10,11 +10,26 @@ import UIKit
 
 class SideMenuTableViewController: UITableViewController {
 
+    let backgroundImage = UIImage(named: "argyle.png")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
-        self.tableView.backgroundColor = nil
-//        self.tableView.backgroundColor = UIColor.blue
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // image to background
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = nil
+        
+        imageView.contentMode = .scaleAspectFill
+        
+        self.tableView.backgroundView = imageView
+        
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
@@ -28,5 +43,9 @@ class SideMenuTableViewController: UITableViewController {
         case 3: NotificationCenter.default.post(name: NSNotification.Name("showLogOut"), object: nil)
         default: break
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
     }
 }
