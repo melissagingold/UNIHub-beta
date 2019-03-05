@@ -80,5 +80,8 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
             collegeInfoViewController.college = selectedCollege
         }
     }
+    
+    @IBAction func backToProfile(segue: UIStoryboardSegue){
+    }
 
 }

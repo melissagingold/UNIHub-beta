@@ -14,6 +14,8 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     
     var searchResults : [Int : String] = [:]
     
+    var searchResult : College?
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     
@@ -29,9 +31,8 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = navigationController?.viewControllers[0] as! CollegeProfileViewController
-        vc.colleges.append(College(name: Array(searchResults.values)[indexPath.row], description: "is a college"))
-        self.navigationController?.popToRootViewController(animated: true)
+        searchResult = College(name: Array(searchResults.values)[indexPath.row], description: "is a college")
+        performSegue(withIdentifier: "backToProfile", sender: self)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -43,7 +44,7 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.navigationController?.popToRootViewController(animated: true)
+         performSegue(withIdentifier: "backToProfile", sender: self)
     }
     
     
@@ -110,4 +111,13 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let result = searchResult {
+            let vc = segue.destination as! CollegeProfileViewController
+            vc.colleges.append(result)
+        }
+    }
+    
+    
 }
