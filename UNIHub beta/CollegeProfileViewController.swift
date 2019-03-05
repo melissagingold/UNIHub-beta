@@ -35,6 +35,10 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         return data
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +71,6 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCollege = colleges[indexPath.row]
-        print(colleges[indexPath.row].name)
         performSegue(withIdentifier: "showCollegeInfo", sender: self)
     }
     
