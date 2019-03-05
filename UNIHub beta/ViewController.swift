@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBAction func logInButtonTapped(_ sender: UIButton) {
         self.performSegue(withIdentifier: "toLogIn", sender: self)
@@ -31,7 +32,7 @@ class ViewController: UIViewController {
     
         imageView.layer.cornerRadius = 30.0
         imageView.clipsToBounds = true
-    }
+            }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
