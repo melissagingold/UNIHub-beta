@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NzE-1m-Eph">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -114,39 +114,39 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jG-SH-PT0">
-                                <rect key="frame" x="50" y="70" width="85.5" height="20"/>
+                                <rect key="frame" x="50" y="114" width="85.5" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ci0-lt-Fuc">
-                                <rect key="frame" x="50" y="110" width="275" height="30"/>
+                                <rect key="frame" x="50" y="154" width="275" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPZ-BO-ufj">
-                                <rect key="frame" x="50" y="160" width="109" height="20"/>
+                                <rect key="frame" x="50" y="204" width="109" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ilM-nG-YXB">
-                                <rect key="frame" x="50" y="200" width="275" height="30"/>
+                                <rect key="frame" x="50" y="244" width="275" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoP-7l-JVE">
-                                <rect key="frame" x="50" y="250" width="76" height="20"/>
+                                <rect key="frame" x="50" y="294" width="76" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dof-ZK-gEP">
-                                <rect key="frame" x="50" y="290" width="275" height="30"/>
+                                <rect key="frame" x="50" y="334" width="275" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -766,6 +766,76 @@
             </objects>
             <point key="canvasLocation" x="3393" y="1656"/>
         </scene>
+        <!--Search College View Controller-->
+        <scene sceneID="1hC-GE-BCe">
+            <objects>
+                <viewController id="IT0-jy-VmR" customClass="SearchCollegeViewController" customModule="UNIHub_beta" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="snu-we-3fq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="College Name" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H7a-GR-yVX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="IT0-jy-VmR" id="ECo-bR-eSL"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rW5-l8-oQ7">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCollegeCell" id="HbQ-Rl-hjT" customClass="SearchCollegeCell" customModule="UNIHub_beta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HbQ-Rl-hjT" id="dUL-nk-Efn">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="College Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6x-MK-kDv">
+                                                    <rect key="frame" x="15" y="11.5" width="107.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="p6x-MK-kDv" firstAttribute="leading" secondItem="dUL-nk-Efn" secondAttribute="leadingMargin" id="PcC-e7-qEw"/>
+                                                <constraint firstItem="p6x-MK-kDv" firstAttribute="centerY" secondItem="dUL-nk-Efn" secondAttribute="centerY" id="sR7-8e-3ES"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collegeName" destination="p6x-MK-kDv" id="LIh-r8-o2r"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="IT0-jy-VmR" id="gCb-E0-Qrp"/>
+                                    <outlet property="delegate" destination="IT0-jy-VmR" id="vJw-z7-G5Q"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="H7a-GR-yVX" firstAttribute="top" secondItem="T97-PK-vzr" secondAttribute="top" id="2vt-xC-8FD"/>
+                            <constraint firstItem="T97-PK-vzr" firstAttribute="bottom" secondItem="rW5-l8-oQ7" secondAttribute="bottom" id="9L9-4R-22z"/>
+                            <constraint firstItem="H7a-GR-yVX" firstAttribute="trailing" secondItem="T97-PK-vzr" secondAttribute="trailing" id="JB2-Md-52X"/>
+                            <constraint firstItem="rW5-l8-oQ7" firstAttribute="top" secondItem="H7a-GR-yVX" secondAttribute="bottom" id="R1z-By-8vC"/>
+                            <constraint firstItem="H7a-GR-yVX" firstAttribute="leading" secondItem="T97-PK-vzr" secondAttribute="leading" id="dAm-fE-NGQ"/>
+                            <constraint firstItem="rW5-l8-oQ7" firstAttribute="leading" secondItem="T97-PK-vzr" secondAttribute="leading" id="maH-Kq-0Rc"/>
+                            <constraint firstItem="T97-PK-vzr" firstAttribute="trailing" secondItem="rW5-l8-oQ7" secondAttribute="trailing" id="q6L-LS-rPP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="T97-PK-vzr"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="H7a-GR-yVX" id="0yU-Me-vxG"/>
+                        <outlet property="searchTableView" destination="rW5-l8-oQ7" id="cp3-6a-7e9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ubh-8g-Vl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4284" y="1993"/>
+        </scene>
         <!--Container View Controller-->
         <scene sceneID="UP7-Hl-ies">
             <objects>
@@ -981,10 +1051,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rDK-ax-omO"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Ian-gj-Q9l"/>
+                    <navigationItem key="navigationItem" id="Ian-gj-Q9l">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="1I3-Nh-b88">
+                            <connections>
+                                <action selector="addCollege:" destination="IgS-KT-ETd" id="cza-xD-Lv7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="geY-Zx-HAW" id="Eys-jy-7eD"/>
                         <segue destination="ZTw-BM-Jox" kind="show" identifier="showCollegeInfo" id="lmV-y2-ytW"/>
+                        <segue destination="IT0-jy-VmR" kind="show" identifier="showCollegeSearch" id="cpG-XK-TWm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rMb-w7-vIA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1417,7 +1494,8 @@
         <image name="logo" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="iX7-qV-OeN"/>
         <segue reference="YrB-kJ-Fys"/>
-        <segue reference="xt4-CD-QpA"/>
+        <segue reference="O5L-Sx-djc"/>
     </inferredMetricsTieBreakers>
 </document>

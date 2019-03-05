@@ -19,6 +19,10 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func addCollege(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showCollegeSearch", sender: self)
+    }
+    
     func createArray() -> [College] {
         
         var data: [College] = []
@@ -52,7 +56,7 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         cell.collegeName.text = colleges[indexPath.row].name
         cell.collegeDescription.text = colleges[indexPath.row].description
  
-        cell.collegeDescription.numberOfLines = 0
+        cell.collegeDescription.numberOfLines = 3
         
         return cell
     }
