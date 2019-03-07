@@ -19,6 +19,10 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func addCollege(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showCollegeSearch", sender: self)
+    }
+    
     func createArray() -> [College] {
         
         var data: [College] = []
@@ -30,6 +34,10 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
 
         return data
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -52,7 +60,7 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         cell.collegeName.text = colleges[indexPath.row].name
         cell.collegeDescription.text = colleges[indexPath.row].description
  
-        cell.collegeDescription.numberOfLines = 0
+        cell.collegeDescription.numberOfLines = 3
         
         return cell
     }
@@ -63,7 +71,6 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCollege = colleges[indexPath.row]
-        print(colleges[indexPath.row].name)
         performSegue(withIdentifier: "showCollegeInfo", sender: self)
     }
     
@@ -72,6 +79,9 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
             let collegeInfoViewController = segue.destination as! CollegeInfoViewController
             collegeInfoViewController.college = selectedCollege
         }
+    }
+    
+    @IBAction func backToProfile(segue: UIStoryboardSegue){
     }
 
 }
