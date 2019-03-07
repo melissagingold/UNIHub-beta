@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Dc-RM-ix6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -61,7 +61,9 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="R9j-fj-dtT">
-                                <rect key="frame" x="97.5" y="249" width="180" height="200"/>
+
+                                <rect key="frame" x="97.5" y="120" width="180" height="200"/>
+
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="MAF-mp-ZPZ"/>
                                     <constraint firstAttribute="width" constant="180" id="UhK-QT-Xd3"/>
@@ -1209,6 +1211,7 @@
         <image name="logo" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="oTK-H5-jW9"/>
         <segue reference="YrB-kJ-Fys"/>
         <segue reference="xt4-CD-QpA"/>
     </inferredMetricsTieBreakers>
