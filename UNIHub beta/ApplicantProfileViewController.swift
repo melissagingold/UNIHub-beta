@@ -25,10 +25,12 @@ class ApplicantProfileViewController: UITableViewController{
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        <#code#>
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! ActivityTableViewCell
+        return cell
     }
 
 
