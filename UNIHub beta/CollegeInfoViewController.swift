@@ -16,6 +16,9 @@ class CollegeInfoViewController: UIViewController {
     var college: College?
     
     
+    @IBAction func openWebsite(_ sender: UIButton) {
+        //performSegue(withIdentifier: "openWebsite", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,5 +30,11 @@ class CollegeInfoViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (sender as? UIButton) != nil {
+            let webViewController = segue.destination as! WebViewController
+            webViewController.url = URL(string: college?.url ?? "")
+        }
+    }
 
 }

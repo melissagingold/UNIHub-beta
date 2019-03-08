@@ -39,6 +39,7 @@
 		69428E39222D7F8F00457341 /* SearchCollegeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69428E38222D7F8F00457341 /* SearchCollegeCell.swift */; };
 		69428E3B222DA80700457341 /* CollegeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69428E3A222DA80700457341 /* CollegeResponse.swift */; };
 		695F081122146CBE007CD5FC /* CollegeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695F081022146CBE007CD5FC /* CollegeCell.swift */; };
+		696CDD5E2232B2C7008B6784 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696CDD5D2232B2C7008B6784 /* WebViewController.swift */; };
 		698A7125221EF566004DA14D /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A7124221EF566004DA14D /* College.swift */; };
 		69B301C82225790A001523EE /* CollegeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B301C72225790A001523EE /* CollegeInfoViewController.swift */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,7 @@
 		69428E38222D7F8F00457341 /* SearchCollegeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollegeCell.swift; sourceTree = "<group>"; };
 		69428E3A222DA80700457341 /* CollegeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeResponse.swift; sourceTree = "<group>"; };
 		695F081022146CBE007CD5FC /* CollegeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeCell.swift; sourceTree = "<group>"; };
+		696CDD5D2232B2C7008B6784 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		698A7124221EF566004DA14D /* College.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
 		69B301C72225790A001523EE /* CollegeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeInfoViewController.swift; sourceTree = "<group>"; };
 		821DF62333C23EEF12B5F9B1 /* Pods-UNIHub beta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNIHub beta.release.xcconfig"; path = "Pods/Target Support Files/Pods-UNIHub beta/Pods-UNIHub beta.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				2D57FCCB2204A19200F2AB7D /* CollegeProfileViewController.swift */,
 				69B301C72225790A001523EE /* CollegeInfoViewController.swift */,
 				69428E36222D7BC600457341 /* SearchCollegeViewController.swift */,
+				696CDD5D2232B2C7008B6784 /* WebViewController.swift */,
 				69428E3A222DA80700457341 /* CollegeResponse.swift */,
 				69428E38222D7F8F00457341 /* SearchCollegeCell.swift */,
 				695F081022146CBE007CD5FC /* CollegeCell.swift */,
@@ -431,6 +434,7 @@
 				2D57FCCC2204A19200F2AB7D /* CollegeProfileViewController.swift in Sources */,
 				2D57FCC022049F6D00F2AB7D /* LogInViewController.swift in Sources */,
 				2DA807FA2209C00B005480BD /* SideMenuTableViewController.swift in Sources */,
+				696CDD5E2232B2C7008B6784 /* WebViewController.swift in Sources */,
 				0C588DF522049B76007433EC /* ViewController.swift in Sources */,
 				0C588DFB22049B76007433EC /* UNIHub_beta.xcdatamodeld in Sources */,
 				0C192E2F2214A56D00DF1A58 /* ActivityTableViewCell.swift in Sources */,
