@@ -40,6 +40,7 @@ class ApplicantProfileViewController: UITableViewController{
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.row == 0{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else{return UITableViewCell()}
             cell.textLabel?.text = tableViewData[indexPath.section].title
@@ -67,6 +68,7 @@ class ApplicantProfileViewController: UITableViewController{
                 let sections = IndexSet.init(integer: indexPath.section)
                 tableView.reloadSections(sections, with: .none)
             }
+        }
         }
     }
     
