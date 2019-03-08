@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct CollegeResponse: Decodable{
-    var results: [CollegeInformation]
-}
-
-struct CollegeInformation: Decodable {
-    var year: Int
-}
+//struct CollegeResponse: Decodable{
+//    var results: [CollegeInformation]
+//}
+//
+//struct CollegeInformation: Decodable {
+//    var year: Int
+//}
 
 struct SearchCollegeResponse: Decodable {
     var results: [SearchCollegeInformation]
@@ -23,4 +23,6 @@ struct SearchCollegeResponse: Decodable {
 struct SearchCollegeInformation: Decodable {
     var id : Int
     var schoolname : String
+    var schoolcity : String
+    var schoolstate : String
 }
