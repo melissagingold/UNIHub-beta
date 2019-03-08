@@ -12,7 +12,7 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     
     var apiKey = "YHpGhGV1Yl8GAo0XOLblgqKu4vuffmQT6JyakopO"
     
-    var searchResults : [Int : String] = [:]
+    var searchResults : [College] = []
     
     var searchResult : College?
     
@@ -25,13 +25,12 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCollegeCell", for: indexPath) as! SearchCollegeCell
-        let id = Array(searchResults.keys)[indexPath.row]
-        cell.collegeName.text = searchResults[id]
+        cell.collegeName.text = searchResults[indexPath.row].name
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        searchResult = College(name: Array(searchResults.values)[indexPath.row], description: "is a college")
+        searchResult = searchResults[indexPath.row]
         performSegue(withIdentifier: "backToProfile", sender: self)
     }
     
@@ -49,17 +48,19 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func searchCollege(query: String){
-        let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=" + query.replacingOccurrences(of: " ", with: "%20") + "&_fields=id,school.name&api_key=" + apiKey
+        let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=" + query.replacingOccurrences(of: " ", with: "%20") + "&_fields=id,school.name,school.city,school.state&api_key=" + apiKey
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, request, error) in
-            guard let data = (String(data: data!, encoding: String.Encoding.utf8) as! String).replacingOccurrences(of: "school.name", with: "schoolname").data(using: String.Encoding.utf8) else {return}
+            guard let data = (String(data: data!, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "school.", with: "school").data(using: String.Encoding.utf8) else {return}
             do {
                 let searchCollegeResponse : SearchCollegeResponse? = try JSONDecoder().decode(SearchCollegeResponse.self, from: data)
                 DispatchQueue.main.async {
                     let results = searchCollegeResponse?.results.count ?? 0
-                    self.searchResults = [:]
+                    self.searchResults = []
                     for i in 0..<results {
-                        self.searchResults.updateValue(searchCollegeResponse?.results[i].schoolname ?? "", forKey: searchCollegeResponse?.results[i].id ?? 0)
+                        let college = College(name: searchCollegeResponse?.results[i].schoolname ?? "N/A", location: (searchCollegeResponse?.results[i].schoolcity ?? "") + ", " +
+                            (searchCollegeResponse?.results[i].schoolstate ?? ""))
+                        self.searchResults.append(college)
                         self.searchTableView.reloadData()
                     }
                 }
@@ -115,7 +116,7 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let result = searchResult {
             let vc = segue.destination as! CollegeProfileViewController
-            vc.colleges.append(result)
+            vc.colleges?.append(result)
         }
     }
     

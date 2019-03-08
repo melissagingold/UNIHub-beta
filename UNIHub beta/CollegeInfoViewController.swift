@@ -11,17 +11,17 @@ import UIKit
 class CollegeInfoViewController: UIViewController {
 
     @IBOutlet weak var collegeName: UILabel!
-    @IBOutlet weak var collegeDescription: UILabel!
+    @IBOutlet weak var collegeLocation: UILabel!
     
     var college: College?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collegeDescription.numberOfLines = 0
+        collegeLocation.numberOfLines = 1
         
         collegeName.text = college!.name
-        collegeDescription.text = college!.description
+        collegeLocation.text = college!.location
         
     }
     
