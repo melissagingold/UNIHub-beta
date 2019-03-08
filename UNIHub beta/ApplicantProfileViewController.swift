@@ -14,6 +14,8 @@ struct cellData {
     var title = String()
     var sectionData = [String]()
 }
+
+
 class ApplicantProfileViewController: UITableViewController{
     
     var tableViewData = [cellData]()
@@ -21,12 +23,22 @@ class ApplicantProfileViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableViewData = [cellData(opened: false, title: "Title1", sectionData: ["Cell1","Cell2", "Cell3"]),cellData(opened: false, title: "Title1", sectionData: ["Cell1","Cell2", "Cell3"]),cellData(opened: false, title: "Title1", sectionData: ["Cell1","Cell2", "Cell3"]),cellData(opened: false, title: "Title1", sectionData: ["Cell1","Cell2", "Cell3"])]
+        tableViewData = [
+            cellData(opened: false, title: "Activity 1", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity 2", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity 3", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity 4", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity 5", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity 6", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity 7", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity 8", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity 9", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity 10", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ])
+        ]
     }
-    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return tableViewData.count
+        return 10
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,7 +81,8 @@ class ApplicantProfileViewController: UITableViewController{
                 tableView.reloadSections(sections, with: .none)
             }
         }
-        }
     }
-    
+
 }
+    
+
