@@ -13,7 +13,7 @@ struct cellData {
     var opened = Bool()
     var title = String()
     var sectionData = [String]()
-    }
+}
 class ApplicantProfileViewController: UITableViewController{
     
     var tableViewData = [cellData]()
@@ -66,6 +66,7 @@ class ApplicantProfileViewController: UITableViewController{
             tableViewData[indexPath.section].opened = true
             let sections = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(sections, with: .none)
+        }
         }
     }
     
