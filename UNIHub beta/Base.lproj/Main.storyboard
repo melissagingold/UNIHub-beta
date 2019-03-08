@@ -817,17 +817,39 @@
                                     <constraint firstAttribute="height" constant="18" id="Ub9-Cm-fmW"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openlink" translatesAutoresizingMaskIntoConstraints="NO" id="0aP-XK-f2g">
+                                <rect key="frame" x="22" y="153" width="12" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="8Eu-th-ozY"/>
+                                    <constraint firstAttribute="width" constant="12" id="Yks-tZ-Uk6"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PwA-r8-Kya">
+                                <rect key="frame" x="43" y="153" width="95" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="1NS-P5-XfU"/>
+                                </constraints>
+                                <state key="normal" title="Go to website"/>
+                                <connections>
+                                    <action selector="openWebsite:" destination="ZTw-BM-Jox" eventType="touchUpInside" id="mXD-Qr-HXe"/>
+                                    <segue destination="JPb-Qe-OJP" kind="show" identifier="openWebsite" id="lcx-tS-K9f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fV0-TK-maG" firstAttribute="leading" secondItem="cWZ-ha-2jq" secondAttribute="leading" constant="20" id="3Tx-Is-ObS"/>
                             <constraint firstItem="cWZ-ha-2jq" firstAttribute="trailing" secondItem="6gQ-WX-x4L" secondAttribute="trailing" constant="20" id="7Dx-rn-lNe"/>
+                            <constraint firstItem="0aP-XK-f2g" firstAttribute="leading" secondItem="cWZ-ha-2jq" secondAttribute="leading" constant="22" id="Iqu-Ka-Cwm"/>
                             <constraint firstItem="fV0-TK-maG" firstAttribute="top" secondItem="cWZ-ha-2jq" secondAttribute="top" constant="20" id="KNl-LP-bQd"/>
                             <constraint firstItem="Txd-vQ-aoT" firstAttribute="leading" secondItem="cWZ-ha-2jq" secondAttribute="leading" constant="20" id="MdK-zl-QFX"/>
+                            <constraint firstItem="PwA-r8-Kya" firstAttribute="top" secondItem="6gQ-WX-x4L" secondAttribute="bottom" constant="10" id="OKD-MB-yzZ"/>
                             <constraint firstItem="Txd-vQ-aoT" firstAttribute="top" secondItem="fV0-TK-maG" secondAttribute="bottom" constant="5" id="R6n-k1-Kry"/>
                             <constraint firstItem="cWZ-ha-2jq" firstAttribute="trailing" secondItem="fV0-TK-maG" secondAttribute="trailing" constant="20" id="X72-9o-UJP"/>
+                            <constraint firstItem="PwA-r8-Kya" firstAttribute="leading" secondItem="0aP-XK-f2g" secondAttribute="trailing" constant="9" id="feQ-8c-4FO"/>
                             <constraint firstItem="6gQ-WX-x4L" firstAttribute="leading" secondItem="Txd-vQ-aoT" secondAttribute="trailing" constant="5" id="lJm-G7-rn3"/>
                             <constraint firstItem="6gQ-WX-x4L" firstAttribute="top" secondItem="fV0-TK-maG" secondAttribute="bottom" constant="5" id="nZv-fU-anl"/>
+                            <constraint firstItem="0aP-XK-f2g" firstAttribute="top" secondItem="Txd-vQ-aoT" secondAttribute="bottom" constant="10" id="we7-ZP-dJ9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cWZ-ha-2jq"/>
                     </view>
@@ -839,6 +861,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rP7-gC-ra0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5560.8000000000002" y="1989.3553223388308"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="S3n-wa-cSr">
+            <objects>
+                <viewController id="JPb-Qe-OJP" customClass="WebViewController" customModule="UNIHub_beta" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5ee-nZ-bfG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brA-RU-gcs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="G3H-hi-FQD" firstAttribute="trailing" secondItem="brA-RU-gcs" secondAttribute="trailing" id="Rpa-b6-D4d"/>
+                            <constraint firstItem="G3H-hi-FQD" firstAttribute="bottom" secondItem="brA-RU-gcs" secondAttribute="bottom" id="pcA-78-Gny"/>
+                            <constraint firstItem="brA-RU-gcs" firstAttribute="leading" secondItem="G3H-hi-FQD" secondAttribute="leading" id="q8d-Vz-t5l"/>
+                            <constraint firstItem="brA-RU-gcs" firstAttribute="top" secondItem="G3H-hi-FQD" secondAttribute="top" id="rOw-EN-22u"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G3H-hi-FQD"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="brA-RU-gcs" id="ryo-7F-hky"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P3u-r0-EWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6348" y="1990"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zX8-Rh-dee">
@@ -1226,6 +1282,7 @@
         <image name="checkBoxOUTLINE" width="22" height="22"/>
         <image name="location" width="200" height="200"/>
         <image name="logo" width="512" height="512"/>
+        <image name="openlink" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="bJy-Jd-Rkh"/>

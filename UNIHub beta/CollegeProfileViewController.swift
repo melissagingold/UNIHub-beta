@@ -27,10 +27,10 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         
         var data: [College] = []
        
-        data.append(College(name: "Agsdkjlfajskldfj", location: "New York, NY", url: ""))
+        data.append(College(name: "College 1", location: "New York, NY", url: "https://www.google.com"))
         data.append(College(name: "College 2", location: "Philadelphia, PA", url: ""))
-        data.append(College(name: "College 3", location: "college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good", url: ""))
-        data.append(College(name: "College 4", location: "college is ok", url: ""))
+        data.append(College(name: "College 3", location: "Chicago, IL", url: ""))
+        data.append(College(name: "College 4", location: "Los Angeles, CA", url: ""))
 
         return data
         
@@ -43,7 +43,7 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         colleges = []
         super.viewDidLoad()
-        colleges = createArray()
+        //colleges = createArray()
     
     
         tableView.rowHeight = UITableView.automaticDimension
