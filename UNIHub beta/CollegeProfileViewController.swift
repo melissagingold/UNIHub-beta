@@ -27,10 +27,10 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         
         var data: [College] = []
        
-        data.append(College(name: "Agsdkjlfajskldfj", location: "New York, NY"))
-        data.append(College(name: "College 2", location: "Philadelphia, PA"))
-        data.append(College(name: "College 3", location: "college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good"))
-        data.append(College(name: "College 4", location: "college is ok"))
+        data.append(College(name: "Agsdkjlfajskldfj", location: "New York, NY", url: ""))
+        data.append(College(name: "College 2", location: "Philadelphia, PA", url: ""))
+        data.append(College(name: "College 3", location: "college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good", url: ""))
+        data.append(College(name: "College 4", location: "college is ok", url: ""))
 
         return data
         

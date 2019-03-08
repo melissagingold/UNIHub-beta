@@ -15,7 +15,7 @@ class College {
     var location : String
     var url : String
     
-    init(name: String, location: String, url: String){
+    init(name: String, location: String, url : String){
         self.name = name
         self.location = location
         self.url = url
