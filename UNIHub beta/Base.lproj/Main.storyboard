@@ -504,15 +504,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="College Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6x-MK-kDv">
-                                                    <rect key="frame" x="15" y="11.5" width="107.5" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="107.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="p6x-MK-kDv" firstAttribute="top" secondItem="dUL-nk-Efn" secondAttribute="topMargin" id="3tn-Ia-1qz"/>
                                                 <constraint firstItem="p6x-MK-kDv" firstAttribute="leading" secondItem="dUL-nk-Efn" secondAttribute="leadingMargin" id="PcC-e7-qEw"/>
-                                                <constraint firstItem="p6x-MK-kDv" firstAttribute="centerY" secondItem="dUL-nk-Efn" secondAttribute="centerY" id="sR7-8e-3ES"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -547,7 +547,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubh-8g-Vl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Esd-5b-9q7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4284" y="1993"/>
+            <point key="canvasLocation" x="4284" y="1992.953523238381"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="UP7-Hl-ies">
@@ -1228,7 +1228,6 @@
         <image name="logo" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iX7-qV-OeN"/>
         <segue reference="YrB-kJ-Fys"/>
         <segue reference="O5L-Sx-djc"/>
     </inferredMetricsTieBreakers>

@@ -48,7 +48,7 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func searchCollege(query: String){
-        let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=" + query.replacingOccurrences(of: " ", with: "%20") + "&_fields=id,school.name,school.city,school.state&api_key=" + apiKey
+        let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=" + query.replacingOccurrences(of: " ", with: "%20") + "&_fields=id,school.name,school.city,school.state,school_url&api_key=" + apiKey
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, request, error) in
             guard let data = (String(data: data!, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "school.", with: "school").data(using: String.Encoding.utf8) else {return}
@@ -58,8 +58,10 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
                     let results = searchCollegeResponse?.results.count ?? 0
                     self.searchResults = []
                     for i in 0..<results {
-                        let college = College(name: searchCollegeResponse?.results[i].schoolname ?? "N/A", location: (searchCollegeResponse?.results[i].schoolcity ?? "") + ", " +
-                            (searchCollegeResponse?.results[i].schoolstate ?? ""))
+                        let college = College(name: searchCollegeResponse?.results[i].schoolname ?? "N/A",
+                            location: (searchCollegeResponse?.results[i].schoolcity ?? "") + ", " +
+                            (searchCollegeResponse?.results[i].schoolstate ?? ""),
+                            url: searchCollegeResponse?.results[i].schoolschool_url ?? "")
                         self.searchResults.append(college)
                         self.searchTableView.reloadData()
                     }

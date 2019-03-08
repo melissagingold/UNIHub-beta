@@ -15,6 +15,8 @@ class CollegeInfoViewController: UIViewController {
     
     var college: College?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

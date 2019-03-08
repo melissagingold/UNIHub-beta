@@ -25,4 +25,5 @@ struct SearchCollegeInformation: Decodable {
     var schoolname : String
     var schoolcity : String
     var schoolstate : String
+    var schoolschool_url : String
 }
