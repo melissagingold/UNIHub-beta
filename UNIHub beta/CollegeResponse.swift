@@ -22,8 +22,8 @@ struct SearchCollegeResponse: Decodable {
 
 struct SearchCollegeInformation: Decodable {
     var id : Int
-    var schoolname : String
-    var schoolcity : String
-    var schoolstate : String
-    var schoolschool_url : String
+    var name : String
+    var city : String
+    var state : String
+    var school_url : String
 }
