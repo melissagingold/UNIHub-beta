@@ -51,17 +51,17 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
         let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=" + query.replacingOccurrences(of: " ", with: "%20") + "&_fields=id,school.name,school.city,school.state,school.school_url&api_key=" + apiKey
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, request, error) in
-            guard let data = (String(data: data!, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "school.", with: "school").data(using: String.Encoding.utf8) else {return}
+            guard let data = (String(data: data!, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "school.", with: "").data(using: String.Encoding.utf8) else {return}
             do {
                 let searchCollegeResponse : SearchCollegeResponse? = try JSONDecoder().decode(SearchCollegeResponse.self, from: data)
                 DispatchQueue.main.async {
                     let results = searchCollegeResponse?.results.count ?? 0
                     self.searchResults = []
                     for i in 0..<results {
-                        let college = College(name: searchCollegeResponse?.results[i].schoolname ?? "N/A",
-                            location: (searchCollegeResponse?.results[i].schoolcity ?? "") + ", " +
-                            (searchCollegeResponse?.results[i].schoolstate ?? ""),
-                            url: "https://" + (searchCollegeResponse?.results[i].schoolschool_url ?? ""))
+                        let college = College(name: searchCollegeResponse?.results[i].name ?? "N/A",
+                            location: (searchCollegeResponse?.results[i].city ?? "") + ", " +
+                            (searchCollegeResponse?.results[i].state ?? ""),
+                            url: "https://" + (searchCollegeResponse?.results[i].school_url ?? ""))
                         self.searchResults.append(college)
                         self.searchTableView.reloadData()
                     }
@@ -71,27 +71,6 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }.resume()
     }
-    
-//    func getCollegeInfo(id: Int){
-//        let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?id=" + "\(id)" + "&api_key=" + apiKey
-//        guard let url = URL(string: urlString) else {return}
-//        URLSession.shared.dataTask(with: url) { (data, request, error) in
-//            guard let data = data else {return}
-//            print(data)
-//            do{
-//                let collegeResponse : CollegeResponse? = try JSONDecoder().decode(CollegeResponse.self, from: data)
-//                DispatchQueue.main.async {
-//                    let results = collegeResponse?.results.count ?? 0
-//                    self.searchResults = []
-//                    for i in 0..<results {
-//                        self.searchResults.append(collegeResponse?.results[i].year ?? 0)
-//                    }
-//                }
-//            } catch let jsonErr {
-//                print(jsonErr)
-//            }
-//        }.resume()
-//    }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
