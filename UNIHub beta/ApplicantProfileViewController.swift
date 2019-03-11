@@ -24,16 +24,16 @@ class ApplicantProfileViewController: UITableViewController{
         super.viewDidLoad()
         
         tableViewData = [
-            cellData(opened: false, title: "Activity 1", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity 2", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity 3", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity 4", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity 5", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity 6", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity 7", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity 8", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity 9", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity 10", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ])
+            cellData(opened: false, title: "Activity #1", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #2", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #3", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #4", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #5", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #6", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #7", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #8", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #9", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #10", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ])
         ]
     }
 
