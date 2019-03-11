@@ -19,12 +19,11 @@ struct cellData {
 class ApplicantProfileViewController: UITableViewController{
     
     var tableViewData = [cellData]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableViewData = [
-            cellData(opened: false, title: "Activity #1", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #1", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments",]),
             cellData(opened: false, title: "Activity #2", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
             cellData(opened: false, title: "Activity #3", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
             cellData(opened: false, title: "Activity #4", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
@@ -49,8 +48,7 @@ class ApplicantProfileViewController: UITableViewController{
             return 1
         }
     }
-    
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0{
@@ -81,6 +79,7 @@ class ApplicantProfileViewController: UITableViewController{
                 tableView.reloadSections(sections, with: .none)
             }
         }
+     
     }
 
 }

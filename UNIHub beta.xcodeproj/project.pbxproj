@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0817C42236A7D200D792A3 /* ActivitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0817C32236A7D200D792A3 /* ActivitiesCell.swift */; };
 		0C192E2F2214A56D00DF1A58 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C192E2E2214A56D00DF1A58 /* ActivityTableViewCell.swift */; };
 		0C588DF322049B76007433EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C588DF222049B76007433EC /* AppDelegate.swift */; };
 		0C588DF522049B76007433EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C588DF422049B76007433EC /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C0817C32236A7D200D792A3 /* ActivitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCell.swift; sourceTree = "<group>"; };
 		0C192E2E2214A56D00DF1A58 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		0C588DEF22049B75007433EC /* UNIHub beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UNIHub beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C588DF222049B76007433EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				0C588E0122049B79007433EC /* Info.plist */,
 				0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */,
 				0C588DF922049B76007433EC /* UNIHub_beta.xcdatamodeld */,
+				0C0817C32236A7D200D792A3 /* ActivitiesCell.swift */,
 			);
 			path = "UNIHub beta";
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				69428E3B222DA80700457341 /* CollegeResponse.swift in Sources */,
 				2D57FCCA2204A16A00F2AB7D /* ChecklistViewController.swift in Sources */,
 				2D8BEFFF2226E58400603F8C /* ApplicantProfileViewController.swift in Sources */,
+				0C0817C42236A7D200D792A3 /* ActivitiesCell.swift in Sources */,
 				2D57FCCC2204A19200F2AB7D /* CollegeProfileViewController.swift in Sources */,
 				2D57FCC022049F6D00F2AB7D /* LogInViewController.swift in Sources */,
 				2DA807FA2209C00B005480BD /* SideMenuTableViewController.swift in Sources */,
