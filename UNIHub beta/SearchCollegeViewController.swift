@@ -48,20 +48,22 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func searchCollege(query: String){
-        let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=" + query.replacingOccurrences(of: " ", with: "%20") + "&_fields=id,school.name,school.city,school.state,school.school_url&api_key=" + apiKey
+        let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=" + query.replacingOccurrences(of: " ", with: "%20") + "&_fields=id,school.name,school.city,school.state,school.school_url,latest.admissions.sat_scores.average.overall&api_key=" + apiKey
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, request, error) in
-            guard let data = (String(data: data!, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "school.", with: "").data(using: String.Encoding.utf8) else {return}
+            guard var data = data else {return}
+            data = (String(data: data, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "school.", with: "").data(using: String.Encoding.utf8)!
+            data = (String(data: data, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "latest.admissions.sat_scores.average.overall", with: "sat_scores_average").data(using: String.Encoding.utf8)!
             do {
                 let searchCollegeResponse : SearchCollegeResponse? = try JSONDecoder().decode(SearchCollegeResponse.self, from: data)
                 DispatchQueue.main.async {
-                    let results = searchCollegeResponse?.results.count ?? 0
+                    let results = searchCollegeResponse?.results
                     self.searchResults = []
-                    for i in 0..<results {
-                        let college = College(name: searchCollegeResponse?.results[i].name ?? "N/A",
-                            location: (searchCollegeResponse?.results[i].city ?? "") + ", " +
-                            (searchCollegeResponse?.results[i].state ?? ""),
-                            url: "https://" + (searchCollegeResponse?.results[i].school_url ?? ""))
+                    for i in 0..<(results?.count ?? 0) {
+                        let college = College(name: results?[i].name ?? "N/A",
+                            location: (results?[i].city ?? "") + ", " + (results?[i].state ?? ""),
+                            url: "https://" + (results?[i].school_url ?? ""),
+                            averageSATScore: (results?[i].sat_scores_average ?? 0))
                         self.searchResults.append(college)
                         self.searchTableView.reloadData()
                     }

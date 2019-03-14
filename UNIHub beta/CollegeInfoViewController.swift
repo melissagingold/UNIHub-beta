@@ -12,6 +12,7 @@ class CollegeInfoViewController: UIViewController {
 
     @IBOutlet weak var collegeName: UILabel!
     @IBOutlet weak var collegeLocation: UILabel!
+    @IBOutlet weak var collegeAverageSATScore: UILabel!
     
     var college: College?
     
@@ -27,6 +28,7 @@ class CollegeInfoViewController: UIViewController {
         
         collegeName.text = college!.name
         collegeLocation.text = college!.location
+        collegeAverageSATScore.text = "sat score: \(college!.averageSATScore)"
         
     }
     

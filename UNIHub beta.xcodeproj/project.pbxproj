@@ -38,7 +38,7 @@
 		47C039167D896978AB160F55 /* Pods_UNIHub_beta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC81BD023E04769601F5144 /* Pods_UNIHub_beta.framework */; };
 		69428E37222D7BC600457341 /* SearchCollegeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69428E36222D7BC600457341 /* SearchCollegeViewController.swift */; };
 		69428E39222D7F8F00457341 /* SearchCollegeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69428E38222D7F8F00457341 /* SearchCollegeCell.swift */; };
-		69428E3B222DA80700457341 /* CollegeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69428E3A222DA80700457341 /* CollegeResponse.swift */; };
+		69428E3B222DA80700457341 /* SearchCollegeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69428E3A222DA80700457341 /* SearchCollegeResponse.swift */; };
 		695F081122146CBE007CD5FC /* CollegeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695F081022146CBE007CD5FC /* CollegeCell.swift */; };
 		696CDD5E2232B2C7008B6784 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696CDD5D2232B2C7008B6784 /* WebViewController.swift */; };
 		698A7125221EF566004DA14D /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A7124221EF566004DA14D /* College.swift */; };
@@ -99,7 +99,7 @@
 		4DC81BD023E04769601F5144 /* Pods_UNIHub_beta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UNIHub_beta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69428E36222D7BC600457341 /* SearchCollegeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollegeViewController.swift; sourceTree = "<group>"; };
 		69428E38222D7F8F00457341 /* SearchCollegeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollegeCell.swift; sourceTree = "<group>"; };
-		69428E3A222DA80700457341 /* CollegeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeResponse.swift; sourceTree = "<group>"; };
+		69428E3A222DA80700457341 /* SearchCollegeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollegeResponse.swift; sourceTree = "<group>"; };
 		695F081022146CBE007CD5FC /* CollegeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeCell.swift; sourceTree = "<group>"; };
 		696CDD5D2232B2C7008B6784 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		698A7124221EF566004DA14D /* College.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 				69B301C72225790A001523EE /* CollegeInfoViewController.swift */,
 				69428E36222D7BC600457341 /* SearchCollegeViewController.swift */,
 				696CDD5D2232B2C7008B6784 /* WebViewController.swift */,
-				69428E3A222DA80700457341 /* CollegeResponse.swift */,
+				69428E3A222DA80700457341 /* SearchCollegeResponse.swift */,
 				69428E38222D7F8F00457341 /* SearchCollegeCell.swift */,
 				695F081022146CBE007CD5FC /* CollegeCell.swift */,
 				698A7124221EF566004DA14D /* College.swift */,
@@ -431,7 +431,7 @@
 				2D57FCC82204A12400F2AB7D /* CalendarViewController.swift in Sources */,
 				69428E39222D7F8F00457341 /* SearchCollegeCell.swift in Sources */,
 				2D8C920322241F0B00F91F8B /* EssayViewController.swift in Sources */,
-				69428E3B222DA80700457341 /* CollegeResponse.swift in Sources */,
+				69428E3B222DA80700457341 /* SearchCollegeResponse.swift in Sources */,
 				2D57FCCA2204A16A00F2AB7D /* ChecklistViewController.swift in Sources */,
 				2D8BEFFF2226E58400603F8C /* ApplicantProfileViewController.swift in Sources */,
 				0C0817C42236A7D200D792A3 /* ActivitiesCell.swift in Sources */,

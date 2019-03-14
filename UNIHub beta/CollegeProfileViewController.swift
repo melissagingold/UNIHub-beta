@@ -23,18 +23,18 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         performSegue(withIdentifier: "showCollegeSearch", sender: self)
     }
     
-    func createArray() -> [College] {
-        
-        var data: [College] = []
-       
-        data.append(College(name: "College 1", location: "New York, NY", url: "https://www.google.com"))
-        data.append(College(name: "College 2", location: "Philadelphia, PA", url: ""))
-        data.append(College(name: "College 3", location: "Chicago, IL", url: ""))
-        data.append(College(name: "College 4", location: "Los Angeles, CA", url: ""))
-
-        return data
-        
-    }
+//    func createArray() -> [College] {
+//
+//        var data: [College] = []
+//
+//        data.append(College(name: "College 1", location: "New York, NY", url: "https://www.google.com"))
+//        data.append(College(name: "College 2", location: "Philadelphia, PA", url: ""))
+//        data.append(College(name: "College 3", location: "Chicago, IL", url: ""))
+//        data.append(College(name: "College 4", location: "Los Angeles, CA", url: ""))
+//
+//        return data
+//
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
