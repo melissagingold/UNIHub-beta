@@ -14,11 +14,13 @@ class College {
     var name : String
     var location : String
     var url : String
+    var averageSATScore : Float
     
-    init(name: String, location: String, url : String){
+    init(name: String, location: String, url : String, averageSATScore : Float){
         self.name = name
         self.location = location
         self.url = url
+        self.averageSATScore = averageSATScore
     }
     
     
