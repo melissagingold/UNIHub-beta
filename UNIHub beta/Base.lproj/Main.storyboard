@@ -998,7 +998,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.98204865119999996" blue="0.64913879029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="IDp-Zg-2VL" firstAttribute="top" secondItem="dSi-Ym-EzX" secondAttribute="bottom" constant="30" id="2PE-3x-CWk"/>
                             <constraint firstItem="7uQ-15-rkJ" firstAttribute="top" secondItem="IDp-Zg-2VL" secondAttribute="bottom" constant="165" id="3h8-1p-an6"/>
@@ -1023,7 +1023,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lur-se-0C8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5237.6000000000004" y="-392.65367316341832"/>
+            <point key="canvasLocation" x="5473" y="-392"/>
         </scene>
         <!--Checklist View Controller-->
         <scene sceneID="HcO-CW-0mg">
