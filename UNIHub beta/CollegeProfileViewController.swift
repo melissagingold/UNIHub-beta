@@ -14,7 +14,7 @@ import FirebaseDatabase
 
 class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var colleges: [College] = [College(name: "1", description: "hi")]
+    var colleges: [College]?
     var selectedCollege: College?
     
     @IBOutlet weak var tableView: UITableView!
@@ -23,26 +23,33 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         performSegue(withIdentifier: "showCollegeSearch", sender: self)
     }
     
-    func createArray() -> [College] {
-        
-        var data: [College] = []
-       
-        data.append(College(name: "College 1", description: "college is good"))
-        data.append(College(name: "College 2", description: "college is bad"))
-        data.append(College(name: "College 3", description: "college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good college is good"))
-        data.append(College(name: "College 4", description: "college is ok"))
-
-        return data
-        
+//    func createArray() -> [College] {
+//
+//        var data: [College] = []
+//
+//        data.append(College(name: "College 1", location: "New York, NY", url: "https://www.google.com"))
+//        data.append(College(name: "College 2", location: "Philadelphia, PA", url: ""))
+//        data.append(College(name: "College 3", location: "Chicago, IL", url: ""))
+//        data.append(College(name: "College 4", location: "Los Angeles, CA", url: ""))
+//
+//        return data
+//
+//    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
+        colleges = []
         super.viewDidLoad()
-        colleges = createArray()
+        //colleges = createArray()
     
     
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 200
+        tableView.estimatedRowHeight = 100
+        
+        print(tableView.rowHeight)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -53,21 +60,20 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollegeCell") as! CollegeCell
-        cell.collegeName.text = colleges[indexPath.row].name
-        cell.collegeDescription.text = colleges[indexPath.row].description
+        cell.collegeName.text = colleges?[indexPath.row].name
+        cell.collegeLocation.text = colleges?[indexPath.row].location
  
-        cell.collegeDescription.numberOfLines = 3
+        cell.collegeLocation.numberOfLines = 0
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return colleges.count
+        return colleges?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCollege = colleges[indexPath.row]
-        print(colleges[indexPath.row].name)
+        selectedCollege = colleges?[indexPath.row]
         performSegue(withIdentifier: "showCollegeInfo", sender: self)
     }
     
@@ -76,6 +82,9 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
             let collegeInfoViewController = segue.destination as! CollegeInfoViewController
             collegeInfoViewController.college = selectedCollege
         }
+    }
+    
+    @IBAction func backToProfile(segue: UIStoryboardSegue){
     }
 
 }

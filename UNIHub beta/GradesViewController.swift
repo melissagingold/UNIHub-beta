@@ -89,14 +89,23 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     //adding SAT2 Tests
     @IBOutlet weak var addSAT2Text: UITextField!
     @IBOutlet weak var SAT2List: UITextView!
+    @IBOutlet weak var addSAT2Score: UITextField!
     
     @IBAction func addSAT2Test(_ sender: UIButton) {
         if let text = addSAT2Text.text{
-            if text == ""{
+        if text == ""{
+            return
+        }
+        SAT2List.text?.append("\(text)")
+        addSAT2Text.text = ""
+        addSAT2Text.resignFirstResponder()
+        }
+        if let text2 = addSAT2Score.text{
+            if text2 == ""{
                 return
             }
-            SAT2List.text?.append("\(text)\n")
-            addSAT2Text.text = ""
+            SAT2List.text?.append(":\(text2)\n")
+            addSAT2Score.text = ""
             addSAT2Text.resignFirstResponder()
         }
     }

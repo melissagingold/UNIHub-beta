@@ -11,19 +11,32 @@ import UIKit
 class CollegeInfoViewController: UIViewController {
 
     @IBOutlet weak var collegeName: UILabel!
-    @IBOutlet weak var collegeDescription: UILabel!
+    @IBOutlet weak var collegeLocation: UILabel!
+    @IBOutlet weak var collegeAverageSATScore: UILabel!
     
     var college: College?
+    
+    
+    @IBAction func openWebsite(_ sender: UIButton) {
+        //performSegue(withIdentifier: "openWebsite", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collegeDescription.numberOfLines = 0
+        collegeLocation.numberOfLines = 1
         
         collegeName.text = college!.name
-        collegeDescription.text = college!.description
+        collegeLocation.text = college!.location
+        collegeAverageSATScore.text = "sat score: \(college!.averageSATScore)"
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (sender as? UIButton) != nil {
+            let webViewController = segue.destination as! WebViewController
+            webViewController.url = URL(string: college?.url ?? "")
+        }
+    }
 
 }
