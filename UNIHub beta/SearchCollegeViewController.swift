@@ -10,7 +10,7 @@ import UIKit
 
 class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    var apiKey = "YHpGhGV1Yl8GAo0XOLblgqKu4vuffmQT6JyakopO"
+    let apiKey = "YHpGhGV1Yl8GAo0XOLblgqKu4vuffmQT6JyakopO"
     
     var searchResults : [College] = []
     
@@ -63,7 +63,8 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
                         let college = College(name: results?[i].name ?? "N/A",
                             location: (results?[i].city ?? "") + ", " + (results?[i].state ?? ""),
                             url: "https://" + (results?[i].school_url ?? ""),
-                            averageSATScore: (results?[i].sat_scores_average ?? 0))
+                            averageSATScore: (results?[i].sat_scores_average ?? 0),
+                            id: results?[i].id ?? 0)
                         self.searchResults.append(college)
                         self.searchTableView.reloadData()
                     }
