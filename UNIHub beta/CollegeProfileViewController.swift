@@ -14,6 +14,8 @@ import FirebaseDatabase
 
 class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let apiKey = "YHpGhGV1Yl8GAo0XOLblgqKu4vuffmQT6JyakopO"
+    
     var colleges: [College]?
     var selectedCollege: College?
     
@@ -23,42 +25,24 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         performSegue(withIdentifier: "showCollegeSearch", sender: self)
     }
     
-//    func createArray() -> [College] {
-//
-//        var data: [College] = []
-//
-//        data.append(College(name: "College 1", location: "New York, NY", url: "https://www.google.com"))
-//        data.append(College(name: "College 2", location: "Philadelphia, PA", url: ""))
-//        data.append(College(name: "College 3", location: "Chicago, IL", url: ""))
-//        data.append(College(name: "College 4", location: "Los Angeles, CA", url: ""))
-//
-//        return data
-//
-//    }
-    
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
 
     override func viewDidLoad() {
+        loadColleges()
         colleges = []
         super.viewDidLoad()
-        //colleges = createArray()
-    
-    
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
-        
-        print(tableView.rowHeight)
-        
         tableView.delegate = self
         tableView.dataSource = self
-  
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        saveColleges(colleges: colleges!)
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView.rowHeight = 88
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollegeCell") as! CollegeCell
         cell.collegeName.text = colleges?[indexPath.row].name
         cell.collegeLocation.text = colleges?[indexPath.row].location
@@ -82,6 +66,52 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
             let collegeInfoViewController = segue.destination as! CollegeInfoViewController
             collegeInfoViewController.college = selectedCollege
         }
+    }
+    
+    func saveColleges(colleges: [College]){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("user/\(uid)/Colleges")
+        var collegeDictionary : [String : String] = [:]
+        for college in colleges {
+            collegeDictionary.updateValue(college.name, forKey: "\(college.id)")
+        }
+        ref.setValue(collegeDictionary)
+    }
+    
+    func loadColleges(){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("user/\(uid)/Colleges")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let data = snapshot.value as! [String : String]
+            for str in data.keys {
+                self.addCollegeInfo(id: Int(str)!)
+            }
+        }
+    }
+    
+    func addCollegeInfo(id: Int){
+        let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?id=\(id)&_fields=id,school.name,school.city,school.state,school.school_url,latest.admissions.sat_scores.average.overall&api_key=" + apiKey
+        guard let url = URL(string: urlString) else {return}
+        URLSession.shared.dataTask(with: url) { (data, request, error) in
+            guard var data = data else {return}
+            data = (String(data: data, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "school.", with: "").data(using: String.Encoding.utf8)!
+            data = (String(data: data, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "latest.admissions.sat_scores.average.overall", with: "sat_scores_average").data(using: String.Encoding.utf8)!
+            do {
+                let searchCollegeResponse : SearchCollegeResponse? = try JSONDecoder().decode(SearchCollegeResponse.self, from: data)
+                DispatchQueue.main.async {
+                    let result = searchCollegeResponse?.results[0]
+                    let college = College(name: result?.name ?? "N/A",
+                                        location: (result?.city ?? "") + ", " + (result?.state ?? ""),
+                                        url: "https://" + (result?.school_url ?? ""),
+                                        averageSATScore: (result?.sat_scores_average ?? 0),
+                                        id: result?.id ?? 0)
+                    self.colleges?.append(college)
+                    self.tableView.reloadData()
+                }
+            } catch let jsonErr {
+                print(jsonErr)
+            }
+        }.resume()
     }
     
     @IBAction func backToProfile(segue: UIStoryboardSegue){
