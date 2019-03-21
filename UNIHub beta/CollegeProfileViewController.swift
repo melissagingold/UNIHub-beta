@@ -82,9 +82,10 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Colleges")
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            let data = snapshot.value as? [String : String]
-            for str in (data?.keys)! {
-                self.addCollegeInfo(id: Int(str)!)
+            if let data = snapshot.value as? [String : String] {
+                for str in (data.keys) {
+                    self.addCollegeInfo(id: Int(str)!)
+                }
             }
         }
     }

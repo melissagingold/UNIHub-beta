@@ -126,56 +126,39 @@
                                     <action selector="signUpButtonTouchedUp:" destination="eHb-WR-DJ6" eventType="touchUpInside" id="Set-B0-s5K"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jG-SH-PT0">
-                                <rect key="frame" x="50" y="114" width="90.5" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.039215686270000001" green="0.1215686275" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ci0-lt-Fuc">
-                                <rect key="frame" x="50" y="154" width="275" height="30"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPZ-BO-ufj">
-                                <rect key="frame" x="50" y="204" width="116.5" height="20"/>
+                                <rect key="frame" x="50" y="114" width="116.5" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.039215686270000001" green="0.1215686275" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ilM-nG-YXB">
-                                <rect key="frame" x="50" y="244" width="275" height="30"/>
+                                <rect key="frame" x="50" y="154" width="275" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoP-7l-JVE">
-                                <rect key="frame" x="50" y="294" width="80.5" height="20"/>
+                                <rect key="frame" x="50" y="204" width="80.5" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.039215686270000001" green="0.1215686275" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dof-ZK-gEP">
-                                <rect key="frame" x="50" y="334" width="275" height="30"/>
+                                <rect key="frame" x="50" y="244" width="275" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.70980392156862748" green="0.73333333333333328" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ZPZ-BO-ufj" firstAttribute="top" secondItem="Ci0-lt-Fuc" secondAttribute="bottom" constant="20" id="AIX-5A-s2u"/>
                             <constraint firstItem="dof-ZK-gEP" firstAttribute="top" secondItem="WoP-7l-JVE" secondAttribute="bottom" constant="20" id="CNm-RG-XwM"/>
-                            <constraint firstItem="Ci0-lt-Fuc" firstAttribute="leading" secondItem="ypT-is-vd5" secondAttribute="leading" constant="50" id="G5F-7a-vFW"/>
                             <constraint firstItem="ZPZ-BO-ufj" firstAttribute="leading" secondItem="ypT-is-vd5" secondAttribute="leading" constant="50" id="GV1-9a-0en"/>
                             <constraint firstItem="ilM-nG-YXB" firstAttribute="top" secondItem="ZPZ-BO-ufj" secondAttribute="bottom" constant="20" id="HRf-eI-h0f"/>
-                            <constraint firstItem="ypT-is-vd5" firstAttribute="trailing" secondItem="Ci0-lt-Fuc" secondAttribute="trailing" constant="50" id="KAm-JO-bjp"/>
-                            <constraint firstItem="3jG-SH-PT0" firstAttribute="leading" secondItem="ypT-is-vd5" secondAttribute="leading" constant="50" id="N76-fI-cjU"/>
-                            <constraint firstItem="3jG-SH-PT0" firstAttribute="top" secondItem="ypT-is-vd5" secondAttribute="top" constant="50" id="W4F-cN-lM0"/>
+                            <constraint firstItem="ZPZ-BO-ufj" firstAttribute="top" secondItem="ypT-is-vd5" secondAttribute="top" constant="50" id="LuB-YB-rpI"/>
                             <constraint firstItem="dof-ZK-gEP" firstAttribute="leading" secondItem="ypT-is-vd5" secondAttribute="leading" constant="50" id="ake-CO-aab"/>
                             <constraint firstItem="ypT-is-vd5" firstAttribute="trailing" secondItem="dof-ZK-gEP" secondAttribute="trailing" constant="50" id="c23-28-qa9"/>
                             <constraint firstItem="ilM-nG-YXB" firstAttribute="leading" secondItem="ypT-is-vd5" secondAttribute="leading" constant="50" id="ehZ-fB-ZLT"/>
@@ -184,7 +167,6 @@
                             <constraint firstItem="ypT-is-vd5" firstAttribute="trailing" secondItem="ilM-nG-YXB" secondAttribute="trailing" constant="50" id="kon-7v-eTE"/>
                             <constraint firstItem="WoP-7l-JVE" firstAttribute="leading" secondItem="ypT-is-vd5" secondAttribute="leading" constant="50" id="vfF-16-Yyf"/>
                             <constraint firstItem="ypT-is-vd5" firstAttribute="bottom" secondItem="yyz-6p-fVo" secondAttribute="bottom" constant="50" id="wMZ-a9-m3M"/>
-                            <constraint firstItem="Ci0-lt-Fuc" firstAttribute="top" secondItem="3jG-SH-PT0" secondAttribute="bottom" constant="20" id="yUD-Yn-g8v"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ypT-is-vd5"/>
                     </view>
@@ -192,7 +174,6 @@
                         <outlet property="emailAddressTextField" destination="ilM-nG-YXB" id="4Rh-dw-T6s"/>
                         <outlet property="passwordTextField" destination="dof-ZK-gEP" id="2n3-RN-w8T"/>
                         <outlet property="signUpButton" destination="yyz-6p-fVo" id="2fv-wn-6wq"/>
-                        <outlet property="userNameTextField" destination="Ci0-lt-Fuc" id="YMD-6z-Zaa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cmv-G2-iPi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1126,31 +1107,31 @@
                                     <action selector="logInButtonTouchedUp:" destination="YzS-3O-4Ni" eventType="touchUpInside" id="bGV-XV-yUL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sw-6o-Edc">
-                                <rect key="frame" x="50" y="114" width="90.5" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sw-6o-Edc">
+                                <rect key="frame" x="50" y="114" width="117" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.039215686270000001" green="0.1215686275" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3NI-eK-TV5">
-                                <rect key="frame" x="50" y="154" width="275" height="30"/>
+                                <rect key="frame" x="50" y="155" width="275" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKW-N4-JaH">
-                                <rect key="frame" x="50" y="204" width="80.5" height="20"/>
+                                <rect key="frame" x="50" y="205" width="80.5" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.039215686270000001" green="0.1215686275" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9uC-Bh-5oO">
-                                <rect key="frame" x="50" y="244" width="275" height="30"/>
+                                <rect key="frame" x="50" y="245" width="275" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019607845" green="0.72941176470588232" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
