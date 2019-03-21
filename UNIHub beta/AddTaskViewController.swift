@@ -58,7 +58,7 @@ class AddTaskViewController: UIViewController {
     
     @objc func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
+        dateFormatter.dateFormat = "MM-dd-yyyy"
         
         dueDateOutlet.text = dateFormatter.string(from: datePicker.date)
         dueDateText = dueDateOutlet.text
