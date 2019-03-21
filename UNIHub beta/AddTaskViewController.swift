@@ -76,15 +76,4 @@ class AddTaskViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func uploadTask(_ text: UITextField, _ completion: @escaping((_ url : URL?) -> ())) {
-        // get user's current id
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        
-        // get a reference to the storage object
-        let storage = Storage.storage().reference().child("user/\(uid)")
-        
-        
-        
-    }
-    
 }

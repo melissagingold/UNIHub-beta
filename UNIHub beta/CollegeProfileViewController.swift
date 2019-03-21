@@ -82,8 +82,8 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Colleges")
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            let data = snapshot.value as! [String : String]
-            for str in data.keys {
+            let data = snapshot.value as? [String : String]
+            for str in (data?.keys)! {
                 self.addCollegeInfo(id: Int(str)!)
             }
         }
@@ -115,6 +115,20 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func backToProfile(segue: UIStoryboardSegue){
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            colleges?.remove(at: indexPath.row)
+            
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
     }
 
 }
