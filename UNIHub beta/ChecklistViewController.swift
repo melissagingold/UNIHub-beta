@@ -91,10 +91,14 @@ class ChecklistViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadTasks()
         tableView.backgroundColor = nil
         tableView.backgroundColor = UIColor(red:1.00, green:0.90, blue:0.50, alpha:1.0)
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        saveTasks(tasks: tasks)
     }
 
 func prepareNotification() {
@@ -122,22 +126,27 @@ func prepareNotification() {
     func saveTasks(tasks: [Task]) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Tasks")
-        var taskDictionary : [String : String] = [:]
+        var taskDictionary : [String : Bool] = [:]
         for task in tasks {
-            taskDictionary.updateValue(task.name, forKey: "\(task.name)")
+            taskDictionary.updateValue(task.checked
+                , forKey: task.name.replacingOccurrences(of: "/", with: "-"))
         }
         ref.setValue(taskDictionary)
     }
     
     
-    func loadTask() {
+    func loadTasks() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Tasks")
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            let data = snapshot.value as? [String : String]
-            for str in (data?.keys)! {
-                self.addTask(name: str)
+            if let data = snapshot.value as? [String : Bool] {
+                for str in (data.keys) {
+                    let task = Task(name: str)
+                    task.setChecked(checked: (data[str]!))
+                    self.tasks.append(task)
+                }
             }
+            self.tableView.reloadData()
         }
         
     }
@@ -152,4 +161,9 @@ class Task {
         self.init()
         self.name = name
     }
+    
+    func setChecked(checked: Bool){
+        self.checked = checked
+    }
+    
 }
