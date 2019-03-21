@@ -8,6 +8,9 @@
 
 import UIKit
 import UserNotifications
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
 
 class ChecklistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTask, ChangeButton {
     
@@ -115,6 +118,30 @@ func prepareNotification() {
     
     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 }
+
+    func saveTasks(tasks: [Task]) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("user/\(uid)/Tasks")
+        var taskDictionary : [String : String] = [:]
+        for task in tasks {
+            taskDictionary.updateValue(task.name, forKey: "\(task.name)")
+        }
+        ref.setValue(taskDictionary)
+    }
+    
+    
+    func loadTask() {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("user/\(uid)/Tasks")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let data = snapshot.value as? [String : String]
+            for str in (data?.keys)! {
+                self.addTask(name: str)
+            }
+        }
+        
+    }
+
 }
 
 class Task {
