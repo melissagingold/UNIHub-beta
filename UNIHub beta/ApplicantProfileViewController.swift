@@ -20,11 +20,26 @@ class ApplicantProfileViewController: UITableViewController{
     
     var tableViewData = [cellData]()
 
+    var activsA = ["Soccer", "9,10" , "Captain" , "MVP"]
+    var activsB = Array(repeating: " ", count: 4)
+//    activsB["TSA", "9,10,11,12" , "Secretary", "Regional           Qualifier"]
+    var activsC = Array(repeating: " ", count: 4)
+    var activsD:[String?] = []
+    var activsE:[String?] = []
+    var activsF:[String?] = []
+    var activsG:[String?] = []
+    var activsH:[String?] = []
+    var activsI:[String?] = []
+    var activsJ:[String?] = []
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewData = [
-            cellData(opened: false, title: "Activity #1", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments",]),
-            cellData(opened: false, title: "Activity #2", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #1: \(activsA[0] ?? "" )", sectionData: ["Participation Grade Level: \(activsA[1] ?? "") ","Position/Leadership: \(activsA[2] ?? "")","Honors/Acomplishments: \(activsA[3] ?? "")",]),
+            cellData(opened: false, title: "Activity #2: \(activsB[0] ?? " ")", sectionData: ["Participation Grade Level: \(activsB[1])","Position/Leadership","Honors/Acomplishments", ]),
             cellData(opened: false, title: "Activity #3", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
             cellData(opened: false, title: "Activity #4", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
             cellData(opened: false, title: "Activity #5", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
