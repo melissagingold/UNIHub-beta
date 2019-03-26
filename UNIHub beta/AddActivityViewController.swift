@@ -8,15 +8,24 @@
 
 import UIKit
 
-class AddActivityViewController: UIViewController {
+class AddActivityViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
-
+    @IBAction func activityTitle(_ sender: UITextField) {
+//        if activsA[3] != ""{
+//            if activsB[3] != ""{
+//                if activsC[3] != ""{
+//                    if activsD[3] != ""{
+//            }
+//        }
+//
+    }
+    
     /*
     // MARK: - Navigation
 
