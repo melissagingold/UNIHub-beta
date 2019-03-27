@@ -17,6 +17,7 @@
 		0C588E0022049B79007433EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C588DFE22049B79007433EC /* LaunchScreen.storyboard */; };
 		0C588E0B22049B79007433EC /* UNIHub_betaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C588E0A22049B79007433EC /* UNIHub_betaTests.swift */; };
 		0C588E1622049B79007433EC /* UNIHub_betaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C588E1522049B79007433EC /* UNIHub_betaUITests.swift */; };
+		0C75248F2243D782003AAA7B /* AddActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C75248E2243D782003AAA7B /* AddActivityViewController.swift */; };
 		0CDA3B1C22049D99000F329A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */; };
 		0CDA3B1D22049D99000F329A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */; };
 		0CDA3B1E22049D99000F329A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */; };
@@ -81,6 +82,7 @@
 		0C588E1122049B79007433EC /* UNIHub betaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UNIHub betaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C588E1522049B79007433EC /* UNIHub_betaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNIHub_betaUITests.swift; sourceTree = "<group>"; };
 		0C588E1722049B79007433EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C75248E2243D782003AAA7B /* AddActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewController.swift; sourceTree = "<group>"; };
 		0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D3B736C224A4ECB003436EB /* EssayBrainstormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayBrainstormViewController.swift; sourceTree = "<group>"; };
 		2D3B7370224A4F59003436EB /* EssayListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssayListTableViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */,
 				0C588DF922049B76007433EC /* UNIHub_beta.xcdatamodeld */,
 				0C0817C32236A7D200D792A3 /* ActivitiesCell.swift */,
+				0C75248E2243D782003AAA7B /* AddActivityViewController.swift */,
 			);
 			path = "UNIHub beta";
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				0C0817C42236A7D200D792A3 /* ActivitiesCell.swift in Sources */,
 				2D57FCCC2204A19200F2AB7D /* CollegeProfileViewController.swift in Sources */,
 				2D57FCC022049F6D00F2AB7D /* LogInViewController.swift in Sources */,
+				0C75248F2243D782003AAA7B /* AddActivityViewController.swift in Sources */,
 				2DA807FA2209C00B005480BD /* SideMenuTableViewController.swift in Sources */,
 				696CDD5E2232B2C7008B6784 /* WebViewController.swift in Sources */,
 				0C588DF522049B76007433EC /* ViewController.swift in Sources */,

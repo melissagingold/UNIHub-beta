@@ -1,22 +1,31 @@
 //
-//  CalendarViewController.swift
+//  AddActivityViewController.swift
 //  UNIHub beta
 //
-//  Created by Chloe Cowan (student LM) on 2/1/19.
+//  Created by Melissa Gingold (student LM) on 3/21/19.
 //  Copyright © 2019 Melissa Gingold (student LM). All rights reserved.
 //
 
 import UIKit
 
-class CalendarViewController: UIViewController {
+class AddActivityViewController: UIViewController, UITextFieldDelegate{
 
+    @IBOutlet weak var activName: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("calendar")
-        // Do any additional setup after loading the view.
+        
+//        for i in ApplicantProfileViewController.diffActivs{
+//            if diffActivs[i][0] == ""{
+//                
+//            }
+//        }
     }
-    
 
+    
+}
+    
     /*
     // MARK: - Navigation
 
@@ -27,4 +36,4 @@ class CalendarViewController: UIViewController {
     }
     */
 
-}
+

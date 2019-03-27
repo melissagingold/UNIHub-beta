@@ -20,11 +20,37 @@ class ApplicantProfileViewController: UITableViewController{
     
     var tableViewData = [cellData]()
 
+    var activsA = ["Soccer", "9,10" , "Captain" , "MVP"]
+    var activsB = Array(repeating: " ", count: 4)
+    var activsC = Array(repeating: " ", count: 4)
+    var activsD:[String?] = []
+    var activsE:[String?] = []
+    var activsF:[String?] = []
+    var activsG:[String?] = []
+    var activsH:[String?] = []
+    var activsI:[String?] = []
+    var activsJ:[String?] = []
+    
+   
+   
+//    func addToArr(){
+//        activsB.append("TSA")
+//        activsB[1] = "9,10,11,12"
+//        activsB[2] = "Secretary"
+//        activsB[3] = "Regional Qualifier"
+//    }
+    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+        //addToArr()
+        
+        let diffActivs = [activsA, activsB, activsC, activsD, activsE, activsF, activsG, activsH, activsI, activsJ]
+        
+        
         tableViewData = [
-            cellData(opened: false, title: "Activity #1", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments",]),
-            cellData(opened: false, title: "Activity #2", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #1: \(activsA[0] ?? "" )", sectionData: ["Participation Grade Level: \(activsA[1] ?? "") ","Position/Leadership: \(activsA[2] ?? "")","Honors/Acomplishments: \(activsA[3] ?? "")",]),
+            cellData(opened: false, title: "Activity #2: \(activsB[0] ?? " ")", sectionData: ["Participation Grade Level: \(activsB[1])","Position/Leadership: \(activsB[2])","Honors/Acomplishments", ]),
             cellData(opened: false, title: "Activity #3", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
             cellData(opened: false, title: "Activity #4", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
             cellData(opened: false, title: "Activity #5", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
@@ -34,6 +60,13 @@ class ApplicantProfileViewController: UITableViewController{
             cellData(opened: false, title: "Activity #9", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
             cellData(opened: false, title: "Activity #10", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ])
         ]
+        
+        
+        
+        
+        
+        
+        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
