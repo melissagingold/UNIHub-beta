@@ -8,23 +8,26 @@
 
 import UIKit
 
-class EssayViewController: UIViewController {
+private var listTableViewController: EssayListTableViewController?
+private var brainstormViewController: EssayBrainstormViewController?
 
+
+class EssayViewController: UIViewController {
+    @IBOutlet weak var stackView: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        stackView.axis = axisForSize(size)
     }
-    */
+    
+    func axisForSize(_ size: CGSize) -> NSLayoutConstraint.Axis {
+        return size.width > size.height ? .horizontal : .vertical
+    }
 
 }
