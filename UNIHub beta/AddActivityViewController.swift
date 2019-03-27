@@ -11,18 +11,43 @@ import UIKit
 class AddActivityViewController: UIViewController, UITextFieldDelegate{
 
     @IBOutlet weak var activName: UITextField!
+    @IBOutlet weak var activPartic: UITextField!
+    @IBOutlet weak var activPosit: UITextField!
+    @IBOutlet weak var activHon: UITextField!
     
-    
+    var diffActivs = [[String?]]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        for i in ApplicantProfileViewController.diffActivs{
-//            if diffActivs[i][0] == ""{
-//                
-//            }
-//        }
-    }
 
+        addArr()
+        
+    }
+    
+    
+    func addArr(){
+        let otherVC = ApplicantProfileViewController()
+        diffActivs = otherVC.diffActivs
+    }
+    
+    
+    @IBAction func addButton(_ sender: UIBarButtonItem) {
+        
+        var tempArr = [activName.text, activPartic.text, activPosit.text, activHon.text]
+        
+        for i in 0..<diffActivs.count{
+            if diffActivs[i][0] == ""{
+                diffActivs[i] = [tempArr[0]]
+            }
+        }
+    }
+    
+    
+    
+    
+    func addActiv(){
+    }
+    
     
 }
     

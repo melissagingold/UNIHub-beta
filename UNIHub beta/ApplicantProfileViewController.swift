@@ -40,12 +40,23 @@ class ApplicantProfileViewController: UITableViewController{
 //        activsB[3] = "Regional Qualifier"
 //    }
     
-  
+ 
+    var diffActivs = [[String?]]()
+//
+//        return diffActivs
+//    }
+    
+    
+//    var diffActivs : [[String?]]{
+//        return [activsA, activsB, activsC, activsD, activsE, activsF, activsG, activsH, activsI, activsJ]
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //addToArr()
         
-        let diffActivs = [activsA, activsB, activsC, activsD, activsE, activsF, activsG, activsH, activsI, activsJ]
+        diffActivs = [activsA, activsB, activsC, activsD, activsE, activsF, activsG, activsH, activsI, activsJ]
+        
         
         
         tableViewData = [
@@ -62,12 +73,10 @@ class ApplicantProfileViewController: UITableViewController{
         ]
         
         
-        
-        
-        
-        
-        
+
     }
+    
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 10
