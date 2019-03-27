@@ -43,8 +43,6 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
     }
     
     
-    
-    
     func addActiv(){
     }
     
