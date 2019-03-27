@@ -40,12 +40,13 @@ class ApplicantProfileViewController: UITableViewController{
 //        activsB[3] = "Regional Qualifier"
 //    }
     
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         //addToArr()
         
-         let diffActivs = [activsA, activsB, activsC, activsD, activsE, activsF, activsG, activsH, activsI, activsJ]
+        let diffActivs = [activsA, activsB, activsC, activsD, activsE, activsF, activsG, activsH, activsI, activsJ]
+        
         
         tableViewData = [
             cellData(opened: false, title: "Activity #1: \(activsA[0] ?? "" )", sectionData: ["Participation Grade Level: \(activsA[1] ?? "") ","Position/Leadership: \(activsA[2] ?? "")","Honors/Acomplishments: \(activsA[3] ?? "")",]),
