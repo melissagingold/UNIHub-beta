@@ -8,23 +8,23 @@
 
 import UIKit
 
-class AddActivityViewController: UIViewController{
+class AddActivityViewController: UIViewController, UITextFieldDelegate{
 
+    @IBOutlet weak var activName: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-    }
-    
-    @IBAction func activityTitle(_ sender: UITextField) {
-//        if activsA[3] != ""{
-//            if activsB[3] != ""{
-//                if activsC[3] != ""{
-//                    if activsD[3] != ""{
+//        for i in ApplicantProfileViewController.diffActivs{
+//            if diffActivs[i][0] == ""{
+//                
 //            }
 //        }
-//
     }
+
+    
+}
     
     /*
     // MARK: - Navigation
@@ -36,4 +36,4 @@ class AddActivityViewController: UIViewController{
     }
     */
 
-}
+
