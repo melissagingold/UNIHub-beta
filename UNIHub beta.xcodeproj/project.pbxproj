@@ -40,6 +40,7 @@
 		69428E37222D7BC600457341 /* SearchCollegeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69428E36222D7BC600457341 /* SearchCollegeViewController.swift */; };
 		69428E39222D7F8F00457341 /* SearchCollegeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69428E38222D7F8F00457341 /* SearchCollegeCell.swift */; };
 		69428E3B222DA80700457341 /* SearchCollegeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69428E3A222DA80700457341 /* SearchCollegeResponse.swift */; };
+		695B7E7F224BA71200E7E04E /* CollegeInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695B7E7E224BA71200E7E04E /* CollegeInfoCell.swift */; };
 		695F081122146CBE007CD5FC /* CollegeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695F081022146CBE007CD5FC /* CollegeCell.swift */; };
 		696CDD5E2232B2C7008B6784 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696CDD5D2232B2C7008B6784 /* WebViewController.swift */; };
 		698A7125221EF566004DA14D /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A7124221EF566004DA14D /* College.swift */; };
@@ -102,6 +103,7 @@
 		69428E36222D7BC600457341 /* SearchCollegeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollegeViewController.swift; sourceTree = "<group>"; };
 		69428E38222D7F8F00457341 /* SearchCollegeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollegeCell.swift; sourceTree = "<group>"; };
 		69428E3A222DA80700457341 /* SearchCollegeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollegeResponse.swift; sourceTree = "<group>"; };
+		695B7E7E224BA71200E7E04E /* CollegeInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeInfoCell.swift; sourceTree = "<group>"; };
 		695F081022146CBE007CD5FC /* CollegeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeCell.swift; sourceTree = "<group>"; };
 		696CDD5D2232B2C7008B6784 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		698A7124221EF566004DA14D /* College.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				69428E3A222DA80700457341 /* SearchCollegeResponse.swift */,
 				69428E38222D7F8F00457341 /* SearchCollegeCell.swift */,
 				695F081022146CBE007CD5FC /* CollegeCell.swift */,
+				695B7E7E224BA71200E7E04E /* CollegeInfoCell.swift */,
 				698A7124221EF566004DA14D /* College.swift */,
 				2D57FCC52204A0C500F2AB7D /* ContainerViewController.swift */,
 				2DA807F92209C00B005480BD /* SideMenuTableViewController.swift */,
@@ -450,6 +453,7 @@
 				2D57FCC62204A0C500F2AB7D /* ContainerViewController.swift in Sources */,
 				69428E37222D7BC600457341 /* SearchCollegeViewController.swift in Sources */,
 				2D57FCD62207C38D00F2AB7D /* TaskCell.swift in Sources */,
+				695B7E7F224BA71200E7E04E /* CollegeInfoCell.swift in Sources */,
 				695F081122146CBE007CD5FC /* CollegeCell.swift in Sources */,
 				2D57FCD02204A3E600F2AB7D /* StyleUNIhub.swift in Sources */,
 				2D57FCC222049FD400F2AB7D /* SignUpViewController.swift in Sources */,
@@ -633,7 +637,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6MCU4XC86R;
 				INFOPLIST_FILE = "UNIHub beta/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -651,7 +657,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6MCU4XC86R;
 				INFOPLIST_FILE = "UNIHub beta/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

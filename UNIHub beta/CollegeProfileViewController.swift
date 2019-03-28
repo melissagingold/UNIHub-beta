@@ -35,6 +35,7 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = 88
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,7 +43,6 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.rowHeight = 88
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollegeCell") as! CollegeCell
         cell.collegeName.text = colleges?[indexPath.row].name
         cell.collegeLocation.text = colleges?[indexPath.row].location
@@ -104,7 +104,7 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
                     let college = College(name: result?.name ?? "N/A",
                                         location: (result?.city ?? "") + ", " + (result?.state ?? ""),
                                         url: "https://" + (result?.school_url ?? ""),
-                                        averageSATScore: (result?.sat_scores_average ?? 0),
+                                        averageSATScore: (result?.sat_scores_average),
                                         id: result?.id ?? 0)
                     self.colleges?.append(college)
                     self.tableView.reloadData()
