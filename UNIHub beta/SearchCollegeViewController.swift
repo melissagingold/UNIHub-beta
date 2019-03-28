@@ -26,6 +26,7 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCollegeCell", for: indexPath) as! SearchCollegeCell
         cell.collegeName.text = searchResults[indexPath.row].name
+        cell.collegeLocation.text = searchResults[indexPath.row].location
         return cell
     }
     
@@ -63,7 +64,7 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
                         let college = College(name: results?[i].name ?? "N/A",
                             location: (results?[i].city ?? "") + ", " + (results?[i].state ?? ""),
                             url: "https://" + (results?[i].school_url ?? ""),
-                            averageSATScore: (results?[i].sat_scores_average ?? 0),
+                            averageSATScore: (results?[i].sat_scores_average),
                             id: results?[i].id ?? 0)
                         self.searchResults.append(college)
                         self.searchTableView.reloadData()

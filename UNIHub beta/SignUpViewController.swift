@@ -39,6 +39,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         emailAddressTextField.becomeFirstResponder()
     }
     
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if emailAddressTextField.isFirstResponder {
             passwordTextField.becomeFirstResponder()

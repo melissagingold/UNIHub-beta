@@ -11,6 +11,7 @@ import UIKit
 
 class SearchCollegeCell: UITableViewCell {
 
+    @IBOutlet weak var collegeLocation: UILabel!
     @IBOutlet weak var collegeName: UILabel!
     
     
