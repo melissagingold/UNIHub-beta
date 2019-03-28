@@ -1,18 +1,18 @@
 //
-//  CalendarViewController.swift
+//  EssayBrainstormViewController.swift
 //  UNIHub beta
 //
-//  Created by Chloe Cowan (student LM) on 2/1/19.
+//  Created by Chloe Cowan (student LM) on 3/26/19.
 //  Copyright © 2019 Melissa Gingold (student LM). All rights reserved.
 //
 
 import UIKit
 
-class CalendarViewController: UIViewController {
+class EssayBrainstormViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("calendar")
+
         // Do any additional setup after loading the view.
     }
     

@@ -8,15 +8,47 @@
 
 import UIKit
 
-class AddActivityViewController: UIViewController {
+class AddActivityViewController: UIViewController, UITextFieldDelegate{
+
+    @IBOutlet weak var activName: UITextField!
+    @IBOutlet weak var activPartic: UITextField!
+    @IBOutlet weak var activPosit: UITextField!
+    @IBOutlet weak var activHon: UITextField!
+    
+    var diffActivs = [[String?]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        addArr()
+        
     }
     
-
+    
+    func addArr(){
+        let otherVC = ApplicantProfileViewController()
+        diffActivs = otherVC.diffActivs
+    }
+    
+    
+    @IBAction func addButton(_ sender: UIBarButtonItem) {
+        
+        var tempArr = [activName.text, activPartic.text, activPosit.text, activHon.text]
+        
+        for i in 0..<diffActivs.count{
+            if diffActivs[i][0] == ""{
+                diffActivs[i] = [tempArr[0]]
+            }
+        }
+    }
+    
+    
+    func addActiv(){
+    }
+    
+    
+}
+    
     /*
     // MARK: - Navigation
 
@@ -27,4 +59,4 @@ class AddActivityViewController: UIViewController {
     }
     */
 
-}
+
