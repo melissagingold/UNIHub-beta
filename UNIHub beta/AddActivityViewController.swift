@@ -21,7 +21,6 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
 
         addArr()
-        
     }
     
     
@@ -35,12 +34,23 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
         
         var tempArr = [activName.text, activPartic.text, activPosit.text, activHon.text]
         
-        for i in 0..<diffActivs.count{
-            if diffActivs[i][0] == ""{
-                diffActivs[i] = [tempArr[0]]
-            }
-        }
+        diffActivs[1] = tempArr
+        
+//        for i in 0..<9{
+//            if diffActivs[i] == ["","","",""]{
+//                diffActivs[i] = tempArr
+//                tempArr = ["","","",""]
+//            }
     }
+
+    
+//        for i in 0..<diffActivs.count{
+//            if diffActivs[i][0] == ""{
+//                diffActivs[i][0] = tempArr[0]
+//                tempArr = [" ", " "," "," "]
+//            }
+//        }
+    
     
     
     func addActiv(){

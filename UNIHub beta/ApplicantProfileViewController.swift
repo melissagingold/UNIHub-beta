@@ -21,8 +21,8 @@ class ApplicantProfileViewController: UITableViewController{
     var tableViewData = [cellData]()
 
     var activsA = ["Soccer", "9,10" , "Captain" , "MVP"]
-    var activsB = Array(repeating: " ", count: 4)
-    var activsC = Array(repeating: " ", count: 4)
+    var activsB = Array(repeating: "", count: 4)
+    var activsC = Array(repeating: "", count: 4)
     var activsD:[String?] = []
     var activsE:[String?] = []
     var activsF:[String?] = []
@@ -31,26 +31,10 @@ class ApplicantProfileViewController: UITableViewController{
     var activsI:[String?] = []
     var activsJ:[String?] = []
     
-   
-   
-//    func addToArr(){
-//        activsB.append("TSA")
-//        activsB[1] = "9,10,11,12"
-//        activsB[2] = "Secretary"
-//        activsB[3] = "Regional Qualifier"
-//    }
     
  
     var diffActivs = [[String?]]()
-//
-//        return diffActivs
-//    }
-    
-    
-//    var diffActivs : [[String?]]{
-//        return [activsA, activsB, activsC, activsD, activsE, activsF, activsG, activsH, activsI, activsJ]
-//    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //addToArr()
