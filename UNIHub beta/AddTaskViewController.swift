@@ -14,8 +14,8 @@ protocol AddTask {
 }
 
 class AddTaskViewController: UIViewController {
-    @IBOutlet weak var taskNameOutlet: UITextField!
     @IBOutlet weak var dueDateOutlet: UITextField!
+    @IBOutlet weak var taskNameOutlet: UITextView!
     
     var dueDateText : String?
     

@@ -93,7 +93,7 @@ class ChecklistViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         loadTasks()
         tableView.backgroundColor = nil
-        tableView.backgroundColor = UIColor()
+        tableView.backgroundColor = UIColor(red: 0.2706, green: 0.4549, blue: 0.6784, alpha: 1.0)
         
     }
     
