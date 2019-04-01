@@ -18,7 +18,7 @@ class CollegeInfoViewController: UIViewController, UITextFieldDelegate, UITableV
     
     var college: College?
     
-    var collegeData = [String : [String : String]]()
+    var collegeData = [(section: String, items: [(name: String, statistic: String)] )]()
     
     
     @IBAction func openWebsite(_ sender: UIButton) {
@@ -28,22 +28,30 @@ class CollegeInfoViewController: UIViewController, UITextFieldDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell") as! CollegeInfoCell
         if indexPath.row == 0 {
-            cell.name.text = Array(collegeData.keys)[indexPath.section]
+            cell.name.text = collegeData[indexPath.section].section
+            //cell.name.text = Array(collegeData[indexPath.section].keys)[0]
+            //cell.name.text = Array(collegeData.keys)[indexPath.section]
             cell.statistic.text = ""
         }
         else {
-            cell.name.text = Array(Array(collegeData.values)[indexPath.section].keys)[indexPath.row-1]
-            cell.statistic.text = Array(Array(collegeData.values)[indexPath.section].values)[indexPath.row-1]
+            cell.name.text = collegeData[indexPath.section].items[indexPath.row-1].name
+            cell.statistic.text = collegeData[indexPath.section].items[indexPath.row-1].statistic
+            //cell.name.text = Array(Array(collegeData[indexPath.section].values)[0].keys)[indexPath.row-1]
+            //cell.statistic.text = Array(Array(collegeData[indexPath.section].values)[0].values)[indexPath.row-1]
+            //cell.name.text = Array(Array(collegeData.values)[indexPath.section].keys)[indexPath.row-1]
+            //cell.statistic.text = Array(Array(collegeData.values)[indexPath.section].values)[indexPath.row-1]
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Array(Array(collegeData.values)[section].keys).count + 1
+        return collegeData[section].items.count + 1
+        //return Array(Array(collegeData.values)[section].keys).count + 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return Array(collegeData.keys).count
+        return collegeData.count
+        //return Array(collegeData.keys).count
     }
     
     override func viewDidLoad() {
@@ -60,8 +68,29 @@ class CollegeInfoViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     
     func setCollegeData(){
+        collegeData = []
+        var allData = [(section: String, name: String, statistic: String)]()
         if let averageSATScore = college?.averageSATScore {
-            collegeData.updateValue(["Average SAT Score" : String(describing: averageSATScore)], forKey: "Admissions")
+            allData.append(("Admissions","Average SAT Score",String(describing: averageSATScore)))
+        }
+        if let averageNetPrice = college?.averageNetPrice {
+            allData.append(("Costs","Average Net Price",String(describing: averageNetPrice)))
+        }
+        
+        var sections = [String]()
+        for item in allData{
+            if !sections.contains(item.section){
+                sections.append(item.section)
+            }
+        }
+        for section in sections {
+            var itemsInSection = [(name: String, statistic: String)]()
+            for item in allData {
+                if item.section == section {
+                    itemsInSection.append((item.name, item.statistic))
+                }
+            }
+            collegeData.append((section, itemsInSection))
         }
     }
     
