@@ -19,4 +19,16 @@ struct SearchCollegeInformation: Decodable {
     var state : String
     var school_url : String
     var sat_scores_average : Float?
+    var public_net_price_average: Int?
+    var private_net_price_average: Int?
 }
+
+struct SearchCollegeIDResponse: Decodable {
+    var results: [SearchCollegeIDInformation]
+}
+
+struct SearchCollegeIDInformation: Decodable {
+    var id : Int
+}
+
+

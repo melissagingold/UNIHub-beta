@@ -49,25 +49,20 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func searchCollege(query: String){
-        let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=" + query.replacingOccurrences(of: " ", with: "%20") + "&_fields=id,school.name,school.city,school.state,school.school_url,latest.admissions.sat_scores.average.overall&api_key=" + apiKey
+        let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=" + query.replacingOccurrences(of: " ", with: "%20") + "&_fields=id&api_key=" + apiKey
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, request, error) in
-            guard var data = data else {return}
-            data = (String(data: data, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "school.", with: "").data(using: String.Encoding.utf8)!
-            data = (String(data: data, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "latest.admissions.sat_scores.average.overall", with: "sat_scores_average").data(using: String.Encoding.utf8)!
+            guard let data = data else {return}
             do {
-                let searchCollegeResponse : SearchCollegeResponse? = try JSONDecoder().decode(SearchCollegeResponse.self, from: data)
+                let searchCollegeIDResponse : SearchCollegeIDResponse? = try JSONDecoder().decode(SearchCollegeIDResponse.self, from: data)
                 DispatchQueue.main.async {
-                    let results = searchCollegeResponse?.results
+                    let results = searchCollegeIDResponse?.results
                     self.searchResults = []
                     for i in 0..<(results?.count ?? 0) {
-                        let college = College(name: results?[i].name ?? "N/A",
-                            location: (results?[i].city ?? "") + ", " + (results?[i].state ?? ""),
-                            url: "https://" + (results?[i].school_url ?? ""),
-                            averageSATScore: (results?[i].sat_scores_average),
-                            id: results?[i].id ?? 0)
-                        self.searchResults.append(college)
-                        self.searchTableView.reloadData()
+                        College.getData(id: results?[i].id ?? 0, notes: "", complete: { (college) in
+                            self.searchResults.append(college)
+                            self.searchTableView.reloadData()
+                        })
                     }
                 }
             } catch let jsonErr {
@@ -102,6 +97,7 @@ class SearchCollegeViewController: UIViewController, UITableViewDelegate, UITabl
         if let result = searchResult {
             let vc = segue.destination as! CollegeProfileViewController
             vc.colleges?.append(result)
+            vc.saveColleges()
         }
     }
     

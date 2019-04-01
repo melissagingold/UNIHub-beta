@@ -31,7 +31,6 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
 
     override func viewDidLoad() {
         loadColleges()
-        colleges = []
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -39,7 +38,7 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        saveColleges(colleges: colleges!)
+        saveColleges()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,51 +67,34 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    func saveColleges(colleges: [College]){
+    func saveColleges(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Colleges")
-        var collegeDictionary : [String : String] = [:]
-        for college in colleges {
-            collegeDictionary.updateValue(college.name, forKey: "\(college.id)")
+        var collegeData = [[String : String]]()
+        for college in colleges ?? [] {
+            collegeData.append(["\(college.id)" : college.userNotes])
         }
-        ref.setValue(collegeDictionary)
+        ref.setValue(collegeData)
     }
     
     func loadColleges(){
+        colleges = []
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Colleges")
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            if let data = snapshot.value as? [String : String] {
-                for str in (data.keys) {
-                    self.addCollegeInfo(id: Int(str)!)
+            if let result = snapshot.value as? [[String : String]]{
+                for college in result {
+                    self.addCollegeInfo(id: Int(Array(college.keys)[0])!, notes: Array(college.values)[0])
                 }
             }
         }
     }
     
-    func addCollegeInfo(id: Int){
-        let urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?id=\(id)&_fields=id,school.name,school.city,school.state,school.school_url,latest.admissions.sat_scores.average.overall&api_key=" + apiKey
-        guard let url = URL(string: urlString) else {return}
-        URLSession.shared.dataTask(with: url) { (data, request, error) in
-            guard var data = data else {return}
-            data = (String(data: data, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "school.", with: "").data(using: String.Encoding.utf8)!
-            data = (String(data: data, encoding: String.Encoding.utf8)!).replacingOccurrences(of: "latest.admissions.sat_scores.average.overall", with: "sat_scores_average").data(using: String.Encoding.utf8)!
-            do {
-                let searchCollegeResponse : SearchCollegeResponse? = try JSONDecoder().decode(SearchCollegeResponse.self, from: data)
-                DispatchQueue.main.async {
-                    let result = searchCollegeResponse?.results[0]
-                    let college = College(name: result?.name ?? "N/A",
-                                        location: (result?.city ?? "") + ", " + (result?.state ?? ""),
-                                        url: "https://" + (result?.school_url ?? ""),
-                                        averageSATScore: (result?.sat_scores_average),
-                                        id: result?.id ?? 0)
-                    self.colleges?.append(college)
-                    self.tableView.reloadData()
-                }
-            } catch let jsonErr {
-                print(jsonErr)
-            }
-        }.resume()
+    func addCollegeInfo(id: Int, notes: String){
+        College.getData(id: id, notes: notes) { (college) in
+            self.colleges?.append(college)
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func backToProfile(segue: UIStoryboardSegue){
