@@ -18,43 +18,23 @@ struct cellData {
 }
 
 
-class ApplicantProfileViewController: UITableViewController, AddActivity {
+class ApplicantProfileViewController: UITableViewController, AddActivity{
     
     var tableViewData = [cellData]()
-
-    var activsA = ["Soccer", "9,10" , "Captain" , "MVP"]
-    var activsB = Array(repeating: "", count: 4)
-    var activsC = Array(repeating: "", count: 4)
-    var activsD:[String?] = []
-    var activsE:[String?] = []
-    var activsF:[String?] = []
-    var activsG:[String?] = []
-    var activsH:[String?] = []
-    var activsI:[String?] = []
-    var activsJ:[String?] = []
-    
-    var diffActivs = [[String?]]()
-    
-    
     var newActivs = [Activity]()
-    
-    
     var activ1 = Activity(name: "", participation: "", position: "", honors: "")
-    
-    
-    
+    var activ2 = Activity(name: "", participation: "", position: "", honors: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        diffActivs = [activsA, activsB, activsC, activsD, activsE, activsF, activsG, activsH, activsI, activsJ]
-        
-        newActivs = [activ1]
+        loadActivs()
+        newActivs = [activ1,activ2]
+    
         
         
         tableViewData = [
-            cellData(opened: false, title: "Activity #1: \(newActivs[0].name)", sectionData: ["Participation Grade Level: \(activ1.participation ) ","Position/Leadership: \(activsA[2] ?? "")","Honors/Acomplishments: \(activsA[3] ?? "")",]),
-            cellData(opened: false, title: "Activity #2: \(activsB[0] ?? " ")", sectionData: ["Participation Grade Level: \(activsB[1])","Position/Leadership: \(activsB[2])","Honors/Acomplishments", ]),
+            cellData(opened: false, title: "Activity #1: \(newActivs[0].name)", sectionData: ["Participation Grade Level: \(newActivs[0].participation) ","Position/Leadership: \(newActivs[0].position ?? "")","Honors/Acomplishments: \(newActivs[0].honors ?? "")",]),
+            cellData(opened: false, title: "Activity #2: \(newActivs[1].name)", sectionData: ["Participation Grade Level: \(newActivs[1].participation)","Position/Leadership: \(newActivs[1].position)","Honors/Acomplishments:", ]),
             cellData(opened: false, title: "Activity #3", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
             cellData(opened: false, title: "Activity #4", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
             cellData(opened: false, title: "Activity #5", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
@@ -67,21 +47,39 @@ class ApplicantProfileViewController: UITableViewController, AddActivity {
     }
     
     
+    //conecting the view controllers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! AddActivityViewController
         vc.delegate = self
     }
-    
     func addActivity(name: String, participation: String, position: String, honors: String){
-        
-        if newActivs[0].name == ""{
-        activ1 = (Activity(name: name, participation: participation, position: position, honors: honors))
-            print("hi")
+    
+        for i in 0...10{
+            if newActivs[i].name == ""{
+                newActivs[i] = (Activity(name: name, participation: participation, position: position, honors: honors))
+                print("hi")
+            }
         }
             tableView.reloadData()
     }
+    func loadActivs(){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("user/\(uid)/Activities")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            if let data = snapshot.value as? [String : Bool] {
+                for str in (data.keys) {
+                    let activ = Activity(name: str, participation: str, position: str, honors: str)
+                    self.newActivs.append(activ)
+                }
+            }
+            self.tableView.reloadData()
+        }
+    }
     
     
+    
+    
+    //table view functionality
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 10
     }
@@ -126,12 +124,12 @@ class ApplicantProfileViewController: UITableViewController, AddActivity {
             }
         }
     }
+    
+    
+    
+    
+    
 }
-
-
-
-
-
 
 class Activity {
     var name = ""
@@ -139,11 +137,11 @@ class Activity {
     var position = ""
     var honors = ""
     
-    init(name: String, participation: String, position: String, honors:String) {
-        self.name = name
-        self.participation = participation
-        self.position = position
-        self.honors = honors
+    init(name: String?, participation: String?, position: String?, honors:String?) {
+        self.name = name ?? ""
+        self.participation = participation ?? ""
+        self.position = position ?? ""
+        self.honors = honors ?? ""
     }
     
     func getName() -> String {

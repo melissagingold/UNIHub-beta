@@ -32,13 +32,12 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         
-        delegate?.addActivity(name: activName.text ?? "", participation: activPartic.text ?? "", position: activPosit.text ?? "", honors: activHon.text ?? "")
         
-        print(activName)
-        print("hello")
-
-
-    }
+            delegate?.addActivity(name: activName.text ?? "", participation: activPartic.text ?? "", position: activPosit.text ?? "", honors: activHon.text ?? "")
+            
+        }
+        
+    
 }
     
     /*
