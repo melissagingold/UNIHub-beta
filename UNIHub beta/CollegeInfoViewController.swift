@@ -70,11 +70,20 @@ class CollegeInfoViewController: UIViewController, UITextFieldDelegate, UITableV
     func setCollegeData(){
         collegeData = []
         var allData = [(section: String, name: String, statistic: String)]()
+        if let admissionRate = college?.admissionRate {
+            allData.append(("Admissions","Admission Rate",String(describing: admissionRate*100)+"%"))
+        }
         if let averageSATScore = college?.averageSATScore {
-            allData.append(("Admissions","Average SAT Score",String(describing: averageSATScore)))
+            allData.append(("Admissions","Average SAT Score",String(describing: Int(averageSATScore))))
+        }
+        if let midpointACTScore = college?.midpointACTScore {
+            allData.append(("Admissions","Midpoint ACT Score",String(describing: Int(midpointACTScore))))
         }
         if let averageNetPrice = college?.averageNetPrice {
-            allData.append(("Costs","Average Net Price",String(describing: averageNetPrice)))
+            allData.append(("Costs","Average Net Price","$"+String(describing: averageNetPrice)))
+        }
+        if let federalLoanRate = college?.federalLoanRate {
+            allData.append(("Aid","Federal Loan Rate",String(describing: federalLoanRate*100)+"%"))
         }
         
         var sections = [String]()

@@ -13,14 +13,18 @@ struct SearchCollegeResponse: Decodable {
 }
 
 struct SearchCollegeInformation: Decodable {
-    var id : Int
-    var name : String
-    var city : String
-    var state : String
-    var school_url : String
-    var sat_scores_average : Float?
+    var id: Int
+    var name: String
+    var city: String
+    var state: String
+    var school_url: String
+    var sat_scores_average: Float?
+    var act_scores_midpoint: Float?
     var public_net_price_average: Int?
     var private_net_price_average: Int?
+    var federal_loan_rate: Float?
+    var student_size: Int?
+    var admission_rate: Float?
 }
 
 struct SearchCollegeIDResponse: Decodable {
