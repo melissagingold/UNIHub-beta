@@ -172,6 +172,8 @@
 				2D57FCBF22049F6D00F2AB7D /* LogInViewController.swift */,
 				2D57FCC122049FD400F2AB7D /* SignUpViewController.swift */,
 				2D8BEFFE2226E58400603F8C /* ApplicantProfileViewController.swift */,
+				0C75248E2243D782003AAA7B /* AddActivityViewController.swift */,
+				0C0817C32236A7D200D792A3 /* ActivitiesCell.swift */,
 				0C192E2E2214A56D00DF1A58 /* ActivityTableViewCell.swift */,
 				2D57FCC32204A00F00F2AB7D /* GradesViewController.swift */,
 				2D8C920222241F0B00F91F8B /* EssayViewController.swift */,
@@ -201,8 +203,6 @@
 				0C588E0122049B79007433EC /* Info.plist */,
 				0CDA3B1B22049D99000F329A /* GoogleService-Info.plist */,
 				0C588DF922049B76007433EC /* UNIHub_beta.xcdatamodeld */,
-				0C0817C32236A7D200D792A3 /* ActivitiesCell.swift */,
-				0C75248E2243D782003AAA7B /* AddActivityViewController.swift */,
 			);
 			path = "UNIHub beta";
 			sourceTree = "<group>";
