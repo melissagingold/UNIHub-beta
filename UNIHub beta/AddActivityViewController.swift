@@ -32,12 +32,16 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         
-        
-            delegate?.addActivity(name: activName.text ?? "", participation: activPartic.text ?? "", position: activPosit.text ?? "", honors: activHon.text ?? "")
+            //delegate?.addActivity(name: activName.text ?? "", participation: activPartic.text ?? "", position: activPosit.text ?? "", honors: activHon.text ?? "")
+        performSegue(withIdentifier: "backToActivities", sender: self)
             
         }
-        
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! ApplicantProfileViewController
+        vc.tableViewData.append(cellData(opened: false, title: "Activity #\(vc.tableViewData.count+1):" + activName.text!,
+                                         sectionData: ["Participation Grade Level:" + activPartic.text!,"Position/Leadership:" + activPosit.text!,"Honors/Acomplishments:" + activHon.text!]))
+        vc.tableView.reloadData()
+    }
 }
     
     /*

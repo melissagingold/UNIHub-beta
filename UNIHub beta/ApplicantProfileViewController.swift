@@ -21,29 +21,29 @@ struct cellData {
 class ApplicantProfileViewController: UITableViewController, AddActivity{
     
     var tableViewData = [cellData]()
-    var newActivs = [Activity]()
-    var activ1 = Activity(name: "", participation: "", position: "", honors: "")
-    var activ2 = Activity(name: "", participation: "", position: "", honors: "")
+    var newActivs : [Activity]?
+    var activ1 = Activity(name: "soccer", participation: "", position: "", honors: "")
+    var activ2 = Activity(name: "tsa", participation: "", position: "", honors: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadActivs()
-        newActivs = [activ1,activ2]
+        //loadActivs()
+        //newActivs = [activ1,activ2]
+        tableView.reloadData()
+        
     
-        
-        
-        tableViewData = [
-            cellData(opened: false, title: "Activity #1: \(newActivs[0].name)", sectionData: ["Participation Grade Level: \(newActivs[0].participation) ","Position/Leadership: \(newActivs[0].position ?? "")","Honors/Acomplishments: \(newActivs[0].honors ?? "")",]),
-            cellData(opened: false, title: "Activity #2: \(newActivs[1].name)", sectionData: ["Participation Grade Level: \(newActivs[1].participation)","Position/Leadership: \(newActivs[1].position)","Honors/Acomplishments:", ]),
-            cellData(opened: false, title: "Activity #3", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity #4", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity #5", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity #6", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity #7", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity #8", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity #9", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-            cellData(opened: false, title: "Activity #10", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ])
-        ]
+//        tableViewData = [
+//            cellData(opened: false, title: "Activity #1: \(newActivs?[0].name)", sectionData: ["Participation Grade Level: \(newActivs?[0].participation) ","Position/Leadership: \(newActivs?[0].position )","Honors/Acomplishments: \(newActivs?[0].honors )",]),
+//            cellData(opened: false, title: "Activity #2: \(newActivs?[1].name)", sectionData: ["Participation Grade Level: \(newActivs?[1].participation)","Position/Leadership: \(newActivs?[1].position)","Honors/Acomplishments:", ])]//,
+//            cellData(opened: false, title: "Activity #3:", sectionData: ["Participation Grade Level:","Position/Leadership:","Honors/Acomplishments:", ]),
+//            cellData(opened: false, title: "Activity #4:", sectionData: ["Participation Grade Level:","Position/Leadership:","Honors/Acomplishments:", ]),
+//            cellData(opened: false, title: "Activity #5:", sectionData: ["Participation Grade Level:","Position/Leadership:","Honors/Acomplishments:"]),
+//            cellData(opened: false, title: "Activity #6:", sectionData: ["Participation Grade Level:","Position/Leadership:","Honors/Acomplishments:"]),
+//            cellData(opened: false, title: "Activity #7", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+//            cellData(opened: false, title: "Activity #8", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+//            cellData(opened: false, title: "Activity #9", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
+//            cellData(opened: false, title: "Activity #10", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ])
+//        ]
     }
     
     
@@ -54,12 +54,12 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
     }
     func addActivity(name: String, participation: String, position: String, honors: String){
     
-        for i in 0...10{
-            if newActivs[i].name == ""{
-                newActivs[i] = (Activity(name: name, participation: participation, position: position, honors: honors))
+//        for i in 0...10{
+//            if newActivs[i].name == ""{
+                newActivs?.append(Activity(name: name, participation: participation, position: position, honors: honors))
                 print("hi")
-            }
-        }
+           // }
+      //  }
             tableView.reloadData()
     }
     func loadActivs(){
@@ -69,7 +69,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
             if let data = snapshot.value as? [String : Bool] {
                 for str in (data.keys) {
                     let activ = Activity(name: str, participation: str, position: str, honors: str)
-                    self.newActivs.append(activ)
+                    self.newActivs?.append(activ)
                 }
             }
             self.tableView.reloadData()
@@ -81,7 +81,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
     
     //table view functionality
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return tableViewData.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -125,7 +125,9 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
         }
     }
     
-    
+    @IBAction func backToActivities(segue: UIStoryboardSegue){
+        
+    }
     
     
     
