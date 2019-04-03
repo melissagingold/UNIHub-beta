@@ -13,7 +13,7 @@ protocol AddTask {
     func addTask(name: String)
 }
 
-class AddTaskViewController: UIViewController {
+class AddTaskViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var dueDateOutlet: UITextField!
     @IBOutlet weak var taskNameOutlet: UITextView!
     
@@ -21,10 +21,9 @@ class AddTaskViewController: UIViewController {
     
     private var datePicker : UIDatePicker?
     
-    
     // adding text field text to task
     @IBAction func addAction(_ sender: UIButton) {
-        if taskNameOutlet.text != ""  {
+        if taskNameOutlet.text != "" && dueDateText != nil {
             let fullTaskName = taskNameOutlet.text! + " " + dueDateText!
             delegate?.addTask(name: fullTaskName)
             navigationController?.popViewController(animated: true)
@@ -50,6 +49,35 @@ class AddTaskViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddTaskViewController.viewTapped(gestureRecognizer:)))
         
         view.addGestureRecognizer(tapGesture)
+        
+        taskNameOutlet.text = "Add new task..."
+        taskNameOutlet.textColor = UIColor.lightGray
+        taskNameOutlet.font = UIFont(name: "Helvetica Neue", size: 22.0)
+        taskNameOutlet.returnKeyType = .done
+        taskNameOutlet.delegate = self
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Add new task..." {
+            textView.text = ""
+            textView.textColor = UIColor.black
+            textView.font = UIFont(name: "Helvetica Neue", size: 22.0)
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = "Add new task..."
+            textView.textColor = UIColor.lightGray
+            textView.font = UIFont(name: "Helvetica Neue", size: 22.0)
+        }
     }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
