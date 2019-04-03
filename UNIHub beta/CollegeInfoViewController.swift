@@ -8,10 +8,10 @@
 
 import UIKit
 
-class CollegeInfoViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var notes: UITextView!
     @IBOutlet weak var infoTableView: UITableView!
-    @IBOutlet weak var notes: UITextField!
     @IBOutlet weak var collegeName: UILabel!
     @IBOutlet weak var collegeLocation: UILabel!
     @IBOutlet weak var statisticTableView: UITableView!
@@ -20,52 +20,57 @@ class CollegeInfoViewController: UIViewController, UITextFieldDelegate, UITableV
     
     var collegeData = [(section: String, items: [(name: String, statistic: String)] )]()
     
-    
-    @IBAction func openWebsite(_ sender: UIButton) {
-        //performSegue(withIdentifier: "openWebsite", sender: self)
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell") as! CollegeInfoCell
         if indexPath.row == 0 {
             cell.name.text = collegeData[indexPath.section].section
-            //cell.name.text = Array(collegeData[indexPath.section].keys)[0]
-            //cell.name.text = Array(collegeData.keys)[indexPath.section]
             cell.statistic.text = ""
         }
         else {
             cell.name.text = collegeData[indexPath.section].items[indexPath.row-1].name
             cell.statistic.text = collegeData[indexPath.section].items[indexPath.row-1].statistic
-            //cell.name.text = Array(Array(collegeData[indexPath.section].values)[0].keys)[indexPath.row-1]
-            //cell.statistic.text = Array(Array(collegeData[indexPath.section].values)[0].values)[indexPath.row-1]
-            //cell.name.text = Array(Array(collegeData.values)[indexPath.section].keys)[indexPath.row-1]
-            //cell.statistic.text = Array(Array(collegeData.values)[indexPath.section].values)[indexPath.row-1]
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return collegeData[section].items.count + 1
-        //return Array(Array(collegeData.values)[section].keys).count + 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return collegeData.count
-        //return Array(collegeData.keys).count
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        college?.userNotes = textView.text
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setCollegeData()
         collegeLocation.numberOfLines = 1
         
-        collegeName.text = college!.name
-        collegeLocation.text = college!.location
+        notes.text = college?.userNotes
+        
+        collegeName.text = college?.name
+        collegeLocation.text = college?.location
         
         statisticTableView.reloadData()
         
         
     }
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        print(self.navigationController?.viewControllers)
+//        let vc = navigationController?.viewControllers[(navigationController?.viewControllers.count)!-1] as! CollegeProfileViewController
+//        vc.saveColleges()
+//    }
     
     func setCollegeData(){
         collegeData = []
@@ -108,16 +113,6 @@ class CollegeInfoViewController: UIViewController, UITextFieldDelegate, UITableV
             let webViewController = segue.destination as! WebViewController
             webViewController.url = URL(string: college?.url ?? "")
         }
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.becomeFirstResponder()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        self.view.endEditing(true)
-        return true
     }
 
 }
