@@ -42,7 +42,7 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     }
 
     func textViewDidChange(_ textView: UITextView) {
-        print(textView.text)
+        college?.userNotes = textView.text
     }
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
@@ -56,13 +56,21 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
         setCollegeData()
         collegeLocation.numberOfLines = 1
         
-        collegeName.text = college!.name
-        collegeLocation.text = college!.location
+        notes.text = college?.userNotes
+        
+        collegeName.text = college?.name
+        collegeLocation.text = college?.location
         
         statisticTableView.reloadData()
         
         
     }
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        print(self.navigationController?.viewControllers)
+//        let vc = navigationController?.viewControllers[(navigationController?.viewControllers.count)!-1] as! CollegeProfileViewController
+//        vc.saveColleges()
+//    }
     
     func setCollegeData(){
         collegeData = []

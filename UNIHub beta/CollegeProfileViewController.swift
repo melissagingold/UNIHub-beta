@@ -25,10 +25,10 @@ class CollegeProfileViewController: UIViewController, UITableViewDelegate, UITab
         performSegue(withIdentifier: "showCollegeSearch", sender: self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
     }
-
+    
     override func viewDidLoad() {
         loadColleges()
         super.viewDidLoad()
