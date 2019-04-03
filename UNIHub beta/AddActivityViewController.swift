@@ -7,6 +7,13 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseAuth
+
+protocol AddActivity {
+    func addActivity(name:String, participation:String, position:String, honors:String)
+}
+
 
 class AddActivityViewController: UIViewController, UITextFieldDelegate{
 
@@ -15,47 +22,21 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var activPosit: UITextField!
     @IBOutlet weak var activHon: UITextField!
     
-    var diffActivs = [[String?]]()
-
+    var delegate: AddActivity?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        addArr()
     }
     
-    
-    func addArr(){
-        let otherVC = ApplicantProfileViewController()
-        diffActivs = otherVC.diffActivs
-    }
     
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         
-        var tempArr = [activName.text, activPartic.text, activPosit.text, activHon.text]
         
-        diffActivs[1] = tempArr
+            delegate?.addActivity(name: activName.text ?? "", participation: activPartic.text ?? "", position: activPosit.text ?? "", honors: activHon.text ?? "")
+            
+        }
         
-//        for i in 0..<9{
-//            if diffActivs[i] == ["","","",""]{
-//                diffActivs[i] = tempArr
-//                tempArr = ["","","",""]
-//            }
-    }
-
-    
-//        for i in 0..<diffActivs.count{
-//            if diffActivs[i][0] == ""{
-//                diffActivs[i][0] = tempArr[0]
-//                tempArr = [" ", " "," "," "]
-//            }
-//        }
-    
-    
-    
-    func addActiv(){
-    }
-    
     
 }
     
