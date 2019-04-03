@@ -20,11 +20,6 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     
     var collegeData = [(section: String, items: [(name: String, statistic: String)] )]()
     
-    
-    @IBAction func openWebsite(_ sender: UIButton) {
-        //performSegue(withIdentifier: "openWebsite", sender: self)
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell") as! CollegeInfoCell
         if indexPath.row == 0 {
@@ -45,9 +40,19 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     func numberOfSections(in tableView: UITableView) -> Int {
         return collegeData.count
     }
+
+    func textViewDidChange(_ textView: UITextView) {
+        print(textView.text)
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setCollegeData()
         collegeLocation.numberOfLines = 1
         
