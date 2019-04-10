@@ -13,6 +13,7 @@ class CollegeInfoCell: UITableViewCell {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var statistic: UILabel!
+    @IBOutlet weak var dropDown: UIImageView!
     
     
 }
