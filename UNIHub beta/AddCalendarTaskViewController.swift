@@ -17,11 +17,10 @@ class AddCalendarTaskViewController: UIViewController {
     @IBOutlet weak var taskText: UITextField!
     var delegate: AddCalendarTask?
     
-    
-    
+
     @IBAction func enter(_ sender: UIButton) {
         delegate?.addCalendarTask(id: key, task: taskText.text!)
-        navigationController?.popToRootViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
