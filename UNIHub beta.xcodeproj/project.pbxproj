@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02E0F059225DA6C9002D570A /* AddCalendarTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0F058225DA6C9002D570A /* AddCalendarTaskViewController.swift */; };
+		02E0F05B225DA704002D570A /* CalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0F05A225DA704002D570A /* CalendarViewCell.swift */; };
 		0C0817C42236A7D200D792A3 /* ActivitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0817C32236A7D200D792A3 /* ActivitiesCell.swift */; };
 		0C192E2F2214A56D00DF1A58 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C192E2E2214A56D00DF1A58 /* ActivityTableViewCell.swift */; };
 		0C588DF322049B76007433EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C588DF222049B76007433EC /* AppDelegate.swift */; };
@@ -68,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02E0F058225DA6C9002D570A /* AddCalendarTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalendarTaskViewController.swift; sourceTree = "<group>"; };
+		02E0F05A225DA704002D570A /* CalendarViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewCell.swift; sourceTree = "<group>"; };
 		0C0817C32236A7D200D792A3 /* ActivitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCell.swift; sourceTree = "<group>"; };
 		0C192E2E2214A56D00DF1A58 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		0C588DEF22049B75007433EC /* UNIHub beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UNIHub beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +190,8 @@
 				2D57FCD52207C38D00F2AB7D /* TaskCell.swift */,
 				2D57FCD12207C06400F2AB7D /* AddTaskViewController.swift */,
 				2D57FCC72204A12400F2AB7D /* CalendarViewController.swift */,
+				02E0F05A225DA704002D570A /* CalendarViewCell.swift */,
+				02E0F058225DA6C9002D570A /* AddCalendarTaskViewController.swift */,
 				2D57FCCB2204A19200F2AB7D /* CollegeProfileViewController.swift */,
 				69B301C72225790A001523EE /* CollegeInfoViewController.swift */,
 				69428E3A222DA80700457341 /* SearchCollegeResponse.swift */,
@@ -453,6 +459,7 @@
 				2D57FCCC2204A19200F2AB7D /* CollegeProfileViewController.swift in Sources */,
 				2D57FCC022049F6D00F2AB7D /* LogInViewController.swift in Sources */,
 				0C75248F2243D782003AAA7B /* AddActivityViewController.swift in Sources */,
+				02E0F05B225DA704002D570A /* CalendarViewCell.swift in Sources */,
 				2DA807FA2209C00B005480BD /* SideMenuTableViewController.swift in Sources */,
 				696CDD5E2232B2C7008B6784 /* WebViewController.swift in Sources */,
 				0C588DF522049B76007433EC /* ViewController.swift in Sources */,
@@ -472,6 +479,7 @@
 				2D57FCC42204A00F00F2AB7D /* GradesViewController.swift in Sources */,
 				2D57FCCE2204A3BA00F2AB7D /* Style.swift in Sources */,
 				2D57FCD22207C06400F2AB7D /* AddTaskViewController.swift in Sources */,
+				02E0F059225DA6C9002D570A /* AddCalendarTaskViewController.swift in Sources */,
 				698A7125221EF566004DA14D /* College.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
