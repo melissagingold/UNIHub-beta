@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
 
@@ -21,37 +23,42 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var activPartic: UITextField!
     @IBOutlet weak var activPosit: UITextField!
     @IBOutlet weak var activHon: UITextField!
+    var refActivity = DatabaseReference()
+    
     
     var delegate: AddActivity?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refActivity = DatabaseReference().database.reference().child("activities")
     }
     
     
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         
-            //delegate?.addActivity(name: activName.text ?? "", participation: activPartic.text ?? "", position: activPosit.text ?? "", honors: activHon.text ?? "")
         performSegue(withIdentifier: "backToActivities", sender: self)
-            
         }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ApplicantProfileViewController
         vc.tableViewData.append(cellData(opened: false, title: "Activity #\(vc.tableViewData.count+1):" + activName.text!,
                                          sectionData: ["Participation Grade Level:" + activPartic.text!,"Position/Leadership:" + activPosit.text!,"Honors/Acomplishments:" + activHon.text!]))
         vc.tableView.reloadData()
+        addToFB()
     }
-}
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func addToFB(){
+        let key = refActivity.childByAutoId().key
+        
+        let activity = ["id": key,"activityName":activName.text,"activityParticipation":activPartic.text,"activityPosition":activPosit.text,"activityHonors":activHon.text
+        ]
+        
+        refActivity.child(key ?? "").setValue(activity)
+        
     }
-    */
+    
+}
+
 
 
