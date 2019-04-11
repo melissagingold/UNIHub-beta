@@ -15,6 +15,9 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     @IBOutlet weak var collegeName: UILabel!
     @IBOutlet weak var collegeLocation: UILabel!
     @IBOutlet weak var statisticTableView: UITableView!
+    @IBAction func goToWebsite(_ sender: UIButton!) {
+        performSegue(withIdentifier: "openWebsite", sender: nil)
+    }
     
     var college: College?
     
@@ -139,7 +142,7 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (sender as? UIButton) != nil {
+        if segue.identifier == "openWebsite" {//(sender as? UIButton) != nil {
             let webViewController = segue.destination as! WebViewController
             webViewController.url = URL(string: college?.url ?? "")
         }
