@@ -1163,8 +1163,8 @@
                                     <segue destination="JPb-Qe-OJP" kind="show" identifier="openWebsite" id="lcx-tS-K9f"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ne5-2K-qn8">
-                                <rect key="frame" x="0.0" y="250" width="414" height="0.0"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ne5-2K-qn8">
+                                <rect key="frame" x="0.0" y="361" width="414" height="467"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="infoCell" id="vNe-Fh-zlv" customClass="CollegeInfoCell" customModule="UNIHub_beta" customModuleProvider="target">
@@ -1186,15 +1186,25 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropDown" translatesAutoresizingMaskIntoConstraints="NO" id="uaK-cA-jST">
+                                                    <rect key="frame" x="362" y="6" width="32" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="6yo-Jt-Eaf"/>
+                                                        <constraint firstAttribute="height" constant="32" id="ipA-9l-Ff1"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="v4r-mn-G5f" firstAttribute="trailing" secondItem="2yL-lJ-ttO" secondAttribute="trailingMargin" id="Gyk-ai-Xb3"/>
+                                                <constraint firstAttribute="trailing" secondItem="uaK-cA-jST" secondAttribute="trailing" constant="20" id="IGe-EP-qsF"/>
                                                 <constraint firstItem="v4r-mn-G5f" firstAttribute="centerY" secondItem="2yL-lJ-ttO" secondAttribute="centerY" id="KCg-lb-I6r"/>
                                                 <constraint firstItem="lL8-CQ-LTU" firstAttribute="leading" secondItem="2yL-lJ-ttO" secondAttribute="leadingMargin" id="S5q-zr-h2z"/>
+                                                <constraint firstItem="uaK-cA-jST" firstAttribute="centerY" secondItem="2yL-lJ-ttO" secondAttribute="centerY" id="Vrd-Qz-uMs"/>
                                                 <constraint firstItem="lL8-CQ-LTU" firstAttribute="centerY" secondItem="2yL-lJ-ttO" secondAttribute="centerY" id="diS-GT-Rhl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dropDown" destination="uaK-cA-jST" id="9RT-Ol-g89"/>
                                             <outlet property="name" destination="lL8-CQ-LTU" id="rlM-P1-lGU"/>
                                             <outlet property="statistic" destination="v4r-mn-G5f" id="PU9-2x-CaN"/>
                                         </connections>
@@ -1205,11 +1215,11 @@
                                     <outlet property="delegate" destination="ZTw-BM-Jox" id="QgY-cM-c8J"/>
                                 </connections>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="notes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KeX-HP-Ygf">
-                                <rect key="frame" x="10" y="192" width="394" height="48"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="notes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KeX-HP-Ygf">
+                                <rect key="frame" x="10" y="251" width="394" height="100"/>
                                 <color key="backgroundColor" red="0.9882352941176471" green="1" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="hfe-R4-iLJ"/>
+                                    <constraint firstAttribute="height" constant="100" id="hfe-R4-iLJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1234,7 +1244,6 @@
                             <constraint firstItem="cWZ-ha-2jq" firstAttribute="trailing" secondItem="fV0-TK-maG" secondAttribute="trailing" constant="20" id="X72-9o-UJP"/>
                             <constraint firstItem="KeX-HP-Ygf" firstAttribute="leading" secondItem="cWZ-ha-2jq" secondAttribute="leading" constant="10" id="YgL-Va-Bkd"/>
                             <constraint firstItem="cWZ-ha-2jq" firstAttribute="trailing" secondItem="KeX-HP-Ygf" secondAttribute="trailing" constant="10" id="cvl-Bh-oFx"/>
-                            <constraint firstItem="KeX-HP-Ygf" firstAttribute="centerX" secondItem="39r-jp-oFF" secondAttribute="centerX" id="d9z-Nr-sge"/>
                             <constraint firstItem="PwA-r8-Kya" firstAttribute="leading" secondItem="0aP-XK-f2g" secondAttribute="trailing" constant="9" id="feQ-8c-4FO"/>
                             <constraint firstItem="Ne5-2K-qn8" firstAttribute="leading" secondItem="cWZ-ha-2jq" secondAttribute="leading" id="kc4-O8-8My"/>
                             <constraint firstItem="6gQ-WX-x4L" firstAttribute="leading" secondItem="Txd-vQ-aoT" secondAttribute="trailing" constant="5" id="lJm-G7-rn3"/>
@@ -1788,6 +1797,7 @@
     <resources>
         <image name="ButtonAdd" width="512" height="512"/>
         <image name="checkBoxOUTLINE" width="22" height="22"/>
+        <image name="dropDown" width="192" height="192"/>
         <image name="location" width="200" height="200"/>
         <image name="logo" width="512" height="512"/>
         <image name="notes" width="16" height="16"/>
