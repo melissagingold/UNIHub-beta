@@ -7,6 +7,7 @@
 ////
 //
 import UIKit
+import Firebase
 import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
@@ -20,32 +21,15 @@ struct cellData {
 
 class ApplicantProfileViewController: UITableViewController, AddActivity{
     
+    //variable declarations
     var tableViewData = [cellData]()
     var newActivs : [Activity]?
-    var activ1 = Activity(name: "soccer", participation: "", position: "", honors: "")
-    var activ2 = Activity(name: "tsa", participation: "", position: "", honors: "")
-
+    
+    //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadActivs()
-        //newActivs = [activ1,activ2]
         tableView.reloadData()
-        
-    
-//        tableViewData = [
-//            cellData(opened: false, title: "Activity #1: \(newActivs?[0].name)", sectionData: ["Participation Grade Level: \(newActivs?[0].participation) ","Position/Leadership: \(newActivs?[0].position )","Honors/Acomplishments: \(newActivs?[0].honors )",]),
-//            cellData(opened: false, title: "Activity #2: \(newActivs?[1].name)", sectionData: ["Participation Grade Level: \(newActivs?[1].participation)","Position/Leadership: \(newActivs?[1].position)","Honors/Acomplishments:", ])]//,
-//            cellData(opened: false, title: "Activity #3:", sectionData: ["Participation Grade Level:","Position/Leadership:","Honors/Acomplishments:", ]),
-//            cellData(opened: false, title: "Activity #4:", sectionData: ["Participation Grade Level:","Position/Leadership:","Honors/Acomplishments:", ]),
-//            cellData(opened: false, title: "Activity #5:", sectionData: ["Participation Grade Level:","Position/Leadership:","Honors/Acomplishments:"]),
-//            cellData(opened: false, title: "Activity #6:", sectionData: ["Participation Grade Level:","Position/Leadership:","Honors/Acomplishments:"]),
-//            cellData(opened: false, title: "Activity #7", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-//            cellData(opened: false, title: "Activity #8", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-//            cellData(opened: false, title: "Activity #9", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ]),
-//            cellData(opened: false, title: "Activity #10", sectionData: ["Participation Grade Level","Position/Leadership","Honors/Acomplishments", ])
-//        ]
     }
-    
     
     //conecting the view controllers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,15 +37,12 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
         vc.delegate = self
     }
     func addActivity(name: String, participation: String, position: String, honors: String){
-    
-//        for i in 0...10{
-//            if newActivs[i].name == ""{
                 newActivs?.append(Activity(name: name, participation: participation, position: position, honors: honors))
-                print("hi")
-           // }
-      //  }
             tableView.reloadData()
     }
+    
+    
+    //firebase
     func loadActivs(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Activities")
@@ -75,9 +56,6 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
             self.tableView.reloadData()
         }
     }
-    
-    
-    
     
     //table view functionality
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -126,11 +104,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
     }
     
     @IBAction func backToActivities(segue: UIStoryboardSegue){
-        
     }
-    
-    
-    
 }
 
 class Activity {

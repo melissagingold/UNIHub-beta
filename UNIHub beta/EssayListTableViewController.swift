@@ -7,41 +7,45 @@
 
 import UIKit
 
-struct Essays {
-    let name: String
-}
-
-
 class EssayListTableViewController: UITableViewController {
-    var essayList : [Essays]?
-    
-    let essay1 = Essays(name: "Example 1")
-    let essay2 = Essays(name: "Example 2")
+    var essayList : NSArray = []
+    var selectedLabel: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        essayList = [essay1, essay2]
+        
+        essayList = ["test 1", "test 2"]
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return essayList!.count
+        return essayList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let essay = essayList?[indexPath.row]
-        cell.textLabel?.text = essay?.name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EssayListTableViewCell
+       
+        cell.essayListName.text! = essayList[indexPath.row] as! String
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let Storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let BvC = Storyboard.instantiateViewController(withIdentifier: "EssayBrainstormViewController") as! EssayBrainstormViewController
+        
+        selectedLabel = self.essayList[indexPath.row] as! String
+        performSegue(withIdentifier: "toBrainstorm", sender: self)
+    }
+
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "toBrainstorm") {
+            var vc = segue.destination as! EssayBrainstormViewController
+            vc.essayListName.text! = selectedLabel!
+        }
     }
 
     

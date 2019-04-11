@@ -10,10 +10,14 @@ import UIKit
 
 class EssayBrainstormViewController: UIViewController {
 
+    var getName = String()
+
+    @IBOutlet weak var essayListName: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        essayListName.text! = getName
     }
     
 
