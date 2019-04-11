@@ -1161,8 +1161,7 @@
                                 </constraints>
                                 <state key="normal" title="Go to website"/>
                                 <connections>
-                                    <action selector="openWebsite:" destination="ZTw-BM-Jox" eventType="touchUpInside" id="mXD-Qr-HXe"/>
-                                    <segue destination="JPb-Qe-OJP" kind="show" identifier="openWebsite" id="lcx-tS-K9f"/>
+                                    <action selector="goToWebsite:" destination="ZTw-BM-Jox" eventType="touchUpInside" id="9Zz-vN-jaC"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ne5-2K-qn8">
@@ -1260,6 +1259,7 @@
                         <outlet property="infoTableView" destination="Ne5-2K-qn8" id="dTq-K5-gf2"/>
                         <outlet property="notes" destination="KeX-HP-Ygf" id="yhn-fG-7lP"/>
                         <outlet property="statisticTableView" destination="Ne5-2K-qn8" id="f5o-WH-BIL"/>
+                        <segue destination="JPb-Qe-OJP" kind="show" identifier="openWebsite" id="Aeg-bg-djt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rP7-gC-ra0" userLabel="First Responder" sceneMemberID="firstResponder"/>
