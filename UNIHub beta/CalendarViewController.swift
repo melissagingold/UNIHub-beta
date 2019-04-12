@@ -21,7 +21,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     var yo = 1
     var currentMonth = 1
     var currentYear = 2019
-    var array: [String] = []
+    var currentLength = 0
     var selectedDay = -1
     var months : [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var length : [Int] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -92,10 +92,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func updateCalendar(){
-        array = []
-        for i in 1...length[currentMonth]{
-            array.append(String(i))
-        }
+        currentLength = length[currentMonth]
         monthLabel.text = months[currentMonth] + " " + String(currentYear)
         myViewController.reloadData()
         tasksTable.reloadData()
@@ -118,7 +115,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return array.count
+        return currentLength
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedDay = indexPath.row
@@ -135,7 +132,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarViewCell
         
-        cell.label.text = array[indexPath.row]
+        cell.label.text = String(indexPath.row+1)
         if tasks.keys.contains(String(currentMonth) + " " +  String(indexPath.row) + " " +  String(currentYear)) {
             
             cell.dot.image = UIImage(named: "dot")
