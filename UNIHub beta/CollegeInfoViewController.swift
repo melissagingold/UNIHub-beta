@@ -15,18 +15,29 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     @IBOutlet weak var collegeName: UILabel!
     @IBOutlet weak var collegeLocation: UILabel!
     @IBOutlet weak var statisticTableView: UITableView!
+    @IBAction func goToWebsite(_ sender: UIButton!) {
+        performSegue(withIdentifier: "openWebsite", sender: nil)
+    }
     
     var college: College?
     
-    var collegeData = [(section: String, items: [(name: String, statistic: String)] )]()
+    var collegeData = [(section: String, items: [(name: String, statistic: String)], opened: Bool)]()
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell") as! CollegeInfoCell
         if indexPath.row == 0 {
             cell.name.text = collegeData[indexPath.section].section
             cell.statistic.text = ""
+            cell.dropDown.isHidden = false
+            if collegeData[indexPath.section].opened {
+                cell.dropDown.image = #imageLiteral(resourceName: "dropDown")
+            }
+            else {
+                cell.dropDown.image = UIImage(cgImage: #imageLiteral(resourceName: "dropDown").cgImage!, scale: 1, orientation: .downMirrored)
+            }
         }
-        else {
+        else if indexPath.row != 0 && collegeData[indexPath.section].opened {
+            cell.dropDown.isHidden = true
             cell.name.text = collegeData[indexPath.section].items[indexPath.row-1].name
             cell.statistic.text = collegeData[indexPath.section].items[indexPath.row-1].statistic
         }
@@ -34,11 +45,36 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return collegeData[section].items.count + 1
+        var sections = 1
+        if collegeData[section].opened {
+            sections = collegeData[section].items.count + 1
+        }
+        return sections
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return collegeData.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            collegeData[indexPath.section].opened = !collegeData[indexPath.section].opened
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
+                let rotation = CGFloat.pi
+                (tableView.cellForRow(at: indexPath) as! CollegeInfoCell).dropDown.transform = CGAffineTransform(rotationAngle: rotation)
+            }, completion: { (comp) in
+                (tableView.cellForRow(at: indexPath) as! CollegeInfoCell).dropDown.transform = CGAffineTransform.identity
+                tableView.reloadSections(IndexSet.init(integer: indexPath.section), with: .none)
+//                if !self.collegeData[indexPath.section].opened {
+//                    (tableView.cellForRow(at: indexPath) as! CollegeInfoCell).dropDown.image = #imageLiteral(resourceName: "dropDown")
+//                }
+//                else {
+//                    (tableView.cellForRow(at: indexPath) as! CollegeInfoCell).dropDown.image = UIImage(cgImage: #imageLiteral(resourceName: "dropDown").cgImage!, scale: 1, orientation: .downMirrored)
+//                }
+                
+            })
+            
+        }
     }
 
     func textViewDidChange(_ textView: UITextView) {
@@ -62,15 +98,12 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
         collegeLocation.text = college?.location
         
         statisticTableView.reloadData()
+        for cell in statisticTableView.visibleCells {
+            (cell as! CollegeInfoCell).dropDown.image = #imageLiteral(resourceName: "dropDown")
+        }
         
         
     }
-    
-//    override func viewDidDisappear(_ animated: Bool) {
-//        print(self.navigationController?.viewControllers)
-//        let vc = navigationController?.viewControllers[(navigationController?.viewControllers.count)!-1] as! CollegeProfileViewController
-//        vc.saveColleges()
-//    }
     
     func setCollegeData(){
         collegeData = []
@@ -104,12 +137,12 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
                     itemsInSection.append((item.name, item.statistic))
                 }
             }
-            collegeData.append((section, itemsInSection))
+            collegeData.append((section, itemsInSection, true))
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (sender as? UIButton) != nil {
+        if segue.identifier == "openWebsite" {//(sender as? UIButton) != nil {
             let webViewController = segue.destination as! WebViewController
             webViewController.url = URL(string: college?.url ?? "")
         }
