@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
 
 class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate {
     //
     @IBOutlet weak var testPicker: UIPickerView!
     let test = ["SAT:", "ACT:"]
+    var apScores: [String?] = []
+    var satScores: [String?] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +55,13 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if GPAText.isFirstResponder{
+            //gpaTests.append(GPAText.text)
             scoreText.becomeFirstResponder()
         }
         else{
             self.view.endEditing(true)
             scoreText.resignFirstResponder()
+           // gpaTests.append(scoreText.text)
         }
         return true
     }
@@ -66,8 +73,10 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var APTestList2: UITextView!
     
     @IBAction func addAPTest(_ sender: UIButton) {
+        apScores.append("\(addAPTestText.text):\(addAPTestScore.text)")
+        
         if let text = addAPTestText.text{
-            if text == ""{
+            if text == "" {
                 return
             }
             APTestList2.text?.append("\(text)")
@@ -83,7 +92,6 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             addAPTestScore.text = ""
             addAPTestText.resignFirstResponder()
         }
-        
     }
     
     //adding SAT2 Tests
@@ -92,13 +100,14 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var addSAT2Score: UITextField!
     
     @IBAction func addSAT2Test(_ sender: UIButton) {
+        satScores.append("\(addSAT2Text.text):\(addSAT2Score.text)")
         if let text = addSAT2Text.text{
-        if text == ""{
-            return
-        }
-        SAT2List.text?.append("\(text)")
-        addSAT2Text.text = ""
-        addSAT2Text.resignFirstResponder()
+            if text == ""{
+                return
+            }
+            SAT2List.text?.append("\(text)")
+            addSAT2Text.text = ""
+            addSAT2Text.resignFirstResponder()
         }
         if let text2 = addSAT2Score.text{
             if text2 == ""{
@@ -110,90 +119,17 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //        let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! ActivityTableViewCell
-    //
-    //        cell.textLabel?.numberOfLines = 4
-    //        let row = indexPath.row
-    //
-    //        return cell
-    //
-    //    }
-    //    //activities
-    //    @IBOutlet weak var activitiesTableView: UITableView!
-    //    let sections = ["Years Involved:", "Position/s:", "Awards:"]
-    
-    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        return self.sections[section].count
-    //    }
-    
-    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //        let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! UITableViewCell
-    //        cell.textLabel?.numberOfLines = 4
-    //        let row = indexPath.row
-    //
-    //        return cell
-    //    }
-    
-    //    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    //        let cell : ActivityTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCell") as! ActivityTableViewCell
-    //
-    //
-    //        return cell
-    //    }
-    //
-    //
-    //    func getActivities(_ completion: @escaping((_ activity:String?)->())){
-    //        guard let uid = Auth.auth().currentUser?.uid else{return}
-    //
-    //        let databaseRef = Database.database().reference().child("users/\(uid)")
-    //        databaseRef.observeSingleEvent(of: .value, with: {snapshot in
-    //            let postDict = snapshot.value as? [String: AnyObject] ?? [:]
-    //
-    //            if let activityTitle = postDict["Activity Title"]{
-    //                completion(activityTitle as? String)
-    //            }
-    //        }){ (error) in
-    //            print(error.localizedDescription)
-    //        }
-    //
-    //
-    //    }
-    
-    //    @IBAction func saveButton(_ sender: UIButton) {
-    //        getActivities(){ url in
-    //            let storage = Storage.storage()
-    //            guard let activity = url else {return}
-    //            let ref = storage.reference(forURL:activity)
-    //
-    //            ref.getData(maxSize: 1*1024*1024){ data, error in
-    //                if error == nil && data != nil{
-    //                    self.reloadInputViews()
-    //                }
-    //                else{
-    //                    print(error?.localizedDescription)
-    //                }
-    //            }
-    //        }
-    //    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    func saveGrades(){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("user/\(uid)/Grades")
+        var grades = [[String: String]]()
+        var apDict = [String : String]()
+        for score in apScores {
+            //apDict.updateValue(String(Array((score?.split(separator: ":"))!)[1]), forKey: score?.split(separator: ":")[0])
+        }
+        grades.append(apDict)
+        ref.setValue(grades)
+    }
 }
+
+
