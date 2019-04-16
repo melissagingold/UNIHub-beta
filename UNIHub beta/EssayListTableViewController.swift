@@ -7,44 +7,88 @@
 
 import UIKit
 
-class EssayListTableViewController: UITableViewController {
-    var essayList : NSArray = []
+class EssayListTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    
+    var essayList : [String?] = []
     var selectedLabel: String?
+
+    @IBOutlet weak var addEssayTextField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        essayList = ["test 1", "test 2"]
+                
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
+    
+    @IBAction func addEssay(_ sender: UIButton) {
+        insertNewEssay()
+    }
+    
 
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return essayList.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EssayListTableViewCell
        
-        cell.essayListName.text! = essayList[indexPath.row] as! String
+        let essayName = essayList[indexPath.row]
+        
+        cell.essayListName.text = essayName
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let Storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let BvC = Storyboard.instantiateViewController(withIdentifier: "EssayBrainstormViewController") as! EssayBrainstormViewController
         
-        selectedLabel = self.essayList[indexPath.row] as! String
+//        selectedLabel = self.essayList[indexPath.row]
+//
+//        let vc = EssayBrainstormViewController(nibName: "EssayBrainstormViewController", bundle: nil)
+//
+//        vc.getName = selectedLabel!
+//
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
+        selectedLabel = essayList[indexPath.row]
         performSegue(withIdentifier: "toBrainstorm", sender: self)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            essayList.remove(at: indexPath.row)
+            
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
 
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    func insertNewEssay() {
+        essayList.append(addEssayTextField.text!)
+        let indexPath = IndexPath(row: essayList.count-1, section: 0)
         
-        if(segue.identifier == "toBrainstorm") {
-            var vc = segue.destination as! EssayBrainstormViewController
-            vc.essayListName.text! = selectedLabel!
+        tableView.beginUpdates()
+        
+        tableView.insertRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
+        
+        addEssayTextField.text = ""
+        view.endEditing(true)
+        
+    }
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        if segue.identifier == "toBrainstorm" {
+            let essayBrainstormViewController = segue.destination as! EssayBrainstormViewController
+            essayBrainstormViewController.essayListName.text! = selectedLabel!
         }
     }
 
