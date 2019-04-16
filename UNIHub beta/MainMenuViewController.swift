@@ -11,6 +11,10 @@ import FirebaseAuth
 
 class MainMenuViewController: UIViewController {
     
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var button2: UIButton!
+    @IBOutlet weak var button3: UIButton!
+    
     @IBAction func toGrades(_ sender: UIButton) {
     }
     
@@ -35,6 +39,14 @@ class MainMenuViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(showLogOut), name: NSNotification.Name("showLogOut"), object: nil)
         
+            button1.layer.cornerRadius = 30
+            button1.clipsToBounds = true
+        
+            button2.layer.cornerRadius = 30
+            button2.clipsToBounds = true
+        
+            button3.layer.cornerRadius = 30
+            button3.clipsToBounds = true
     }
     
     @objc func showCollegeProfile() {

@@ -9,6 +9,7 @@
 import UIKit
 
 class EssayListTableViewCell: UITableViewCell {
+
     @IBOutlet weak var essayListName: UILabel!
     
     override func awakeFromNib() {

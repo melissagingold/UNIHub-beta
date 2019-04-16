@@ -16,6 +16,7 @@ protocol AddTask {
 class AddTaskViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var dueDateOutlet: UITextField!
     @IBOutlet weak var taskNameOutlet: UITextView!
+    @IBOutlet weak var button: UIButton!
     
     var dueDateText : String?
     
@@ -50,6 +51,19 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         
         view.addGestureRecognizer(tapGesture)
         
+        taskNameOutlet.text = "Add new task..."
+        taskNameOutlet.textColor = UIColor.lightGray
+        taskNameOutlet.font = UIFont(name: "Helvetica Neue", size: 22.0)
+        taskNameOutlet.returnKeyType = .done
+        taskNameOutlet.delegate = self
+        
+        placeHolderText()
+        
+        button.layer.cornerRadius = 30
+        button.clipsToBounds = true
+    }
+    
+    func placeHolderText() {
         taskNameOutlet.text = "Add new task..."
         taskNameOutlet.textColor = UIColor.lightGray
         taskNameOutlet.font = UIFont(name: "Helvetica Neue", size: 22.0)
