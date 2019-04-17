@@ -18,6 +18,12 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     var apScores: [String?] = []
     var satScores: [String?] = []
     
+    //tiles
+    @IBOutlet weak var viewTest: UIView!
+    @IBOutlet weak var scoreView: UIView!
+    @IBOutlet weak var apTestView: UIView!
+    @IBOutlet weak var sat2View: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         testPicker.selectRow(testPicker.numberOfRows(inComponent: 0)/2, inComponent: 0, animated: true)
@@ -28,8 +34,12 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         GPAText.becomeFirstResponder()
         
-        //        activitiesTableView.delegate = self
-        //        activitiesTableView.dataSource = self as? UITableViewDataSource
+        
+        //tiles
+        viewTest.isHidden = true
+        scoreView.isHidden = true
+        apTestView.isHidden = true
+        sat2View.isHidden = true
     }
     func pickerView(testPicker : UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let defaults = UserDefaults.standard
@@ -130,6 +140,46 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         grades.append(apDict)
         ref.setValue(grades)
     }
+    
+    
+    //tiles
+    @IBAction func buttonTesting(_ sender: UIButton) {
+        if viewTest.isHidden == false{
+            viewTest.isHidden = true
+        }
+        else{
+            viewTest.isHidden = false
+        }
+    }
+    
+    @IBAction func scoresButton(_ sender: UIButton) {
+        if scoreView.isHidden == false{
+            scoreView.isHidden = true
+        }
+        else{
+            scoreView.isHidden = false
+        }
+    }
+    
+    @IBAction func apTestTile(_ sender: UIButton) {
+        if apTestView.isHidden == false{
+            apTestView.isHidden = true
+        }
+        else{
+            apTestView.isHidden = false
+        }
+    }
+    
+    @IBAction func sat2Tile(_ sender: UIButton) {
+        if sat2View.isHidden == false{
+            sat2View.isHidden = true
+        }
+        else{
+            sat2View.isHidden = false
+        }
+    }
+    
+    
 }
 
 
