@@ -14,7 +14,8 @@ protocol AddCalendarTask {
 
 class AddCalendarTaskViewController: UIViewController {
     var key = ""
-    @IBOutlet weak var taskText: UITextField!
+    
+    @IBOutlet weak var taskText: UITextView!
     var delegate: AddCalendarTask?
     
 
