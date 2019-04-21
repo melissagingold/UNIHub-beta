@@ -19,7 +19,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     var myString = String()
     var yo = 1
-    var currentMonth = 1
+    var currentMonth = 3
+    var weekDay = 1
     var currentYear = 2019
     var currentLength = 0
     var selectedDay = -1
@@ -29,6 +30,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     var tasks : [String: [String]] = [:]
     var space = 1
     
+    func leapYear(year: Int)-> Bool{
+        if year % 4 == 0{
+            return true
+        }
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +48,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     @IBAction func downMonth(_ sender: UIButton) {
         selectedDay = -1
+        weekDay = (weekDay - length[(currentMonth+11)%12]%7 + 7)%7
+        print(weekDay)
         if currentMonth == 0{
             currentMonth = 11
             currentYear -= 1
@@ -53,6 +62,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     @IBAction func upMonth(_ sender: UIButton) {
         selectedDay = -1
+        weekDay = (weekDay + length[currentMonth])%7
+        print(weekDay)
         if currentMonth == 11{
             currentMonth = 0
             currentYear += 1
@@ -60,7 +71,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         else{
             currentMonth += 1
         }
-        print(tasks)
+        //print(tasks)
         updateCalendar()
     }
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -94,6 +105,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     func updateCalendar(){
         currentLength = length[currentMonth]
         monthLabel.text = months[currentMonth] + " " + String(currentYear)
+        if leapYear(year: currentYear){
+            length[1] = 29
+        }
+        else{
+            length[1] = 28
+        }
         myViewController.reloadData()
         tasksTable.reloadData()
     }
@@ -115,48 +132,59 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return currentLength
+        return currentLength + weekDay
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedDay = indexPath.row
-        if tasks.keys.contains(String(currentMonth) + " " +  String(selectedDay) + " " +  String(currentYear)){
-            tasksTable.isHidden = false
+        if indexPath.row+1 - weekDay > 0{
+            selectedDay = indexPath.row
+            if tasks.keys.contains(String(currentMonth) + " " +  String(selectedDay) + " " +  String(currentYear)){
+                tasksTable.isHidden = false
+            }
+            else{
+                tasksTable.isHidden = true
+            }
+            tasksTable.reloadData()
         }
         else{
-            tasksTable.isHidden = true
+            selectedDay = -1
         }
-        tasksTable.reloadData()
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarViewCell
-        
-        cell.label.text = String(indexPath.row+1)
+        if indexPath.row+1 - weekDay > 0{
+            cell.label.text = String(indexPath.row+1 - weekDay)
+        }
+        else{
+            cell.label.text = ""
+        }
         if tasks.keys.contains(String(currentMonth) + " " +  String(indexPath.row) + " " +  String(currentYear)) {
-            
             cell.dot.image = UIImage(named: "dot")
-            
         }
         else{
             cell.dot.image = UIImage()
         }
-        
-        let backgroundColorView = UIView()
-        backgroundColorView.backgroundColor = UIColor.red
-        cell.selectedBackgroundView = backgroundColorView
+        if indexPath.row+1 - weekDay > 0{
+            let backgroundColorView = UIView()
+            backgroundColorView.backgroundColor = UIColor.red
+            cell.selectedBackgroundView = backgroundColorView
+        }
+        else{
+            let backgroundColorView = UIView()
+            backgroundColorView.backgroundColor = UIColor.clear
+            cell.selectedBackgroundView = backgroundColorView
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return 6
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        print(tasks)
+        //print(tasks)
         if tasks.keys.contains(String(currentMonth) + " " +  String(selectedDay) + " " +  String(currentYear)) && tasks[String(currentMonth) + " " +  String(selectedDay) + " " +  String(currentYear)]!.count > indexPath.row{
             cell.textLabel?.text = String(tasks[String(currentMonth) + " " +  String(selectedDay) + " " +  String(currentYear)]![indexPath.row])
         }
