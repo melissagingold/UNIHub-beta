@@ -28,23 +28,40 @@ class EssayBrainstormViewController: UIViewController {
         
         if Int(sender.value) == 1 {
             supp1Constraint.constant = 20
+            supp2Constraint.constant = 415
+            supp3Constraint.constant = 415
+            supp4Constraint.constant = 415
+            supp5Constraint.constant = 415
             supp1Constraint.isActive = true
         }
         else if Int(sender.value) == 2 {
             supp2Constraint.constant = 20
+            supp3Constraint.constant = 415
+            supp4Constraint.constant = 415
+            supp5Constraint.constant = 415
             supp2Constraint.isActive = true
         }
         else if Int(sender.value) == 3 {
             supp3Constraint.constant = 20
+            supp4Constraint.constant = 415
+            supp5Constraint.constant = 415
             supp3Constraint.isActive = true
         }
         else if Int(sender.value) == 4 {
             supp4Constraint.constant = 20
+            supp5Constraint.constant = 415
             supp4Constraint.isActive = true
         }
         else if Int(sender.value) == 5 {
             supp5Constraint.constant = 20
             supp5Constraint.isActive = true
+        }
+        else {
+            supp1Constraint.constant = 415
+            supp2Constraint.constant = 415
+            supp3Constraint.constant = 415
+            supp4Constraint.constant = 415
+            supp5Constraint.constant = 415
         }
     }
     
