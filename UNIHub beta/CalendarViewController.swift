@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, AddCalendarTask{
     
@@ -39,6 +41,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadTasks()
         updateCalendar()
         tasksTable.reloadData()
         tasksTable.isHidden = true
@@ -46,6 +49,36 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         print("test")
 
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        saveTasks(tasks: tasks)
+        print("hello")
+    }
+    
+    func saveTasks(tasks: [String: [String]]) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("user/\(uid)/calTasks")
+        ref.setValue(tasks)
+    }
+    func loadTasks() {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("user/\(uid)/calTasks")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+                if let data = snapshot.value as? [String: [String]] {
+                self.tasks = data
+            }
+            self.myViewController.reloadData()
+        }
+        
+    }
+    func loadTasks(tasks: [String: [String]]) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("user/\(uid)/calTasks")
+        ref.setValue(tasks)
+    }
+    
+    
+    
+        
     @IBAction func downMonth(_ sender: UIButton) {
         selectedDay = -1
         weekDay = (weekDay - length[(currentMonth+11)%12]%7 + 7)%7
