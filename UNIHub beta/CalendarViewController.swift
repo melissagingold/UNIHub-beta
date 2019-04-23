@@ -70,14 +70,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         
     }
-    func loadTasks(tasks: [String: [String]]) {
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        let ref = Database.database().reference().child("user/\(uid)/calTasks")
-        ref.setValue(tasks)
-    }
-    
-    
-    
         
     @IBAction func downMonth(_ sender: UIButton) {
         selectedDay = -1
