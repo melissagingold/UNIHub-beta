@@ -1404,8 +1404,8 @@
                                 </connections>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="notes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KeX-HP-Ygf">
-                                <rect key="frame" x="10" y="251" width="394" height="100"/>
-                                <color key="backgroundColor" red="0.9882352941176471" green="1" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="251" width="374" height="100"/>
+                                <color key="backgroundColor" red="0.92941176470588238" green="0.792156862745098" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="hfe-R4-iLJ"/>
                                 </constraints>
@@ -1416,7 +1416,7 @@
                                 </connections>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.043137254901960784" green="0.12156862745098039" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fV0-TK-maG" firstAttribute="leading" secondItem="cWZ-ha-2jq" secondAttribute="leading" constant="20" id="3Tx-Is-ObS"/>
                             <constraint firstItem="cWZ-ha-2jq" firstAttribute="trailing" secondItem="6gQ-WX-x4L" secondAttribute="trailing" constant="20" id="7Dx-rn-lNe"/>
@@ -1430,8 +1430,8 @@
                             <constraint firstItem="Txd-vQ-aoT" firstAttribute="top" secondItem="fV0-TK-maG" secondAttribute="bottom" constant="5" id="R6n-k1-Kry"/>
                             <constraint firstItem="cWZ-ha-2jq" firstAttribute="bottom" secondItem="Ne5-2K-qn8" secondAttribute="bottom" id="RbA-D7-NHD"/>
                             <constraint firstItem="cWZ-ha-2jq" firstAttribute="trailing" secondItem="fV0-TK-maG" secondAttribute="trailing" constant="20" id="X72-9o-UJP"/>
-                            <constraint firstItem="KeX-HP-Ygf" firstAttribute="leading" secondItem="cWZ-ha-2jq" secondAttribute="leading" constant="10" id="YgL-Va-Bkd"/>
-                            <constraint firstItem="cWZ-ha-2jq" firstAttribute="trailing" secondItem="KeX-HP-Ygf" secondAttribute="trailing" constant="10" id="cvl-Bh-oFx"/>
+                            <constraint firstItem="KeX-HP-Ygf" firstAttribute="leading" secondItem="cWZ-ha-2jq" secondAttribute="leading" constant="20" id="YgL-Va-Bkd"/>
+                            <constraint firstItem="cWZ-ha-2jq" firstAttribute="trailing" secondItem="KeX-HP-Ygf" secondAttribute="trailing" constant="20" id="cvl-Bh-oFx"/>
                             <constraint firstItem="PwA-r8-Kya" firstAttribute="leading" secondItem="0aP-XK-f2g" secondAttribute="trailing" constant="9" id="feQ-8c-4FO"/>
                             <constraint firstItem="Ne5-2K-qn8" firstAttribute="leading" secondItem="cWZ-ha-2jq" secondAttribute="leading" id="kc4-O8-8My"/>
                             <constraint firstItem="6gQ-WX-x4L" firstAttribute="leading" secondItem="Txd-vQ-aoT" secondAttribute="trailing" constant="5" id="lJm-G7-rn3"/>
@@ -1492,7 +1492,7 @@
             <objects>
                 <navigationController id="NzE-1m-Eph" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="wuS-bk-lKu">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="98"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
