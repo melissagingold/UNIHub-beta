@@ -65,13 +65,6 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
             }, completion: { (comp) in
                 (tableView.cellForRow(at: indexPath) as! CollegeInfoCell).dropDown.transform = CGAffineTransform.identity
                 tableView.reloadSections(IndexSet.init(integer: indexPath.section), with: .none)
-//                if !self.collegeData[indexPath.section].opened {
-//                    (tableView.cellForRow(at: indexPath) as! CollegeInfoCell).dropDown.image = #imageLiteral(resourceName: "dropDown")
-//                }
-//                else {
-//                    (tableView.cellForRow(at: indexPath) as! CollegeInfoCell).dropDown.image = UIImage(cgImage: #imageLiteral(resourceName: "dropDown").cgImage!, scale: 1, orientation: .downMirrored)
-//                }
-                
             })
             
         }
@@ -88,6 +81,9 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        notes.layer.cornerRadius = 15
+        notes.clipsToBounds = true
         
         setCollegeData()
         collegeLocation.numberOfLines = 1
