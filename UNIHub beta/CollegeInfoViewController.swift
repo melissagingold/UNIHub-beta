@@ -57,6 +57,7 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let statName = collegeData[indexPath.section].items[indexPath.row-1].name
         if indexPath.row == 0 {
             collegeData[indexPath.section].opened = !collegeData[indexPath.section].opened
             UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
@@ -66,7 +67,21 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
                 (tableView.cellForRow(at: indexPath) as! CollegeInfoCell).dropDown.transform = CGAffineTransform.identity
                 tableView.reloadSections(IndexSet.init(integer: indexPath.section), with: .none)
             })
-            
+        }
+        else if statName == "Admission Rate" {
+            createAlert(title: statName, message: "Percentage of applicants admitted into the college.")
+        }
+        else if statName == "Average SAT Score" {
+            createAlert(title: statName, message: "Average SAT score of students attending the college.")
+        }
+        else if statName == "Midpoint ACT Score" {
+            createAlert(title: statName, message: "Midpoint ACT score of students attending the college.")
+        }
+        else if statName == "Average Net Price" {
+            createAlert(title: statName, message: "Annual cost of attendence at the college consisting of tuition fees and living expenses minus average aid given to student.")
+        }
+        else if statName == "Federal Loan Rate" {
+            createAlert(title: statName, message: "Percentage of students attending the college that receive a federal loan.")
         }
     }
 
@@ -144,4 +159,14 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
         }
     }
 
+    func createAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
