@@ -8,13 +8,24 @@
 
 import UIKit
 
-class EssayBrainstormViewController: UIViewController {
+class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
 
     var getName = String()
+    
+    var essay : Essay?
 
     @IBOutlet weak var essayListName: UILabel!
     @IBOutlet weak var essaySlider: UISlider!
     @IBOutlet weak var suppLabel: UILabel!
+    
+    @IBOutlet weak var brainstormMain: UITextView!
+    @IBOutlet weak var wordLimit: UITextView!
+    
+    @IBOutlet weak var supp1: UITextView!
+    @IBOutlet weak var supp2: UITextView!
+    @IBOutlet weak var supp3: UITextView!
+    @IBOutlet weak var supp4: UITextView!
+    @IBOutlet weak var supp5: UITextView!
     
     @IBOutlet weak var supp1Constraint: NSLayoutConstraint!
     @IBOutlet weak var supp2Constraint: NSLayoutConstraint!
@@ -65,23 +76,56 @@ class EssayBrainstormViewController: UIViewController {
         }
     }
     
-    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.isEqual(brainstormMain){
+            essay?.brainstorms[1] = textView.text
+        }
+        else if textView.isEqual(supp1){
+            essay?.brainstorms[2] = textView.text
+        }
+        else if textView.isEqual(supp2){
+            essay?.brainstorms[3] = textView.text
+        }
+        else if textView.isEqual(supp3){
+            essay?.brainstorms[4] = textView.text
+        }
+        else if textView.isEqual(supp4){
+            essay?.brainstorms[5] = textView.text
+        }
+        else if textView.isEqual(supp5){
+            essay?.brainstorms[6] = textView.text
+        }
+        else if textView.isEqual(wordLimit){
+            essay?.brainstorms[0] = textView.text
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        essayListName.text! = getName
+        essayListName.text = essay?.name
+        wordLimit.text = essay?.brainstorms[0]
+        brainstormMain.text = essay?.brainstorms[1]
+        supp1.text = essay?.brainstorms[2]
+        supp2.text = essay?.brainstorms[3]
+        supp3.text = essay?.brainstorms[4]
+        supp4.text = essay?.brainstorms[5]
+        supp5.text = essay?.brainstorms[6]
+        
+        
     }
+
+}
+
+class Essay {
+    var name : String
+    var brainstorms : [String]
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    init(name : String, wordCount: String) {
+        self.name = name
+        self.brainstorms = []
+        self.brainstorms.append(wordCount)
+        self.brainstorms.append(contentsOf: ["","","","","",""])
     }
-    */
-
 }
