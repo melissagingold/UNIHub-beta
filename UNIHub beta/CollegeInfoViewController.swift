@@ -57,7 +57,10 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let statName = collegeData[indexPath.section].items[indexPath.row-1].name
+        var statName = ""
+        if indexPath.row > 0 {
+            statName = collegeData[indexPath.section].items[indexPath.row-1].name
+        }
         if indexPath.row == 0 {
             collegeData[indexPath.section].opened = !collegeData[indexPath.section].opened
             UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
