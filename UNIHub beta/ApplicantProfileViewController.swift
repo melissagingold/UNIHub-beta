@@ -23,12 +23,16 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
     
     //variable declarations
     var tableViewData = [cellData]()
-    var newActivs : [Activity]?
+    var newActivs : [Activity]? = []
     
     //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        saveActivs(newActivs: newActivs!)
     }
     
     //conecting the view controllers
@@ -43,11 +47,22 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
     
     
     //firebase
+    func saveActivs(newActivs: [Activity]?) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("user/\(uid)/Activities")
+        var activities : [[String : [String?]]] = [[:]]
+        for activity in newActivs! {
+            activities.append([activity.name : [activity.honors, activity.position, activity.participation]])
+        }
+        ref.setValue(activities)
+    }
+    
+    
     func loadActivs(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Activities")
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            if let data = snapshot.value as? [String : Bool] {
+            if let data = snapshot.value as? [String: [String]] {
                 for str in (data.keys) {
                     let activ = Activity(name: str, participation: str, position: str, honors: str)
                     self.newActivs?.append(activ)
@@ -118,6 +133,7 @@ class Activity {
         self.participation = participation ?? ""
         self.position = position ?? ""
         self.honors = honors ?? ""
+
     }
     
     func getName() -> String {

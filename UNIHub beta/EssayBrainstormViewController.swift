@@ -46,6 +46,7 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
             supp1Constraint.isActive = true
         }
         else if Int(sender.value) == 2 {
+            supp1Constraint.constant = 20
             supp2Constraint.constant = 20
             supp3Constraint.constant = 415
             supp4Constraint.constant = 415
@@ -53,17 +54,26 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
             supp2Constraint.isActive = true
         }
         else if Int(sender.value) == 3 {
+            supp1Constraint.constant = 20
+            supp2Constraint.constant = 20
             supp3Constraint.constant = 20
             supp4Constraint.constant = 415
             supp5Constraint.constant = 415
             supp3Constraint.isActive = true
         }
         else if Int(sender.value) == 4 {
+            supp1Constraint.constant = 20
+            supp2Constraint.constant = 20
+            supp3Constraint.constant = 20
             supp4Constraint.constant = 20
             supp5Constraint.constant = 415
             supp4Constraint.isActive = true
         }
         else if Int(sender.value) == 5 {
+            supp1Constraint.constant = 20
+            supp2Constraint.constant = 20
+            supp3Constraint.constant = 20
+            supp4Constraint.constant = 20
             supp5Constraint.constant = 20
             supp5Constraint.isActive = true
         }
@@ -98,6 +108,11 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
         else if textView.isEqual(wordLimit){
             essay?.brainstorms[0] = textView.text
         }
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
         
     }
     
@@ -113,7 +128,25 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
         supp4.text = essay?.brainstorms[5]
         supp5.text = essay?.brainstorms[6]
         
-        
+        if supp5.text! != "" {
+            essaySlider.setValue(5, animated: true)
+        }
+        else if supp4.text! != "" {
+            essaySlider.setValue(4, animated: true)
+        }
+        else if supp3.text! != "" {
+            essaySlider.setValue(3, animated: true)
+        }
+        else if supp2.text! != "" {
+            essaySlider.setValue(2, animated: true)
+        }
+        else if supp1.text! != "" {
+            essaySlider.setValue(1, animated: true)
+        }
+        else{
+           essaySlider.setValue(0, animated: true)
+        }
+        sliderAction(essaySlider)
     }
 
 }
@@ -122,10 +155,8 @@ class Essay {
     var name : String
     var brainstorms : [String]
     
-    init(name : String, wordCount: String) {
+    init(name : String) {
         self.name = name
-        self.brainstorms = []
-        self.brainstorms.append(wordCount)
-        self.brainstorms.append(contentsOf: ["","","","","",""])
+        self.brainstorms = ["","","","","","",""]
     }
 }
