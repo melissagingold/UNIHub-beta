@@ -79,7 +79,6 @@ class College {
                         studentSize: result?.student_size,
                         admissionRate: result?.admission_rate
                     )
-                    print(college.url)
                     college.userNotes = notes
                     complete(college)
                 }

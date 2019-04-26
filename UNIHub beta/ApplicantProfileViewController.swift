@@ -34,7 +34,6 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("another test")
         saveActivs()
     }
     
@@ -51,12 +50,10 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
     
     //firebase
     func saveActivs() {
-        print("test")
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Activities")
         var activities = [[String : [String]]]()
         for activity in tableViewData {
-            print(activity.title)
             activities.append([activity.title : [activity.sectionData[0], activity.sectionData[1], activity.sectionData[2]]])
         }
         ref.setValue(activities)
@@ -73,7 +70,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
                     for text in Array(activity.values)[0]{
                         details.append(text)
                     }
-                    var addActivity = cellData(opened: false, title: Array(activity.keys)[0], sectionData: details)
+                    let addActivity = cellData(opened: false, title: Array(activity.keys)[0], sectionData: details)
                     
                     self.tableViewData.append(addActivity)
                 }
