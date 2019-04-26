@@ -120,7 +120,7 @@ class EssayListTableViewController: UIViewController, UITableViewDelegate, UITab
                     for text in Array(essay.values)[0]{
                         brainstorms.append(text)
                     }
-                    var addEssay = Essay(name: Array(essay.keys)[0])
+                    let addEssay = Essay(name: Array(essay.keys)[0])
                     addEssay.brainstorms = brainstorms
                     
                     self.essayList?.append(addEssay)

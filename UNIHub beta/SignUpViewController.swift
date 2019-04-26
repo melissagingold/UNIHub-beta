@@ -22,7 +22,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if user != nil, error == nil {
-                print("user created")
                 self.dismiss(animated: true, completion: nil)
             }
             else {
