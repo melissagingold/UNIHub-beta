@@ -40,10 +40,23 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
         
         performSegue(withIdentifier: "backToActivities", sender: self)
         }
+    
+    @IBAction func backButton(_ sender: UIButton) {
+       
+        performSegue(withIdentifier: "backToActivities", sender: self)    
+    }
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ApplicantProfileViewController
+        
+        if activHon.text != nil{
         vc.tableViewData.append(cellData(opened: false, title: "Activity #\(vc.tableViewData.count+1):" + activName.text!,
                                          sectionData: ["Participation Grade Level:" + activPartic.text!,"Position/Leadership:" + activPosit.text!,"Honors/Acomplishments:" + activHon.text!]))
+        }
+        
+
         vc.tableView.reloadData()
         addToFB()
     }
