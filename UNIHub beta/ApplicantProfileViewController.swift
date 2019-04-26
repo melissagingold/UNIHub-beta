@@ -23,16 +23,19 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
     
     //variable declarations
     var tableViewData = [cellData]()
-    var newActivs : [Activity]? = []
+    var newActivs : [Activity]?
     
     //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        newActivs = []
+        loadActivs()
         tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        saveActivs(newActivs: newActivs!)
+        print("another test")
+        saveActivs()
     }
     
     //conecting the view controllers
@@ -47,12 +50,14 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
     
     
     //firebase
-    func saveActivs(newActivs: [Activity]?) {
+    func saveActivs() {
+        print("test")
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Activities")
-        var activities : [[String : [String?]]] = [[:]]
-        for activity in newActivs! {
-            activities.append([activity.name : [activity.honors, activity.position, activity.participation]])
+        var activities = [[String : [String]]]()
+        for activity in tableViewData {
+            print(activity.title)
+            activities.append([activity.title : [activity.sectionData[0], activity.sectionData[1], activity.sectionData[2]]])
         }
         ref.setValue(activities)
     }
@@ -62,10 +67,15 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Activities")
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            if let data = snapshot.value as? [String: [String]] {
-                for str in (data.keys) {
-                    let activ = Activity(name: str, participation: str, position: str, honors: str)
-                    self.newActivs?.append(activ)
+            if let data = snapshot.value as? [[String: [String]]] {
+                for activity in data {
+                    var details = [String]()
+                    for text in Array(activity.values)[0]{
+                        details.append(text)
+                    }
+                    var addActivity = cellData(opened: false, title: Array(activity.keys)[0], sectionData: details)
+                    
+                    self.tableViewData.append(addActivity)
                 }
             }
             self.tableView.reloadData()
@@ -87,20 +97,23 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else{return UITableViewCell()}
         if indexPath.row == 0{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else{return UITableViewCell()}
-            cell.textLabel?.text = tableViewData[indexPath.section].title
-            
-            return cell
+            cell.textLabel?.text = "Activity #\(indexPath.section+1): " + tableViewData[indexPath.section].title
         }
-        else{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else{return UITableViewCell()}
-            
-            cell.textLabel?.text = tableViewData[indexPath.section].sectionData[indexPath.row-1]
-            
-            return cell
+        else if indexPath.row == 1{
+            cell.textLabel?.text = "Participation Grade Level: " + tableViewData[indexPath.section].sectionData[indexPath.row-1]
+
         }
+        else if indexPath.row == 2{
+            cell.textLabel?.text = "Position/Leadership: " + tableViewData[indexPath.section].sectionData[indexPath.row-1]
+            
+        }
+        else if indexPath.row == 3{
+            cell.textLabel?.text = "Honors/Acomplishments: " + tableViewData[indexPath.section].sectionData[indexPath.row-1]
+            
+        }
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
