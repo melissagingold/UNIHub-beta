@@ -23,6 +23,8 @@ class EssayListTableViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         essayList = []
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        loadEssays()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,7 +80,7 @@ class EssayListTableViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     func insertNewEssay() {
-        essayList?.append(Essay(name: addEssayTextField.text!, wordCount: ""))
+        essayList?.append(Essay(name: addEssayTextField.text!))
         let indexPath = IndexPath(row: essayList!.count-1, section: 0)
         
         tableView.beginUpdates()
@@ -101,7 +103,7 @@ class EssayListTableViewController: UIViewController, UITableViewDelegate, UITab
         
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Essays")
-        var essays : [[String : [String]]] = [[:]]
+        var essays = [[String : [String]]]()
         for essay in essayList! {
             essays.append([essay.name : essay.brainstorms])
         }
@@ -112,9 +114,16 @@ class EssayListTableViewController: UIViewController, UITableViewDelegate, UITab
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Essays")
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            if let data = snapshot.value as? [String : [String]] {
-                for str in (data.keys) {
-                   
+            if let data = snapshot.value as? [[String : [String]]] {
+                for essay in data {
+                    var brainstorms = [String]()
+                    for text in Array(essay.values)[0]{
+                        brainstorms.append(text)
+                    }
+                    var addEssay = Essay(name: Array(essay.keys)[0])
+                    addEssay.brainstorms = brainstorms
+                    
+                    self.essayList?.append(addEssay)
                 }
             }
             self.tableView.reloadData()
