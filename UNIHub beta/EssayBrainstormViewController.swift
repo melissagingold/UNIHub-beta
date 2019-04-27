@@ -147,8 +147,8 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
            essaySlider.setValue(0, animated: true)
         }
         sliderAction(essaySlider)
-    }
 
+    }
 }
 
 class Essay {
