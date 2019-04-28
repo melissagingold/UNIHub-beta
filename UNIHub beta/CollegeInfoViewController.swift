@@ -10,6 +10,8 @@ import UIKit
 
 class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    var navBarConstraint: NSLayoutConstraint?
+    
     @IBOutlet weak var notes: UITextView!
     @IBOutlet weak var infoTableView: UITableView!
     @IBOutlet weak var collegeName: UILabel!
