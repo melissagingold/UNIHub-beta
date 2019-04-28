@@ -65,11 +65,6 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             scoreText.text = actScore
         }
     }
-//    func pickerView(testPicker : UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        let defaults = UserDefaults.standard
-//        defaults.set(row, forKey: "row")
-//        defaults.synchronize()
-//    }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return test.count

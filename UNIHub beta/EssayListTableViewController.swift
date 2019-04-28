@@ -54,17 +54,6 @@ class EssayListTableViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let Storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let BvC = Storyboard.instantiateViewController(withIdentifier: "EssayBrainstormViewController") as! EssayBrainstormViewController
-        
-//        selectedLabel = self.essayList[indexPath.row]
-//
-//        let vc = EssayBrainstormViewController(nibName: "EssayBrainstormViewController", bundle: nil)
-//
-//        vc.getName = selectedLabel!
-//
-//        self.navigationController?.pushViewController(vc, animated: true)
-        
         selectedEssay = essayList?[indexPath.row]
         performSegue(withIdentifier: "toBrainstorm", sender: self)
     }
