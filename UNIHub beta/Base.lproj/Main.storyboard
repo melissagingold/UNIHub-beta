@@ -524,12 +524,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="E6n-b3-rpc">
-                                <rect key="frame" x="278" y="469" width="118" height="11"/>
-                                <connections>
-                                    <action selector="sliderAction:" destination="eQb-vY-7y8" eventType="valueChanged" id="weg-z7-xJh"/>
-                                </connections>
-                            </slider>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CAD-gO-byg">
                                 <rect key="frame" x="20" y="461" width="80" height="35"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="1" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
