@@ -37,13 +37,9 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
     
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
-        if activName.text! == "" {
-            createAlert(title: "WARNING", message: "No activity name has been entered!")
+        
+        performSegue(withIdentifier: "backToActivities", sender: self)
         }
-        else {
-            performSegue(withIdentifier: "backToActivities", sender: self)
-        }
-    }
     
     @IBAction func backButton(_ sender: UIButton) {
        
@@ -54,24 +50,25 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ApplicantProfileViewController
-
-        if activName.text! != "" {
-            vc.tableViewData.append(cellData(opened: false, title: activName.text!,
+        
+        if activHon.text != nil{
+        vc.tableViewData.append(cellData(opened: false, title: activName.text!,
                                          sectionData: [activPartic.text!,activPosit.text!,activHon.text!]))
         }
         
 
         vc.tableView.reloadData()
+        addToFB()
     }
     
-    func createAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+    func addToFB(){
+        let key = refActivity.childByAutoId().key
         
-        alert.addAction(UIAlertAction(title: "Enter Task", style: UIAlertAction.Style.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
+        let activity = ["id": key,"activityName":activName.text,"activityParticipation":activPartic.text,"activityPosition":activPosit.text,"activityHonors":activHon.text
+        ]
         
-        self.present(alert, animated: true, completion: nil)
+        refActivity.child(key ?? "").setValue(activity)
+        
     }
     
 }

@@ -47,6 +47,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
             tableView.reloadData()
     }
     
+    
     //firebase
     func saveActivs() {
         guard let uid = Auth.auth().currentUser?.uid else {return}

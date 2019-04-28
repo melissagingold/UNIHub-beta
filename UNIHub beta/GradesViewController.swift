@@ -15,11 +15,8 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     //
     @IBOutlet weak var testPicker: UIPickerView!
     let test = ["SAT:", "ACT:"]
-    var apScores: String?
-    var satScores: String?
-    var satScore: String?
-    var actScore: String?
-    var gpa: String?
+    var apScores: [String?] = []
+    var satScores: [String?] = []
     
     //tiles
     @IBOutlet weak var viewTest: UIView!
@@ -29,21 +26,13 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        apScores = ""
-        satScores = ""
-        satScore = ""
-        actScore = ""
-        gpa = ""
-        
-        loadGrades()
         testPicker.selectRow(testPicker.numberOfRows(inComponent: 0)/2, inComponent: 0, animated: true)
         
         // Do any additional setup after loading the view.
         GPAText.delegate = self
-        //GPAText.allowsEditingTextAttributes = true
         scoreText.delegate = self
         
-        //GPAText.becomeFirstResponder()
+        GPAText.becomeFirstResponder()
         
         
         //tiles
@@ -52,24 +41,11 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         apTestView.isHidden = true
         sat2View.isHidden = true
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        saveGrades()
+    func pickerView(testPicker : UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let defaults = UserDefaults.standard
+        defaults.set(row, forKey: "row")
+        defaults.synchronize()
     }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if row == 0{
-            scoreText.text = satScore
-        }
-        else {
-            scoreText.text = actScore
-        }
-    }
-//    func pickerView(testPicker : UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        let defaults = UserDefaults.standard
-//        defaults.set(row, forKey: "row")
-//        defaults.synchronize()
-//    }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return test.count
@@ -88,19 +64,14 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var scoreText: UITextField!
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.isEqual(GPAText) {
-            gpa = GPAText.text
-            GPAText.resignFirstResponder()
+        if GPAText.isFirstResponder{
+            //gpaTests.append(GPAText.text)
+            scoreText.becomeFirstResponder()
         }
-        else if textField.isEqual(scoreText) {
-            if testPicker.selectedRow(inComponent: 0) == 0{
-                satScore = scoreText.text
-            }
-            else {
-                actScore = scoreText.text
-            }
+        else{
             self.view.endEditing(true)
             scoreText.resignFirstResponder()
+           // gpaTests.append(scoreText.text)
         }
         return true
     }
@@ -112,17 +83,22 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var APTestList2: UITextView!
     
     @IBAction func addAPTest(_ sender: UIButton) {
-        if let text = addAPTestText.text, let text2 = addAPTestScore.text {
+        apScores.append("\(addAPTestText.text):\(addAPTestScore.text)")
+        
+        if let text = addAPTestText.text{
             if text == "" {
                 return
             }
             APTestList2.text?.append("\(text)")
             addAPTestText.text = ""
             addAPTestScore.resignFirstResponder()
+        }
+        
+        if let text2 = addAPTestScore.text{
             if text2 == ""{
                 return
             }
-            APTestList2.text?.append(": \(text2)\n")
+            APTestList2.text?.append(":\(text2)\n")
             addAPTestScore.text = ""
             addAPTestText.resignFirstResponder()
         }
@@ -134,51 +110,34 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var addSAT2Score: UITextField!
     
     @IBAction func addSAT2Test(_ sender: UIButton) {
-        if let text = addSAT2Text.text, let text2 = addSAT2Score.text {
+        satScores.append("\(addSAT2Text.text):\(addSAT2Score.text)")
+        if let text = addSAT2Text.text{
             if text == ""{
                 return
             }
             SAT2List.text?.append("\(text)")
             addSAT2Text.text = ""
             addSAT2Text.resignFirstResponder()
+        }
+        if let text2 = addSAT2Score.text{
             if text2 == ""{
                 return
             }
-            SAT2List.text?.append(": \(text2)\n")
+            SAT2List.text?.append(":\(text2)\n")
             addSAT2Score.text = ""
             addSAT2Text.resignFirstResponder()
-        }
-    }
-    
-    func loadGrades(){
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        let ref = Database.database().reference().child("user/\(uid)/Grades")
-        ref.observeSingleEvent(of: .value) { (snapshot) in
-            if let data = snapshot.value as? [[String : String]] {
-                self.gpa = Array(data[0].values)[0]
-                self.GPAText.text = self.gpa
-                self.satScore =  Array(data[1].values)[0]
-                self.actScore =  Array(data[2].values)[0]
-                self.apScores =  Array(data[3].values)[0]
-                self.APTestList2.text = self.apScores
-                self.satScores =  Array(data[4].values)[0]
-                self.SAT2List.text = self.satScores
-            }
-            self.testPicker.reloadAllComponents()
         }
     }
     
     func saveGrades(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Grades")
-        var grades = [[String : String]]()
-        apScores = APTestList2.text
-        satScores = SAT2List.text
-        grades.append(["GPA" : gpa!])
-        grades.append(["SAT" : satScore!])
-        grades.append(["ACT" : actScore!])
-        grades.append(["AP" : apScores!])
-        grades.append(["SAT2" : satScores!])
+        var grades = [[String: String]]()
+        var apDict = [String : String]()
+        for score in apScores {
+            //apDict.updateValue(String(Array((score?.split(separator: ":"))!)[1]), forKey: score?.split(separator: ":")[0])
+        }
+        grades.append(apDict)
         ref.setValue(grades)
     }
     
@@ -186,12 +145,10 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     //tiles
     @IBAction func buttonTesting(_ sender: UIButton) {
         if viewTest.isHidden == false{
-            //GPAText.resignFirstResponder()
             viewTest.isHidden = true
         }
         else{
             viewTest.isHidden = false
-            //GPAText.becomeFirstResponder()
         }
     }
     
