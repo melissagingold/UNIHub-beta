@@ -10,7 +10,7 @@ import UIKit
 
 class SideMenuTableViewController: UITableViewController {
 
-    let backgroundImage = UIImage(named: "argyle.png")
+    let backgroundImage = UIImage(named: "gray.png")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +45,6 @@ class SideMenuTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        cell.backgroundColor = UIColor(white: 0.97, alpha: 1)
     }
 }
