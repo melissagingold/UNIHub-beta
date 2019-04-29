@@ -12,6 +12,7 @@ import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
 
+// protocol that can be called in the main activity class as well (ApplicantProfileViewController)
 protocol AddActivity {
     func addActivity(name:String, participation:String, position:String, honors:String)
 }
@@ -19,13 +20,14 @@ protocol AddActivity {
 
 class AddActivityViewController: UIViewController, UITextFieldDelegate{
 
+    // variables
     @IBOutlet weak var activName: UITextField!
     @IBOutlet weak var activPartic: UITextField!
     @IBOutlet weak var activPosit: UITextField!
     @IBOutlet weak var activHon: UITextField!
     var refActivity = DatabaseReference()
     
-    
+    // delegate for the addActivity function
     var delegate: AddActivity?
     
     override func viewDidLoad() {
@@ -34,24 +36,14 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
         refActivity = DatabaseReference().database.reference().child("activities")
     }
     
-    
-    
-    @IBAction func addButton(_ sender: UIBarButtonItem) {
-        if activName.text! == "" {
-            createAlert(title: "WARNING", message: "No activity name has been entered!")
-        }
-        else {
-            performSegue(withIdentifier: "backToActivities", sender: self)
-        }
-    }
-    
+    // goes back to the activity list
     @IBAction func backButton(_ sender: UIButton) {
        
         performSegue(withIdentifier: "backToActivities", sender: self)    
     }
     
     
-    
+    // to prevent nil error - will add / save to firebase only if the activity has text entered
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ApplicantProfileViewController
 
@@ -62,16 +54,6 @@ class AddActivityViewController: UIViewController, UITextFieldDelegate{
         
 
         vc.tableView.reloadData()
-    }
-    
-    func createAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        
-        alert.addAction(UIAlertAction(title: "Enter Task", style: UIAlertAction.Style.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
     }
     
 }

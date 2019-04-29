@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 
-class Style {
+class Style { 
     enum TextStyle {
         case navigationBar
         case title

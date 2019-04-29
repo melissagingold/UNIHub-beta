@@ -9,15 +9,15 @@
 import UIKit
 
 class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
-
-    var getName = String()
     
     var essay : Essay?
 
+    // label / slider variables
     @IBOutlet weak var essayListName: UILabel!
     @IBOutlet weak var essaySlider: UISlider!
     @IBOutlet weak var suppLabel: UILabel!
     
+    // text view variables
     @IBOutlet weak var brainstormMain: UITextView!
     @IBOutlet weak var wordLimit: UITextView!
     
@@ -27,6 +27,7 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var supp4: UITextView!
     @IBOutlet weak var supp5: UITextView!
     
+    // constraint variables
     @IBOutlet weak var supp1Constraint: NSLayoutConstraint!
     @IBOutlet weak var supp2Constraint: NSLayoutConstraint!
     @IBOutlet weak var supp3Constraint: NSLayoutConstraint!
@@ -34,31 +35,32 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var supp5Constraint: NSLayoutConstraint!
     
     
+    // changing constraints with slider value - will bring supplementals onto the screen
     @IBAction func sliderAction(_ sender: UISlider) {
         suppLabel.text = String(Int(sender.value))
         
         if Int(sender.value) == 1 {
             supp1Constraint.constant = 20
-            supp2Constraint.constant = 415
-            supp3Constraint.constant = 415
-            supp4Constraint.constant = 415
-            supp5Constraint.constant = 415
+            supp2Constraint.constant = 850
+            supp3Constraint.constant = 850
+            supp4Constraint.constant = 850
+            supp5Constraint.constant = 850
             supp1Constraint.isActive = true
         }
         else if Int(sender.value) == 2 {
             supp1Constraint.constant = 20
             supp2Constraint.constant = 20
-            supp3Constraint.constant = 415
-            supp4Constraint.constant = 415
-            supp5Constraint.constant = 415
+            supp3Constraint.constant = 850
+            supp4Constraint.constant = 850
+            supp5Constraint.constant = 850
             supp2Constraint.isActive = true
         }
         else if Int(sender.value) == 3 {
             supp1Constraint.constant = 20
             supp2Constraint.constant = 20
             supp3Constraint.constant = 20
-            supp4Constraint.constant = 415
-            supp5Constraint.constant = 415
+            supp4Constraint.constant = 850
+            supp5Constraint.constant = 850
             supp3Constraint.isActive = true
         }
         else if Int(sender.value) == 4 {
@@ -66,7 +68,7 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
             supp2Constraint.constant = 20
             supp3Constraint.constant = 20
             supp4Constraint.constant = 20
-            supp5Constraint.constant = 415
+            supp5Constraint.constant = 850
             supp4Constraint.isActive = true
         }
         else if Int(sender.value) == 5 {
@@ -78,14 +80,15 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
             supp5Constraint.isActive = true
         }
         else {
-            supp1Constraint.constant = 415
-            supp2Constraint.constant = 415
-            supp3Constraint.constant = 415
-            supp4Constraint.constant = 415
-            supp5Constraint.constant = 415
+            supp1Constraint.constant = 850
+            supp2Constraint.constant = 850
+            supp3Constraint.constant = 850
+            supp4Constraint.constant = 850
+            supp5Constraint.constant = 850
         }
     }
     
+    // for firebase- adding the text from each textview to brainstorms list to save if text was entered
     func textViewDidChange(_ textView: UITextView) {
         if textView.isEqual(brainstormMain){
             essay?.brainstorms[1] = textView.text
@@ -119,6 +122,7 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // setting as default values of the essay variable (for saving to firebase)
         essayListName.text = essay?.name
         wordLimit.text = essay?.brainstorms[0]
         brainstormMain.text = essay?.brainstorms[1]
@@ -128,6 +132,7 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
         supp4.text = essay?.brainstorms[5]
         supp5.text = essay?.brainstorms[6]
         
+        // for keeping the supplemental text views on screen
         if supp5.text! != "" {
             essaySlider.setValue(5, animated: true)
         }
@@ -151,6 +156,7 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
     }
 }
 
+// essay class- holds default values for each essay (name and text from each textview)
 class Essay {
     var name : String
     var brainstorms : [String]

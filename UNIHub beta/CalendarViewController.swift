@@ -51,7 +51,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     override func viewWillDisappear(_ animated: Bool) {
         saveTasks(tasks: tasks)
-        print("hello")
     }
     
     func saveTasks(tasks: [String: [String]]) {

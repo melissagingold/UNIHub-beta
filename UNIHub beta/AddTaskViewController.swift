@@ -14,6 +14,7 @@ protocol AddTask {
 }
 
 class AddTaskViewController: UIViewController, UITextViewDelegate {
+    // variables
     @IBOutlet weak var dueDateOutlet: UITextField!
     @IBOutlet weak var taskNameOutlet: UITextView!
     @IBOutlet weak var button: UIButton!
@@ -41,6 +42,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // default for the date picker
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .date
         datePicker?.addTarget(self, action: #selector(AddTaskViewController.dateChanged(datePicker:)), for: .valueChanged)
@@ -51,12 +53,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         
         view.addGestureRecognizer(tapGesture)
         
-        taskNameOutlet.text = "Add new task..."
-        taskNameOutlet.textColor = UIColor.lightGray
-        taskNameOutlet.font = UIFont(name: "Helvetica Neue", size: 22.0)
-        taskNameOutlet.returnKeyType = .done
-        taskNameOutlet.delegate = self
-        
+        // setting default text in text view
         placeHolderText()
         
         button.layer.cornerRadius = 30
@@ -71,6 +68,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         taskNameOutlet.delegate = self
     }
     
+    // for when the user clicks on the text view again, re-setting default text
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "Add new task..." {
             textView.text = ""
@@ -79,6 +77,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    // when the user hits the enter key, resign keyboard
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             textView.resignFirstResponder()
@@ -86,6 +85,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         return true
     }
     
+    // more placeholder text
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
             textView.text = "Add new task..."
@@ -98,6 +98,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         view.endEditing(true)
     }
     
+   // changing the due date text if changed
     @objc func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
@@ -108,6 +109,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         view.endEditing(true)
     }
     
+    // alert for if the user doesn't enter a task
     func createAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
