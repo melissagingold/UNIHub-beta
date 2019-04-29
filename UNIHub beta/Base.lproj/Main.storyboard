@@ -346,22 +346,6 @@
                                 <color key="textColor" red="0.047058823530000002" green="0.1215686275" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAg-Of-U05">
-                                <rect key="frame" x="31" y="164" width="38" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.87843137250000003" green="0.74117647060000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYd-PZ-uJG">
-                                <rect key="frame" x="0.0" y="162" width="30" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="mgG-Cy-f8u"/>
-                                    <constraint firstAttribute="height" constant="25" id="v02-aO-gJQ"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="kisspng-computer-icons-arrow-symbol-back-button-5ae83b894a2d10.7037488815251690333038 (1)">
-                                    <color key="titleColor" red="0.91372549020000005" green="0.7725490196" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bgJ-DS-yMJ">
                                 <rect key="frame" x="230" y="540" width="100" height="30"/>
                                 <constraints>
