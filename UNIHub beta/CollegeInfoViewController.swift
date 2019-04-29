@@ -102,7 +102,6 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        notes.layer.cornerRadius = 15
         notes.clipsToBounds = true
         
         setCollegeData()
