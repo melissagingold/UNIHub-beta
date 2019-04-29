@@ -361,30 +361,7 @@
                                 <state key="normal" backgroundImage="kisspng-computer-icons-arrow-symbol-back-button-5ae83b894a2d10.7037488815251690333038 (1)">
                                     <color key="titleColor" red="0.91372549020000005" green="0.7725490196" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="backButton:" destination="5X1-xQ-rJ9" eventType="touchUpInside" id="Egj-Og-oDe"/>
-                                    <segue destination="DHp-cn-lJL" kind="showDetail" id="XVQ-Gb-O8M"/>
-                                </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6OZ-GE-LBm">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.87843137250000003" green="0.74117647060000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
-                                <textAttributes key="largeTitleTextAttributes">
-                                    <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Add Activity" id="RhL-zM-jWQ">
-                                        <barButtonItem key="rightBarButtonItem" title="Add" id="582-pN-1XP">
-                                            <connections>
-                                                <action selector="addButton:" destination="5X1-xQ-rJ9" id="VO5-3q-8sa"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bgJ-DS-yMJ">
                                 <rect key="frame" x="230" y="540" width="100" height="30"/>
                                 <constraints>
