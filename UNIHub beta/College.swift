@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 
 class College {
-    
+    // api key for information from database
     static let apiKey = "YHpGhGV1Yl8GAo0XOLblgqKu4vuffmQT6JyakopO"
     
+    // variables
     var id: Int
     var name: String
     var location: String
@@ -26,6 +27,7 @@ class College {
     
     var userNotes : String
     
+    // initializing all variables parsed from database
     init(id: Int, name: String, location: String, url : String, averageSATScore : Float?, midpointACTScore: Float? ,averageNetPrice: Int?, federalLoanRate: Float?, studentSize: Int?, admissionRate: Float?){
         self.id = id
         self.name = name
