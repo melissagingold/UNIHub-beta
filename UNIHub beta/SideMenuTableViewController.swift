@@ -9,7 +9,7 @@
 import UIKit
 
 class SideMenuTableViewController: UITableViewController {
-
+// background of side menu
     let backgroundImage = UIImage(named: "gray.png")
     
     override func viewDidLoad() {

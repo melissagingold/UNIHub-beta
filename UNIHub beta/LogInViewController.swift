@@ -31,6 +31,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // setting the text field delegates for editing
     override func viewDidLoad() {
         super.viewDidLoad()
         userNameTextField.delegate = self

@@ -148,7 +148,7 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
     }
     
-    // firebase
+    // firebase - loading grades
     func loadGrades(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Grades")
@@ -167,6 +167,7 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
     }
     
+    // firebase - saving grades
     func saveGrades(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Grades")
@@ -182,7 +183,7 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     
-    //tiles
+    //tiles - when tapped, show the text boxes for grades + scores
     @IBAction func buttonTesting(_ sender: UIButton) {
         if viewTest.isHidden == false{
             viewTest.isHidden = true

@@ -17,7 +17,6 @@ protocol AddActivity {
     func addActivity(name:String, participation:String, position:String, honors:String)
 }
 
-
 class AddActivityViewController: UIViewController, UITextFieldDelegate{
 
     // variables

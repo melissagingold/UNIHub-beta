@@ -32,6 +32,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // setting the text field delegates for editing
     override func viewDidLoad() {
         super.viewDidLoad()
         emailAddressTextField.delegate = self

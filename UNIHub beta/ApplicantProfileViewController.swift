@@ -12,12 +12,12 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
 
+// structure for expanding table view cells
 struct cellData {
     var opened = Bool()
     var title = String()
     var sectionData = [String]()
 }
-
 
 class ApplicantProfileViewController: UITableViewController, AddActivity{
     
@@ -33,6 +33,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
         tableView.reloadData()
     }
     
+    // save activities to firebase
     override func viewWillDisappear(_ animated: Bool) {
         saveActivs()
     }
