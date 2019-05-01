@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, AddCalendarTask{
     
-    
+    // variables
     @IBOutlet weak var monthLabel: UILabel!
     
     @IBOutlet weak var myViewController: UICollectionView!
@@ -26,7 +26,11 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     var currentYear = 2019
     var currentLength = 0
     var selectedDay = -1
+    
+    // default months
     var months : [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    
+    // default month lengths
     var length : [Int] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     
     var tasks : [String: [String]] = [:]
@@ -51,6 +55,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         saveTasks(tasks: tasks)
     }
     
+    // firebase
     func saveTasks(tasks: [String: [String]]) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/calTasks")
@@ -67,7 +72,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         
     }
-        
+    
+    // when button pressed,
     @IBAction func downMonth(_ sender: UIButton) {
         selectedDay = -1
         weekDay = (weekDay - length[(currentMonth+11)%12]%7 + 7)%7
@@ -82,6 +88,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         updateCalendar()
         
     }
+    
+    // when button pressed,
     @IBAction func upMonth(_ sender: UIButton) {
         selectedDay = -1
         weekDay = (weekDay + length[currentMonth])%7
@@ -93,9 +101,10 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         else{
             currentMonth += 1
         }
-        //print(tasks)
         updateCalendar()
     }
+    
+    // segue to add task for selected day on calendar
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "goToTask" {
             if selectedDay == -1 {
@@ -104,6 +113,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         return true
     }
+    
+    //
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let taskController = segue.destination as! AddCalendarTaskViewController
         taskController.delegate = self

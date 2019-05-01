@@ -90,7 +90,6 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
     
     // for firebase- adding the text from each textview to brainstorms list to save if text was entered
     func textViewDidChange(_ textView: UITextView) {
-        print("hi")
         if textView.isEqual(brainstormMain){
             essay?.brainstorms[1] = textView.text
         }
