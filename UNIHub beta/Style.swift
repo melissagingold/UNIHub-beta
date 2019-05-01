@@ -10,7 +10,9 @@ import Foundation
 
 import UIKit
 
+// Style class
 class Style {
+    // Set of named values for different text designs / styles
     enum TextStyle {
         case navigationBar
         case title
@@ -18,7 +20,7 @@ class Style {
         case body
         case button
     }
-    
+    // Data type for text attributes that sets default for font, font color, and background color
     struct TextAttributes {
         let font: UIFont
         let color: UIColor
@@ -31,11 +33,12 @@ class Style {
         }
     }
     
+    // variables
     let backgroundColor: UIColor
     let preferredStatusBarStyle: UIStatusBarStyle
-    
     let attributesForStyle: (_ style: TextStyle) -> TextAttributes
     
+    // initializing attributes for style - background color, status bar, and text styles
     init(backgroundColor: UIColor,
          preferredStatusBarStyle: UIStatusBarStyle = .default,
          attributesForStyle: @escaping (_ style: TextStyle) -> TextAttributes)
@@ -45,6 +48,7 @@ class Style {
         self.attributesForStyle = attributesForStyle
     }
     
+    // for easy access - functions able to call and return desired style for font, color, and backgroundColor features
     func font(for style: TextStyle) -> UIFont {
         return attributesForStyle(style).font
     }
@@ -57,6 +61,7 @@ class Style {
         return attributesForStyle(style).backgroundColor
     }
     
+    // for easy access - functions able to apply the different default styles to specific labels, buttons, or navigation bars
     func apply(textStyle: TextStyle, to label: UILabel) {
         let attributes = attributesForStyle(textStyle)
         label.font = attributes.font

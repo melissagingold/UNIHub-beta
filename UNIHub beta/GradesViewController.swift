@@ -12,7 +12,7 @@ import FirebaseStorage
 import FirebaseDatabase
 
 class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate {
-    //
+    // variables
     @IBOutlet weak var testPicker: UIPickerView!
     let test = ["SAT:", "ACT:"]
     var apScores: String?
@@ -29,22 +29,22 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setting default values
         apScores = ""
         satScores = ""
         satScore = ""
         actScore = ""
         gpa = ""
         
+        // firebase - load grades
         loadGrades()
+        
+        // for SAT / ACT test picker (setting default)
         testPicker.selectRow(testPicker.numberOfRows(inComponent: 0)/2, inComponent: 0, animated: true)
         
-        // Do any additional setup after loading the view.
         GPAText.delegate = self
-        //GPAText.allowsEditingTextAttributes = true
         scoreText.delegate = self
-        
-        //GPAText.becomeFirstResponder()
-        
         
         //tiles
         viewTest.isHidden = true
@@ -54,10 +54,12 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        // save grades to firebase
         saveGrades()
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // for SAT / ACT picker view, setting text
         if row == 0{
             scoreText.text = satScore
         }
@@ -83,6 +85,7 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var scoreText: UITextField!
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // for entering text into the GPA and score text fields
         if textField.isEqual(GPAText) {
             gpa = GPAText.text
             GPAText.resignFirstResponder()
@@ -145,6 +148,7 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
     }
     
+    // firebase - loading grades
     func loadGrades(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Grades")
@@ -163,6 +167,7 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
     }
     
+    // firebase - saving grades
     func saveGrades(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Grades")
@@ -178,17 +183,16 @@ class GradesViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     
-    //tiles
+    //tiles - when tapped, show the text boxes for grades + scores
     @IBAction func buttonTesting(_ sender: UIButton) {
         if viewTest.isHidden == false{
-            //GPAText.resignFirstResponder()
             viewTest.isHidden = true
         }
         else{
             viewTest.isHidden = false
-            //GPAText.becomeFirstResponder()
         }
     }
+    
     
     @IBAction func scoresButton(_ sender: UIButton) {
         if scoreView.isHidden == false{

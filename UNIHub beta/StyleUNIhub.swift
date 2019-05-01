@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// extension of style class that creates a more specific default version for the app
 extension Style {
     static var UNIhub : Style {
         return Style (
@@ -19,6 +20,7 @@ extension Style {
     }
 }
 
+// extension of style class that sets default of title and color for different design aspects
 private extension Style.TextStyle {
     var UNIhubAttributes : Style.TextAttributes {
         switch self {
@@ -36,6 +38,7 @@ private extension Style.TextStyle {
     }
 }
 
+// default colors for easy access
 extension UIColor {
     static var UNIhubRed: UIColor {
         return UIColor(red: 1, green: 0.1, blue: 0.1, alpha: 1)
@@ -48,6 +51,7 @@ extension UIColor {
     }
 }
 
+// default font sizes for different types of design features
 extension UIFont {
     static var UNIhubTitle: UIFont {
         return UIFont.systemFont(ofSize: 17)

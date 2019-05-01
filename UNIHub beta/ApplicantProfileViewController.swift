@@ -12,12 +12,12 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
 
+// structure for expanding table view cells
 struct cellData {
     var opened = Bool()
     var title = String()
     var sectionData = [String]()
 }
-
 
 class ApplicantProfileViewController: UITableViewController, AddActivity{
     
@@ -33,6 +33,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
         tableView.reloadData()
     }
     
+    // save activities to firebase
     override func viewWillDisappear(_ animated: Bool) {
         saveActivs()
     }
@@ -47,7 +48,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
             tableView.reloadData()
     }
     
-    //firebase
+    //firebase - saving activities
     func saveActivs() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Activities")
@@ -58,7 +59,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
         ref.setValue(activities)
     }
     
-    
+    // firebase - loading activities
     func loadActivs(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Activities")
@@ -92,6 +93,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
         }
     }
 
+    // setting titles / values for each part of the activity (name, paritcipation, honors, position)
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else{return UITableViewCell()}
         if indexPath.row == 0{
@@ -112,6 +114,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
         return cell
     }
     
+    // for expanding table view cells - when a row is selected, the sections of the cell will open as well
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
             if tableViewData[indexPath.section].opened == true{
@@ -131,6 +134,7 @@ class ApplicantProfileViewController: UITableViewController, AddActivity{
     }
 }
 
+// activity class - contains the detail of each activity (name, participation, position, honors)
 class Activity {
     var name = ""
     var participation = ""

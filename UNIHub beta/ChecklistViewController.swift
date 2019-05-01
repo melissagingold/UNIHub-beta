@@ -14,11 +14,13 @@ import FirebaseDatabase
 
 class ChecklistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTask, ChangeButton {
     
+    // arrays
     var tasks: [Task] = []
     var checks: [Bool] = []
     
     @IBOutlet weak var tableView: UITableView!
     
+  // table view functionality
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
@@ -28,6 +30,7 @@ class ChecklistViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell.taskNameLabel.text = tasks[indexPath.row].name
         
+        // if the cell is checked, change the image from an empty checkbox to a checked checkbox
         if tasks[indexPath.row].checked {
             cell.checkBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBoxFILLED"), for: UIControl.State.normal)
         } else {
@@ -45,6 +48,7 @@ class ChecklistViewController: UIViewController, UITableViewDelegate, UITableVie
         return true
     }
     
+    // for deleting a task in the array / tableview
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tasks.remove(at: indexPath.row)
@@ -55,16 +59,19 @@ class ChecklistViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    // segue to the add task view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! AddTaskViewController
         vc.delegate = self
     }
     
+    // function for add task protocol / delegate, adds a task to the tasks array
     func addTask(name: String) {
         tasks.append(Task(name: name))
         tableView.reloadData()
     }
     
+    // for notifications, checking how many of the tasks are checked or not
     func numOfTrue(checks: [Bool]) -> Int {
         var num = 0
         for i in checks {
@@ -77,6 +84,7 @@ class ChecklistViewController: UIViewController, UITableViewDelegate, UITableVie
         return num
     }
 
+    // function for change button protocol / delegate, adds boolean values to checks array
     func changeButton(checked: Bool, index: Int?) {
         tasks[index!].checked = checked
         
@@ -91,16 +99,19 @@ class ChecklistViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // firebase - load tasks
         loadTasks()
         tableView.backgroundColor = nil
         tableView.backgroundColor = UIColor(red: 0.2706, green: 0.4549, blue: 0.6784, alpha: 1.0)
         
     }
     
+    // firebase - save tasks
     override func viewWillDisappear(_ animated: Bool) {
         saveTasks(tasks: tasks)
     }
 
+    // notifications for how many tasks are left uncompleted
 func prepareNotification() {
     let content = UNMutableNotificationContent()
     
@@ -123,6 +134,7 @@ func prepareNotification() {
     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 }
 
+    // firebase
     func saveTasks(tasks: [Task]) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Tasks")
@@ -153,6 +165,7 @@ func prepareNotification() {
 
 }
 
+// task class - holds default values for the task array and delegate / protocols
 class Task {
     var name = ""
     var checked = false

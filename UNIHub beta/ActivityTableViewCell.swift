@@ -9,13 +9,6 @@
 import UIKit
 
 class ActivityTableViewCell: UITableViewCell {
-
-    
-    
-    
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

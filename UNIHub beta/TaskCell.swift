@@ -8,15 +8,19 @@
 
 import UIKit
 
+// change button protocol - called in ChecklistViewController. changes boolean value of a task / appends it to a checks array
 protocol ChangeButton {
     func changeButton(checked: Bool, index: Int?)
 }
 
 class TaskCell: UITableViewCell {
+    
+    // variables
     @IBOutlet weak var checkBoxOutlet: UIButton!
     @IBOutlet weak var taskNameLabel: UILabel!
     
     @IBAction func checkBoxAction(_ sender: UIButton) {
+        // giving information from cell that shows if the checkbox image can be changed or not
         if tasks![indexP!].checked {
             delegate?.changeButton(checked: false, index: indexP!)
         } else {

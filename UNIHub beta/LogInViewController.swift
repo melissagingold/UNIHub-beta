@@ -10,10 +10,12 @@ import UIKit
 import FirebaseAuth
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
+    // variables
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     
+    // log in button - for users that already have an account
     @IBAction func logInButtonTouchedUp(_ sender: UIButton) {
         guard let emailAddress = userNameTextField.text else {return}
         guard let password = passwordTextField.text else {return}
@@ -29,6 +31,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // setting the text field delegates for editing
     override func viewDidLoad() {
         super.viewDidLoad()
         userNameTextField.delegate = self
@@ -38,6 +41,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // succession of text field editing - after first text field is done, editing is allowed for the next
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if userNameTextField.isFirstResponder {
             userNameTextField.becomeFirstResponder()

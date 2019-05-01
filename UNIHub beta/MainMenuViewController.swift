@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 
 class MainMenuViewController: UIViewController {
-    
+    // variables
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
@@ -28,6 +28,7 @@ class MainMenuViewController: UIViewController {
     
     
     
+    // posting notifications for the segues and rounding buttons
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,11 +48,9 @@ class MainMenuViewController: UIViewController {
         
             button3.layer.cornerRadius = 30
             button3.clipsToBounds = true
-        
-        
-        
     }
     
+    // segues for each
     @objc func showCollegeProfile() {
         performSegue(withIdentifier: "showCollegeProfile", sender: nil)
     }
@@ -64,6 +63,7 @@ class MainMenuViewController: UIViewController {
         performSegue(withIdentifier: "showCalendar", sender: nil)
     }
     
+    // signs out and segues out
     @objc func showLogOut() {
         try! Auth.auth().signOut()
         self.dismiss(animated: true, completion: nil)

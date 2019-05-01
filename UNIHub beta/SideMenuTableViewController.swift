@@ -9,7 +9,7 @@
 import UIKit
 
 class SideMenuTableViewController: UITableViewController {
-
+// background of side menu
     let backgroundImage = UIImage(named: "gray.png")
     
     override func viewDidLoad() {
@@ -31,8 +31,9 @@ class SideMenuTableViewController: UITableViewController {
         
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
+    
+    // for seguing into each feature on the side menu
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
         
         switch indexPath.row {
@@ -44,6 +45,7 @@ class SideMenuTableViewController: UITableViewController {
         }
     }
     
+    // making cells on side menu transparent
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 0.97, alpha: 1)
     }

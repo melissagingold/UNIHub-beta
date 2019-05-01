@@ -117,6 +117,8 @@ class EssayListTableViewController: UIViewController, UITableViewDelegate, UITab
             }
             self.tableView.reloadData()
         }
+        print("hi")
+
         
     }
 }

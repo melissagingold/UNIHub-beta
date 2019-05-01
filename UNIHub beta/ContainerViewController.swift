@@ -10,15 +10,18 @@ import UIKit
 
 class ContainerViewController: UIViewController {
 
+    // for sliding the side menu on and off the screen
     @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
     var sideMenuOpen = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // signal to slide side menu on / off
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name("ToggleSideMenu"), object: nil)
     }
     
+    // moving the side menu on and off the screen
     @objc func toggleSideMenu() {
         if sideMenuOpen {
             sideMenuOpen = false
