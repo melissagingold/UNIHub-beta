@@ -10,6 +10,8 @@ import UIKit
 
 class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    var navBarConstraint: NSLayoutConstraint?
+    
     @IBOutlet weak var notes: UITextView!
     @IBOutlet weak var infoTableView: UITableView!
     @IBOutlet weak var collegeName: UILabel!
@@ -100,7 +102,6 @@ class CollegeInfoViewController: UIViewController, UITextViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        notes.layer.cornerRadius = 15
         notes.clipsToBounds = true
         
         setCollegeData()

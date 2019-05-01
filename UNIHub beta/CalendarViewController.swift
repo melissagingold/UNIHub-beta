@@ -45,8 +45,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         updateCalendar()
         tasksTable.reloadData()
         tasksTable.isHidden = true
-        print("calendar")
-        print("test")
 
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -107,7 +105,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         return true
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var taskController = segue.destination as! AddCalendarTaskViewController
+        let taskController = segue.destination as! AddCalendarTaskViewController
         taskController.delegate = self
         taskController.key = String(currentMonth) + " " +  String(selectedDay) + " " +  String(currentYear)
     }

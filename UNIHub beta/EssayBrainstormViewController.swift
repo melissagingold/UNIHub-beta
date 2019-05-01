@@ -41,26 +41,26 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
         
         if Int(sender.value) == 1 {
             supp1Constraint.constant = 20
-            supp2Constraint.constant = 850
-            supp3Constraint.constant = 850
-            supp4Constraint.constant = 850
-            supp5Constraint.constant = 850
+            supp2Constraint.constant = 2000
+            supp3Constraint.constant = 2000
+            supp4Constraint.constant = 2000
+            supp5Constraint.constant = 2000
             supp1Constraint.isActive = true
         }
         else if Int(sender.value) == 2 {
             supp1Constraint.constant = 20
             supp2Constraint.constant = 20
-            supp3Constraint.constant = 850
-            supp4Constraint.constant = 850
-            supp5Constraint.constant = 850
+            supp3Constraint.constant = 2000
+            supp4Constraint.constant = 2000
+            supp5Constraint.constant = 2000
             supp2Constraint.isActive = true
         }
         else if Int(sender.value) == 3 {
             supp1Constraint.constant = 20
             supp2Constraint.constant = 20
             supp3Constraint.constant = 20
-            supp4Constraint.constant = 850
-            supp5Constraint.constant = 850
+            supp4Constraint.constant = 2000
+            supp5Constraint.constant = 2000
             supp3Constraint.isActive = true
         }
         else if Int(sender.value) == 4 {
@@ -68,7 +68,7 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
             supp2Constraint.constant = 20
             supp3Constraint.constant = 20
             supp4Constraint.constant = 20
-            supp5Constraint.constant = 850
+            supp5Constraint.constant = 2000
             supp4Constraint.isActive = true
         }
         else if Int(sender.value) == 5 {
@@ -80,11 +80,11 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
             supp5Constraint.isActive = true
         }
         else {
-            supp1Constraint.constant = 850
-            supp2Constraint.constant = 850
-            supp3Constraint.constant = 850
-            supp4Constraint.constant = 850
-            supp5Constraint.constant = 850
+            supp1Constraint.constant = 2000
+            supp2Constraint.constant = 2000
+            supp3Constraint.constant = 2000
+            supp4Constraint.constant = 2000
+            supp5Constraint.constant = 2000
         }
     }
     
