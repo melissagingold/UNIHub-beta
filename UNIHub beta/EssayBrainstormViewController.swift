@@ -90,6 +90,7 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
     
     // for firebase- adding the text from each textview to brainstorms list to save if text was entered
     func textViewDidChange(_ textView: UITextView) {
+        print("hi")
         if textView.isEqual(brainstormMain){
             essay?.brainstorms[1] = textView.text
         }
@@ -121,17 +122,6 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // setting as default values of the essay variable (for saving to firebase)
-        essayListName.text = essay?.name
-        wordLimit.text = essay?.brainstorms[0]
-        brainstormMain.text = essay?.brainstorms[1]
-        supp1.text = essay?.brainstorms[2]
-        supp2.text = essay?.brainstorms[3]
-        supp3.text = essay?.brainstorms[4]
-        supp4.text = essay?.brainstorms[5]
-        supp5.text = essay?.brainstorms[6]
-        
         // for keeping the supplemental text views on screen
         if supp5.text! != "" {
             essaySlider.setValue(5, animated: true)
@@ -152,6 +142,16 @@ class EssayBrainstormViewController: UIViewController, UITextViewDelegate {
            essaySlider.setValue(0, animated: true)
         }
         sliderAction(essaySlider)
+        
+        // setting as default values of the essay variable (for saving to firebase)
+        essayListName.text = essay?.name
+        wordLimit.text = essay?.brainstorms[0]
+        brainstormMain.text = essay?.brainstorms[1]
+        supp1.text = essay?.brainstorms[2]
+        supp2.text = essay?.brainstorms[3]
+        supp3.text = essay?.brainstorms[4]
+        supp4.text = essay?.brainstorms[5]
+        supp5.text = essay?.brainstorms[6]
 
     }
 }

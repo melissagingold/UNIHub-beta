@@ -89,7 +89,6 @@ class EssayListTableViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     func saveEssays(essayList: [Essay]?) {
-        
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("user/\(uid)/Essays")
         var essays = [[String : [String]]]()
